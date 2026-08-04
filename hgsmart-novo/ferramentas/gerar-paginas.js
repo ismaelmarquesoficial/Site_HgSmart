@@ -23,7 +23,7 @@ const ZAP_MATRIZ = '5551998575806';
 /* Navegação — um só lugar */
 const MENU = [
   { url: 'index.html', rotulo: 'Início' },
-  { url: 'quem-somos.html', rotulo: 'A rede' },
+  { url: 'quem-somos.html', rotulo: 'Quem Somos' },
   { url: 'catalogo.html', rotulo: 'Marcas' },
   { url: 'como-comprar.html', rotulo: 'Como comprar' },
   { url: 'lojas.html', rotulo: 'Lojas' },
@@ -31,7 +31,7 @@ const MENU = [
 
 const RODAPE_INSTITUCIONAL = [
   ['index.html', 'Início'],
-  ['quem-somos.html', 'A rede'],
+  ['quem-somos.html', 'Quem Somos'],
   ['ceo.html', 'Conheça o CEO'],
   ['catalogo.html', 'Marcas'],
   ['servicos.html', 'Serviços'],

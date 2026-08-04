@@ -1,5 +1,15 @@
 # Mapa do site — Rede HG Smart
 
+> ⚠️ **DOCUMENTO HISTÓRICO — não use como fonte de verdade.**
+>
+> Escrito em 2026-07-27. Partes já não correspondem ao código atual.
+> Exemplos: diz que a home tem 9 seções (hoje tem 11 — a esteira de depoimentos e a seção "Nosso foco" entraram depois) e que o catálogo tem preços de exemplo (removidos em 2026-07-28).
+>
+> **Fonte única de acompanhamento: [CHECKLIST.md](CHECKLIST.md).**
+> Este arquivo fica como registro do que foi levantado na época.
+
+---
+
 Levantamento da estrutura do site novo (`hgsmart-novo/`), extraído dos arquivos
 em 2026-07-27. Nada aqui foi escrito de memória: seções, contagens e pesos vêm
 da varredura dos próprios HTML.

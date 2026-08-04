@@ -73,8 +73,10 @@ Transformar o site da HG Smart em uma ferramenta para:
 >
 > **Verificado — você tem razão.** Os números **já são links** para `wa.me`, mas aparecem
 > como texto azul comum, sem ícone e sem cara de botão. Quem olha não percebe que clica.
-> 💡 Sugestão: ícone do WhatsApp + botão verde ao lado de cada número. É mudança de CSS e
-> template, rápida, e melhora direto o indicador "cliques no WhatsApp".
+> ✅ **FEITO em 2026-08-04.** Cada número virou um chip clicável com o ícone do WhatsApp e
+> alvo de toque de 44px (WCAG 2.5.8). Ficou no **azul da marca**, não no verde do WhatsApp:
+> a paleta tem três cores por decisão de projeto e o ícone já entrega o reconhecimento.
+> Se preferir o verde, é uma linha no `.chip-zap` do `src.css`.
 
 > 🟠 **SUA OBSERVAÇÃO** — *"VER O QUE A IA PODE FAZER PARA AJUDAR ISSO (sub página para cada cidade)"*
 >
@@ -213,16 +215,20 @@ para 13) · confirmar se alguma unidade abre domingo.
 | 5. Acessórios | ❌ | **sem bloco na home** |
 | 6. Películas e capinhas | ❌ | **sem bloco na home** |
 | 7. Garantia estendida | ❌ | página existe, **sem bloco na home** |
-| 8. Avaliações de clientes | ❌ | 20 avaliações prontas em JSON, **sem bloco na home** |
+| 8. Avaliações de clientes | ✅ | **CORRIGIDO:** a home TEM a esteira "Quem já comprou" com as 20 avaliações |
 | 9. História da HG Smart | ✅ | é a **2ª** seção |
 | 10. História do CEO | ❌ | página existe, **sem bloco na home** |
 | 11. Perguntas frequentes | ❌ | página existe, **sem bloco na home** |
 | 12. Contatos e rodapé | ✅ | rodapé completo |
 
-### Ordem real da home hoje — 9 seções
+### Ordem real da home hoje — 11 seções
 
 `① Hero` → `② Nossa história` → `③ Marquee de marcas` → `④ A rede hoje (contadores)` →
-`⑤ Slider` → `⑥ Formas de pagamento` → `⑦ Marcas e modelos` → `⑧ Dez unidades` → `⑨ Chamada final`
+`⑤ Slider` → `⑥ Formas de pagamento` → `⑦ O que as lojas têm` → `⑧ Nosso foco` →
+`⑨ Depoimentos` → `⑩ Onde nos encontrar` → `⑪ Chamada final`
+
+> **CORRIGIDO em 2026-08-04.** O `MAPA-DO-SITE.md` diz 9 seções: está desatualizado, foi
+> escrito antes de a esteira de depoimentos e a seção "Nosso foco" entrarem.
 
 ❌ **A home precisa ser reordenada** e ganhar 5 blocos novos.
 
@@ -246,8 +252,8 @@ para 13) · confirmar se alguma unidade abre domingo.
 
 **Problemas encontrados:**
 - **8 páginas não estão em menu nenhum** — só se chega por link interno
-- **`politica-de-cookies.html` é órfã:** está no sitemap, mas nenhuma página linka para ela. O Google indexa, o usuário nunca chega
-- **Mesma página, dois nomes:** o topo chama "A rede", o rodapé chama "Quem Somos"
+- ✅ **RESOLVIDO em 2026-08-04** — `politica-de-cookies.html` era órfã (estava no sitemap, sem link em nenhuma das 12 outras páginas). Entrou na faixa legal do rodapé das **13 páginas**
+- ✅ **RESOLVIDO em 2026-08-04** — o menu chamava "A rede" e o rodapé "Quem Somos". Unificado em **"Quem Somos"** (combina com a URL `/quem-somos`) nos 26 links de navegação e no gerador de páginas. ⚠️ O `<title>` da página ainda diz "A rede" — trocar quando o menu for reestruturado
 - 💡 **Dívida técnica:** 8 páginas têm o menu gerado por script e 5 têm o menu escrito à mão. Mudar um item hoje exige editar nos dois lugares — **unificar antes de mexer no menu**, senão o trabalho dobra
 
 ---
@@ -401,7 +407,7 @@ servem de base para os primeiros textos.
 
 | Schema | Situação |
 |---|---|
-| **`Review` + `AggregateRating`** | ❌ não implementado — **mas os 20 depoimentos já estão prontos em JSON**, com nota, autor e data. É só marcar. Habilita **estrela no resultado de busca**. Melhor retorno por esforço de toda a lista |
+| **`Review` + `AggregateRating`** | ⛔ **NÃO fazer com as avaliações atuais.** Corrigi minha recomendação anterior: as 20 avaliações vieram do Google Meu Negócio, e a política de review snippet do Google não aceita avaliação coletada em outro site marcada como sua — o risco é ação manual, não estrela. O caminho certo é coletar avaliação própria no site, que é projeto à parte |
 | **`FAQPage`** | ❌ não implementado. A auditoria de GEO deu **0/16 em schema** por causa disso. Habilita resposta direta no Google e citação por IA. A página avisa que o schema só entra com as respostas fechadas — marcação com resposta vazia é penalizada |
 
 ### 💡 Servidor — não é código, é hospedagem
@@ -453,14 +459,15 @@ servem de base para os primeiros textos.
 | Velocidade | ✅ |
 | **Páginas individuais das lojas** | ❌ |
 | **Localizador com busca e geolocalização** | ❌ |
-| **Botão de WhatsApp visível por número** | ❌ sua observação |
+| **Botão de WhatsApp visível por número** | ✅ **feito** — sua observação |
 | Formulários | ❌ |
 | **GTM / GA4 / Pixel + eventos** | ❌ |
 | Schema de Avaliações e FAQ | ❌ |
 | SEO técnico | ✅ base pronta |
 | Reordenar a home / reestruturar o menu | ❌ |
 | Unificar o cabeçalho das 13 páginas | ❌ dívida técnica |
-| Resolver a página órfã de cookies | ❌ |
+| Resolver a página órfã de cookies | ✅ **feito** |
+| **Versionamento (Git)** | 🟡 repositório criado, commit inicial feito, remote configurado — **falta o `git push`**, que precisa ser rodado por você (este ambiente não abre janela de login) |
 | Segurança e manutenção | 🟡 depende do servidor |
 | **Painel simples para o marketing** | ❌ hoje a edição é em `data/*.json` — funciona para quem mexe em código, mas não é painel. 💡 Avaliar CMS leve (Decap) ou fluxo marketing → dev |
 
@@ -656,3 +663,33 @@ Nada disso se resolve no código.
 | **Como posso falar com essa loja agora?** | ✅ sim — WhatsApp por unidade e botão fixo em todas as páginas |
 
 **Uma das quatro está plenamente resolvida.**
+
+---
+
+# HISTÓRICO DE ALTERAÇÕES
+
+## 2026-08-04 — Etapa 1
+
+**Regra seguida:** só acrescentar ou desduplicar. Nenhuma estrutura de layout e nenhuma
+ordem de seção foi alterada.
+
+| # | Alteração | Arquivos |
+|---|---|---|
+| A1 | Política de Cookies deixou de ser página órfã — link acrescentado na faixa legal do rodapé | `ferramentas/aplicar-rodape.js` + 13 páginas |
+| A2 | `MAPA-DO-SITE.md` e `PLANO-DE-APLICACAO.md` marcados como documento histórico, com aviso do que está desatualizado | 2 arquivos |
+| B2 | Rótulo unificado: menu dizia "A rede", rodapé dizia "Quem Somos" → **"Quem Somos"** nos dois | 26 links em 13 páginas + `ferramentas/gerar-paginas.js` |
+| C1 | Números de WhatsApp viraram chips clicáveis com ícone e alvo de toque de 44px | `assets/js/site.js` + `assets/css/src.css` + CSS recompilado |
+| — | Versionamento Git iniciado, `.gitignore`, commit inicial e remote configurados | raiz do projeto |
+
+**Correções ao próprio checklist** (erros meus, encontrados na verificação):
+- A home **tem** seção de avaliações ("Quem já comprou", com as 20) — estava marcada como ❌
+- A home tem **11 seções**, não 9 — o `MAPA-DO-SITE.md` estava desatualizado
+- Recomendação de schema `Review`/`AggregateRating` **retirada** — a política do Google não
+  aceita avaliação de terceiro marcada como própria
+
+**Não aplicado (você optou por manter):**
+- B1 — desduplicar o slider. As 5 artes repetidas de boleto seguem no ar, e com elas a
+  contradição do 18x × 25x
+
+**Pendente de você:**
+- `git push -u origin main` — este ambiente não abre janela de login do GitHub

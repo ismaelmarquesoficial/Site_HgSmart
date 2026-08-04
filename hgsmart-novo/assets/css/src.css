@@ -476,6 +476,51 @@
   opacity: 1;
 }
 
+/* ─── Chip de WhatsApp nos cards de loja ───────────────────────
+   Antes o número era só um link azul: funcionava, mas não parecia
+   clicável, e no toque o alvo era a altura de uma linha de texto.
+   Agora é um alvo de 44px (WCAG 2.5.8 Target Size) com o ícone do
+   WhatsApp, sem mudar a ordem nem a estrutura do card.
+
+   Fica no azul da marca, não no verde do WhatsApp: a paleta do site
+   tem três cores por decisão de projeto, e o ícone já entrega o
+   reconhecimento. No hover o fundo vira azul sólido e a tinta vira
+   PRETA — branco sobre #00A2C7 dá 3,0:1 e reprovaria no contraste.
+   ───────────────────────────────────────────────────────────── */
+
+.chip-zap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--color-azul) 45%, transparent);
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--color-azul) 8%, transparent);
+  color: var(--color-azul);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  transition:
+    background-color var(--duracao-componente) var(--ease-saida),
+    border-color var(--duracao-componente) var(--ease-saida),
+    color var(--duracao-componente) var(--ease-saida);
+}
+
+.chip-zap:hover,
+.chip-zap:focus-visible {
+  background-color: var(--color-azul);
+  border-color: var(--color-azul);
+  color: var(--color-preto);
+}
+
+.chip-zap svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
 /* ─── Slider de banners ────────────────────────────────────────
    A altura é travada aqui, por aspect-ratio, e não pela imagem.
    Mesmo que alguém troque um arquivo por outro de proporção

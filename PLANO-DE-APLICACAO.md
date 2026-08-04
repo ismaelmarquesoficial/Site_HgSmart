@@ -1,5 +1,15 @@
 # Plano de aplicação — Novo site HG Smart
 
+> ⚠️ **DOCUMENTO HISTÓRICO — não use como fonte de verdade.**
+>
+> Escrito em 2026-07-26. Partes já não correspondem ao código atual.
+> Exemplo importante: lista sitemap.xml, robots.txt, botão de WhatsApp fixo e schema das lojas como pendentes — **os quatro já foram entregues**. Os códigos de bloqueio B1 a B15 continuam válidos e foram absorvidos pelo CHECKLIST.
+>
+> **Fonte única de acompanhamento: [CHECKLIST.md](CHECKLIST.md).**
+> Este arquivo fica como registro do que foi levantado na época.
+
+---
+
 Consolidação do `Informação.md` (briefing) + `SEO TECNICO` cruzados com o que já
 está construído em `hgsmart-novo/`.
 

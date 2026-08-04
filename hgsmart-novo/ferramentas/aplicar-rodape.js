@@ -45,16 +45,16 @@ const INSTITUCIONAL = [
   ['https://hgsmart.com.br/blog', 'Blog', true],
 ];
 
-/* ATENÇÃO: politica-de-cookies.html NÃO está aqui.
+/* RESOLVIDO em 2026-08-04: politica-de-cookies.html entrou nesta lista.
 
-   O desenho aprovado do rodapé lista só duas páginas legais, e o rodapé
-   é o único lugar do site que linka para elas. Ou seja: a Política de
-   Cookies existe, está no sitemap.xml, e não tem link de lugar nenhum —
-   é uma página órfã. Ou ela volta para esta lista, ou o arquivo e a
-   entrada no sitemap devem ser removidos. Está pendente de decisão. */
+   Antes ela era página órfã — existia, estava no sitemap.xml e não tinha
+   link de lugar nenhum. O Google indexava, o visitante nunca chegava.
+   O rodapé é o único lugar do site que linka as páginas legais, então é
+   aqui que ela precisa estar. */
 const LEGAL = [
   ['politica-de-privacidade.html', 'Política de Privacidade'],
   ['termos-de-uso.html', 'Termos de Uso'],
+  ['politica-de-cookies.html', 'Política de Cookies'],
 ];
 
 const REDES = [
