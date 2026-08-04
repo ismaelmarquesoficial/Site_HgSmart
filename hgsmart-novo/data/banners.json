@@ -1,0 +1,70 @@
+{
+  "_leia_isto": "Banners do site antigo, reprocessados por ferramentas/processar-banners.js. Os originais ficam em assets/img/banners/original/. Todos saem na MESMA proporcao (desktop 1920x740, mobile 900x900) porque o script forca cover+corte central -- trocar um arquivo por outro de proporcao diferente nao muda a altura do slider. Para tirar um banner do ar, ponha \"ativo\": false. A ordem do array e a ordem de exibicao.",
+  "atualizado_em": "2026-07-26",
+  "config": {
+    "intervalo_ms": 6500,
+    "proporcao_desktop": "1920 / 740",
+    "proporcao_mobile": "1 / 1"
+  },
+  "banners": [
+    {
+      "id": 1,
+      "ativo": true,
+      "arquivo": "banner-1",
+      "alt": "iPhones com parcelamento na conta de luz. Atendente da HG Smart segura iPhones lacrados e uma fatura de energia.",
+      "link": "servicos.html",
+      "rotulo_link": "Ver como funciona o parcelamento na conta de luz"
+    },
+    {
+      "id": 2,
+      "ativo": true,
+      "arquivo": "banner-2",
+      "alt": "Seu Android novo está aqui. Celulares Android com parcelamento no boleto, mesmo para negativados.",
+      "link": "catalogo.html",
+      "rotulo_link": "Ver os Android disponíveis"
+    },
+    {
+      "id": 3,
+      "ativo": true,
+      "arquivo": "banner-3",
+      "alt": "Android novo, sem complicação. Parcele no boleto, até para quem está negativado. Marcas Samsung, Xiaomi, Motorola e Realme.",
+      "link": "catalogo.html",
+      "rotulo_link": "Ver as marcas disponíveis"
+    },
+    {
+      "id": 4,
+      "ativo": true,
+      "arquivo": "banner-4",
+      "alt": "Troque de celular hoje mesmo. Androids com parcelamento no boleto e aprovação mesmo com nome negativado.",
+      "link": "catalogo.html",
+      "rotulo_link": "Ver modelos disponíveis"
+    },
+    {
+      "id": 5,
+      "ativo": true,
+      "arquivo": "banner-5",
+      "alt": "Seu próximo Android cabe no seu bolso. Parcelamento no boleto liberado para negativados.",
+      "link": "catalogo.html",
+      "rotulo_link": "Ver as marcas"
+    },
+    {
+      "id": 6,
+      "ativo": true,
+      "arquivo": "banner-6",
+      "alt": "Celulares Android em 18 vezes no boleto, com aprovação para negativados.",
+      "link": "servicos.html",
+      "rotulo_link": "Ver as condições de pagamento",
+      "_atencao": "A ARTE DIZ 18X. A pagina de Servicos diz 25x no boleto. Um dos dois esta desatualizado -- confirme o numero correto e refaca a arte ou corrija a copy."
+    },
+    {
+      "id": 7,
+      "ativo": true,
+      "arquivo": "banner-7",
+      "alt": "Troop Telecom: liberte-se do plano caro. Planos de celular com acúmulo de dados.",
+      "link": "https://trooptelecom.com.br",
+      "externo": true,
+      "rotulo_link": "Conhecer os planos da Troop Telecom",
+      "_atencao": "Banner da Troop Telecom, OPERADORA DO GRUPO HERMES (confirmado no briefing Informacao.md, slide 7). Nao e anuncio de terceiro. Fundo branco e identidade propria da Troop -- destoa do resto do slider, mas e da familia."
+    }
+  ]
+}

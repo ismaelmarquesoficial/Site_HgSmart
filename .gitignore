@@ -1,0 +1,19 @@
+# Dependências — reinstaláveis com `npm install`
+node_modules/
+
+# Artes de origem dos banners: JPEGs pesados (6,6 MB), só usados para
+# reprocessar com `npm run banners`. O site publica as versões geradas.
+hgsmart-novo/assets/img/banners/original/
+
+# Imagens que não são usadas por página nenhuma
+hgsmart-novo/assets/img/fotos/nao-usadas/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp

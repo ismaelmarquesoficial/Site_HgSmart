@@ -1,0 +1,519 @@
+{
+  "url": "https://hgsmart.com.br",
+  "timestamp": "2026-07-26T23:40:34.206990+00:00",
+  "score": 33,
+  "band": "critical",
+  "checks": {
+    "robots_txt": {
+      "score": 15,
+      "max": 18,
+      "passed": true,
+      "details": {
+        "found": true,
+        "bots_allowed": [
+          "GPTBot",
+          "OAI-SearchBot",
+          "ChatGPT-User",
+          "anthropic-ai",
+          "ClaudeBot",
+          "Claude-SearchBot",
+          "claude-web",
+          "PerplexityBot",
+          "Perplexity-User",
+          "Google-Extended",
+          "Google-CloudVertexBot",
+          "Bingbot",
+          "Applebot-Extended",
+          "cohere-ai",
+          "DuckAssistBot",
+          "Bytespider",
+          "meta-externalagent",
+          "Meta-ExternalFetcher",
+          "facebookexternalhit",
+          "Amazonbot",
+          "AI2Bot",
+          "AI2Bot-Dolma",
+          "xAI-Bot",
+          "Applebot",
+          "PetalBot",
+          "YouBot",
+          "CCBot"
+        ],
+        "bots_missing": [],
+        "bots_blocked": [],
+        "bots_partial": [],
+        "citation_bots_ok": true,
+        "crawl_delay": null,
+        "citation_bots_explicit": false
+      }
+    },
+    "llms_txt": {
+      "score": 0,
+      "max": 18,
+      "passed": false,
+      "details": {
+        "found": false,
+        "has_h1": false,
+        "has_description": false,
+        "has_sections": false,
+        "has_links": false,
+        "word_count": 0,
+        "has_full": false,
+        "sections_count": 0,
+        "links_count": 0,
+        "has_blockquote": false,
+        "has_optional_section": false,
+        "companion_files_hint": false,
+        "validation_warnings": []
+      }
+    },
+    "schema_jsonld": {
+      "score": 0,
+      "max": 16,
+      "passed": false,
+      "details": {
+        "has_website": false,
+        "has_webapp": false,
+        "has_faq": false,
+        "found_types": []
+      }
+    },
+    "meta_tags": {
+      "score": 8,
+      "max": 14,
+      "passed": false,
+      "details": {
+        "has_title": true,
+        "has_description": false,
+        "has_canonical": true,
+        "has_og_title": false,
+        "has_og_description": false,
+        "has_og_image": false,
+        "title_text": "Rede HG Smart",
+        "description_text": "",
+        "description_length": 0,
+        "title_length": 13,
+        "canonical_url": "https://hgsmart.com.br/",
+        "x_robots_noindex": false,
+        "x_robots_tag": "",
+        "has_noai": false,
+        "noai_value": ""
+      }
+    },
+    "content": {
+      "score": 8,
+      "max": 12,
+      "passed": false,
+      "details": {
+        "has_h1": false,
+        "heading_count": 14,
+        "has_numbers": true,
+        "has_links": true,
+        "word_count": 920,
+        "h1_text": "",
+        "numbers_count": 13,
+        "external_links_count": 8,
+        "has_heading_hierarchy": false,
+        "has_lists_or_tables": true,
+        "has_front_loading": true
+      }
+    },
+    "signals": {
+      "score": 5,
+      "max": 6,
+      "passed": true,
+      "details": {
+        "has_lang": true,
+        "lang_value": "pt-BR",
+        "has_rss": true,
+        "rss_url": "https://hgsmart.com.br/feed/",
+        "has_freshness": false,
+        "freshness_date": ""
+      }
+    },
+    "ai_discovery": {
+      "score": 0,
+      "max": 6,
+      "passed": false,
+      "details": {
+        "has_well_known_ai": false,
+        "has_summary": false,
+        "has_faq": false,
+        "has_service": false,
+        "summary_valid": false,
+        "faq_count": 0,
+        "endpoints_found": 0
+      }
+    },
+    "brand_entity": {
+      "score": 0,
+      "max": 10,
+      "passed": false,
+      "details": {
+        "brand_name_consistent": false,
+        "names_found": [
+          "Rede HG Smart"
+        ],
+        "schema_desc_matches_meta": false,
+        "kg_pillar_count": 0,
+        "kg_pillar_urls": [],
+        "has_wikipedia": false,
+        "has_wikidata": false,
+        "has_linkedin": false,
+        "has_crunchbase": false,
+        "has_about_link": false,
+        "has_contact_info": false,
+        "has_geo_schema": false,
+        "has_hreflang": false,
+        "hreflang_count": 0,
+        "faq_depth": 0,
+        "has_recent_articles": false
+      }
+    }
+  },
+  "score_breakdown": {
+    "robots": 15,
+    "llms": 0,
+    "schema": 0,
+    "meta": 8,
+    "content": 8,
+    "signals": 5,
+    "ai_discovery": 0,
+    "brand_entity": 0,
+    "negative_penalty": -3
+  },
+  "recommendations": [
+    "Create /llms.txt for AI indexing: geo llms --base-url https://hgsmart.com.br. Note: llms.txt is an organizational signal, not a proven ranking factor. It helps structure content for AI systems.",
+    "Add WebSite JSON-LD schema to homepage",
+    "Add Organization JSON-LD schema with name, url, and logo",
+    "Add FAQPage schema with site FAQs",
+    "Add sameAs links in Organization schema to Wikipedia, Wikidata, LinkedIn, or Crunchbase for Knowledge Graph disambiguation",
+    "Add a visible /about or /chi-siamo link to build trust signals for AI",
+    "Add address, telephone or contactPoint to Organization schema for entity validation",
+    "Add Open Graph tags (og:title, og:description, og:image) for AI and social previews",
+    "Add optimized meta description (150-160 characters)",
+    "Add a single H1 heading that clearly states the page topic",
+    "Add H2/H3 subheadings to structure content for AI extraction",
+    "Keyword stuffing detected: 'loja' at 4.5% density \u2014 diversify vocabulary",
+    "Create /.well-known/ai.txt to define AI crawler permissions",
+    "Create /ai/summary.json with site name and description for AI engines",
+    "Create /ai/faq.json with structured FAQ for AI search visibility",
+    "Create /ai/service.json to describe service capabilities for AI",
+    "Add potentialAction (SearchAction) to WebSite schema for AI agent discoverability",
+    "Add descriptive labels to forms (label, aria-label) to make them usable by AI agents",
+    "Consider adding WebMCP toolname/tooldescription attributes to interactive elements for Chrome AI agent support",
+    "70 of 76 images lack descriptive alt text \u2014 multimodal AI engines (Gemini, GPT-4o) read images through their alt text"
+  ],
+  "webmcp": {
+    "readiness_level": "none",
+    "agent_ready": false,
+    "has_register_tool": false,
+    "has_tool_attributes": false,
+    "tool_count": 0,
+    "has_potential_action": false,
+    "potential_actions": [],
+    "has_labeled_forms": false,
+    "labeled_forms_count": 0,
+    "has_openapi": false
+  },
+  "negative_signals": {
+    "severity": "medium",
+    "signals_found": 3,
+    "cta_density_high": false,
+    "cta_count": 0,
+    "has_popup_signals": true,
+    "is_thin_content": false,
+    "broken_links_count": 0,
+    "has_keyword_stuffing": true,
+    "has_author_signal": false,
+    "boilerplate_ratio": 0.08,
+    "has_mixed_signals": false
+  },
+  "cdn_check": {
+    "checked": true,
+    "browser_status": 200,
+    "browser_content_length": 214626,
+    "bot_results": [
+      {
+        "bot": "GPTBot",
+        "status": 200,
+        "content_length": 214626,
+        "blocked": false,
+        "challenge_detected": false
+      },
+      {
+        "bot": "ClaudeBot",
+        "status": 200,
+        "content_length": 214626,
+        "blocked": false,
+        "challenge_detected": false
+      },
+      {
+        "bot": "PerplexityBot",
+        "status": 200,
+        "content_length": 214626,
+        "blocked": false,
+        "challenge_detected": false
+      }
+    ],
+    "any_blocked": false,
+    "cdn_detected": "",
+    "cdn_headers": {},
+    "error": ""
+  },
+  "js_rendering": {
+    "checked": true,
+    "raw_word_count": 917,
+    "raw_heading_count": 23,
+    "has_empty_root": false,
+    "has_noscript_content": false,
+    "framework_detected": "",
+    "js_dependent": false,
+    "details": "917 words and 23 headings found in raw HTML. Content is accessible without JavaScript."
+  },
+  "multimodal": {
+    "checked": true,
+    "total_images": 76,
+    "images_with_alt": 6,
+    "alt_coverage": 0.08,
+    "caption_count": 0,
+    "has_video": false,
+    "video_count": 0,
+    "has_video_schema": false,
+    "has_video_captions": false,
+    "has_audio": false,
+    "has_audio_schema": false,
+    "has_transcript": false,
+    "readiness_level": "missing"
+  },
+  "trust_stack": {
+    "checked": true,
+    "technical": {
+      "name": "technical",
+      "label": "Technical Trust",
+      "score": 2,
+      "max_score": 5,
+      "signals_found": [
+        "HTTPS"
+      ],
+      "signals_missing": [
+        "Strict-Transport-Security header missing",
+        "Content-Security-Policy header missing",
+        "X-Frame-Options header missing"
+      ],
+      "details": {}
+    },
+    "identity": {
+      "name": "identity",
+      "label": "Identity Trust",
+      "score": 0,
+      "max_score": 5,
+      "signals_found": [],
+      "signals_missing": [
+        "Inconsistent brand name across title/H1/schema",
+        "No about page link found",
+        "No contact information in schema",
+        "No Organization JSON-LD schema",
+        "No author attribution found"
+      ],
+      "details": {}
+    },
+    "social": {
+      "name": "social",
+      "label": "Social Trust",
+      "score": 1,
+      "max_score": 5,
+      "signals_found": [
+        "Social profiles (youtube.com, facebook.com, instagram.com)"
+      ],
+      "signals_missing": [
+        "No sameAs links in schema",
+        "No Knowledge Graph pillar links",
+        "No reviews or testimonials found"
+      ],
+      "details": {}
+    },
+    "academic": {
+      "name": "academic",
+      "label": "Academic Trust",
+      "score": 2,
+      "max_score": 5,
+      "signals_found": [
+        "Numbers cited (13)",
+        "External sources (4 non-social links)"
+      ],
+      "signals_missing": [
+        "No links to authoritative sources (DOI, PubMed, Scholar)",
+        "No References/Sources section",
+        "No original research data patterns"
+      ],
+      "details": {
+        "authoritative_domains": [],
+        "statistics_count": 0,
+        "numbers_count": 13
+      }
+    },
+    "consistency": {
+      "name": "consistency",
+      "label": "Consistency Trust",
+      "score": 1,
+      "max_score": 5,
+      "signals_found": [
+        "No mixed signals"
+      ],
+      "signals_missing": [
+        "Inconsistent brand naming",
+        "Schema description differs from meta description",
+        "No dateModified in schema"
+      ],
+      "details": {}
+    },
+    "composite_score": 6,
+    "grade": "D",
+    "trust_level": "low"
+  },
+  "prompt_injection": {
+    "checked": true,
+    "hidden_text_found": false,
+    "hidden_text_count": 0,
+    "hidden_text_samples": [],
+    "invisible_unicode_found": false,
+    "invisible_unicode_count": 0,
+    "llm_instruction_found": false,
+    "llm_instruction_count": 0,
+    "llm_instruction_samples": [],
+    "html_comment_injection_found": false,
+    "html_comment_injection_count": 0,
+    "html_comment_samples": [],
+    "monochrome_text_found": false,
+    "monochrome_text_count": 0,
+    "microfont_found": false,
+    "microfont_count": 0,
+    "data_attr_injection_found": false,
+    "data_attr_injection_count": 0,
+    "data_attr_samples": [],
+    "aria_hidden_injection_found": false,
+    "aria_hidden_injection_count": 0,
+    "aria_hidden_samples": [],
+    "patterns_found": 0,
+    "severity": "clean",
+    "risk_level": "none"
+  },
+  "rag_chunk": {
+    "checked": true,
+    "total_sections": 15,
+    "sections_in_range": 0,
+    "avg_section_words": 34.2,
+    "has_definition_opening": false,
+    "heading_as_boundary_ratio": 1.53,
+    "anchor_sentences": 39,
+    "chunk_readiness_score": 45
+  },
+  "embedding_proximity": {
+    "checked": true,
+    "skipped_reason": "sentence-transformers not installed (pip install geo-optimizer-skill[embedding])",
+    "model_name": "",
+    "query_scores": [],
+    "avg_similarity": 0.0,
+    "top_similarity": 0.0,
+    "retrievable_chunks": 0,
+    "total_chunks": 0
+  },
+  "content_decay": {
+    "checked": true,
+    "signals": [
+      {
+        "decay_type": "temporal",
+        "text": "4.988.129/0001-89 Copyright \u00a9 2026. Desenvolvido com \u2764 pela Ag\u00ean",
+        "estimated_stale_days": 365,
+        "suggestion": "Use relative time or add dateModified schema for freshness signals"
+      }
+    ],
+    "earliest_decay_days": 365,
+    "decay_risk": "medium",
+    "evergreen_score": 92
+  },
+  "platform_citation": {
+    "checked": true,
+    "platforms": [
+      {
+        "platform": "chatgpt",
+        "score": 30,
+        "strengths": [
+          "GPTBot allowed in robots.txt",
+          "Citability score 70/100"
+        ],
+        "recommendations": [
+          "Add /llms.txt for LLM-friendly site summary",
+          "Add FAQPage schema for Q&A-style answers",
+          "Add Organization schema for entity clarity"
+        ]
+      },
+      {
+        "platform": "perplexity",
+        "score": 65,
+        "strengths": [
+          "PerplexityBot allowed",
+          "High citability (70/100)",
+          "Substantial content depth",
+          "External links for source diversity",
+          "RSS feed available"
+        ],
+        "recommendations": [
+          "Add /llms.txt with links to key resources",
+          "Add dateModified schema or freshness indicators"
+        ]
+      },
+      {
+        "platform": "google_ai",
+        "score": 28,
+        "strengths": [
+          "Google-Extended allowed",
+          "Citability score 70/100",
+          "Content available without JS (SSR-safe)"
+        ],
+        "recommendations": [
+          "Add JSON-LD schema markup",
+          "Complete title, description, and canonical meta tags",
+          "Add dateModified / lastmod freshness signals",
+          "Add descriptive alt text to images",
+          "Add sameAs links to social profiles and Wikipedia"
+        ]
+      }
+    ]
+  },
+  "context_window": {
+    "checked": true,
+    "total_words": 917,
+    "total_tokens_estimate": 1192,
+    "front_loaded_ratio": 0.0,
+    "key_info_tokens": 156,
+    "filler_ratio": 0.01,
+    "optimal_for": [
+      "perplexity",
+      "chatgpt",
+      "claude"
+    ],
+    "truncation_risk": "low",
+    "context_efficiency_score": 45
+  },
+  "instruction_readiness": {
+    "checked": true,
+    "labeled_buttons": 10,
+    "unlabeled_buttons": 1,
+    "action_clarity_score": 90,
+    "total_inputs": 0,
+    "labeled_inputs": 0,
+    "typed_inputs": 0,
+    "form_readability_score": 100,
+    "nav_links": 40,
+    "stateful_urls": true,
+    "has_aria_live": true,
+    "has_error_roles": false,
+    "readiness_score": 87,
+    "readiness_level": "advanced"
+  },
+  "http_status": 200,
+  "page_size": 214626,
+  "audit_duration_ms": 651
+}

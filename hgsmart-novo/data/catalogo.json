@@ -1,0 +1,103 @@
+{
+  "_leia_isto": "Esta pagina mostra APENAS as marcas que a rede trabalha -- sem modelos, sem precos e sem parcela por aparelho. Decisao do cliente em 2026-07-28: o site e institucional, nao vende e nao exibe preco. A lista de modelos e as faixas de preco que existiam aqui eram ESTRUTURA DE EXEMPLO (nunca foram dados reais) e foram removidas. Se um dia a rede quiser listar modelos, o combinado e listar sem valor -- o preco sai da simulacao presencial na loja.",
+  "atualizado_em": "2026-07-28",
+  "condicoes_globais": {
+    "parcelas_boleto": 25,
+    "parcelas_conta_luz": 24,
+    "parcelas_cartao": 10,
+    "entrada_min_percent": 10,
+    "entrada_max_percent": 30,
+    "observacao": "Condicoes sujeitas a analise. Conta de luz disponivel apenas em cidades atendidas pela RGE. Estes numeros alimentam a secao de condicoes da pagina -- nao sao preco."
+  },
+  "marcas": [
+    {
+      "id": "samsung",
+      "nome": "Samsung",
+      "logo": "assets/img/produtos/samsung.png",
+      "resumo": "A linha mais ampla da rede. Do Galaxy A de entrada ao S de topo, com garantia oficial Samsung Brasil.",
+      "destaque": true
+    },
+    {
+      "id": "apple",
+      "nome": "Apple",
+      "logo": "assets/img/produtos/apple.png",
+      "resumo": "iPhone lacrado e seminovo com procedencia verificada e garantia. Modelos de geracoes recentes e anteriores.",
+      "destaque": true
+    },
+    {
+      "id": "xiaomi",
+      "nome": "Xiaomi",
+      "logo": "assets/img/produtos/Xiaomi.png",
+      "resumo": "Melhor relacao entre ficha tecnica e custo. Linha Redmi e Poco com bateria grande e camera boa.",
+      "destaque": true
+    },
+    {
+      "id": "motorola",
+      "nome": "Motorola",
+      "logo": "assets/img/produtos/Motorola2.png",
+      "resumo": "Android limpo e bateria que dura. Linha Moto G para o dia a dia e Edge para quem quer mais.",
+      "destaque": true
+    },
+    {
+      "id": "realme",
+      "nome": "Realme",
+      "logo": "assets/img/produtos/realme2.png",
+      "resumo": "Carregamento rapido e tela de alta taxa de atualizacao. Boa porta de entrada.",
+      "destaque": true
+    },
+    {
+      "id": "lg",
+      "nome": "LG",
+      "logo": "assets/img/marcas/lg.jpg"
+    },
+    {
+      "id": "itel",
+      "nome": "Itel",
+      "logo": "assets/img/marcas/itel.jpg"
+    },
+    {
+      "id": "blu",
+      "nome": "Blu",
+      "logo": "assets/img/marcas/blu.jpg"
+    },
+    {
+      "id": "infinix",
+      "nome": "Infinix",
+      "logo": "assets/img/marcas/infinix.jpg"
+    }
+  ],
+  "_resumo_pendente": "LG, Itel, Blu e Infinix subiram da faixa de parceiras para a grade principal em 2026-08-03, a pedido do cliente. Estao SEM o campo 'resumo' de proposito: descrever a linha de cada uma seria inventar. O card e a secao da pagina de Marcas simplesmente omitem o paragrafo quando o campo nao existe. Enviar uma frase por marca para completar.",
+  "_sobre_as_duas_versoes_de_logo": "Cada marca tem DUAS versoes de logo, e escolher a errada faz o logo sumir. Em assets/img/produtos/*.png estao as silhuetas BRANCAS com fundo transparente -- corretas sobre fundo escuro (o campo 'logo' acima usa essas, porque na pagina de Marcas o contêiner e bg-grafite). Em assets/img/marcas/*.jpg estao as versoes de marca ESCURA sobre branco -- corretas sobre fundo claro, e sao as usadas na grade da home, que fica numa secao-clara. Ate 2026-08-03 a grade da home usava as brancas e os 5 logos ficavam invisiveis.",
+  "_marcas_parceiras_obsoleto": "Este array NAO e lido por nenhum codigo -- a faixa rolante de logos e HTML fixo em index.html e catalogo.html. Como LG, Itel, Blu e Infinix foram promovidas para 'marcas' acima e as outras 5 sao as mesmas da grade, a faixa inteira ficou redundante: hoje ela so repete o que ja aparece acima dela. Decidir entre remover a faixa ou repovoa-la com marcas que nao estejam na grade.",
+  "marcas_parceiras": [
+    { "nome": "LG", "logo": "assets/img/marcas/lg.jpg" },
+    { "nome": "Itel", "logo": "assets/img/marcas/itel.jpg" },
+    { "nome": "Blu", "logo": "assets/img/marcas/blu.jpg" },
+    { "nome": "Infinix", "logo": "assets/img/marcas/infinix.jpg" },
+    { "nome": "Xiaomi", "logo": "assets/img/marcas/xiaomi.jpg" },
+    { "nome": "Apple", "logo": "assets/img/marcas/apple.jpg" },
+    { "nome": "Motorola", "logo": "assets/img/marcas/motorola.jpg" },
+    { "nome": "Realme", "logo": "assets/img/marcas/realme.jpg" },
+    { "nome": "Samsung", "logo": "assets/img/marcas/samsung.jpg" }
+  ],
+  "_acessorios_pendencia": "A linha de 12 itens abaixo veio do cliente em 2026-07-28. Decisão do cliente no mesmo dia: a linha deixou de ser uma grade de cards e virou uma FRASE CORRIDA na página de Marcas -- os nomes separados só por vírgula, logo depois de 'Linha completa para o celular e itens de tecnologia para o dia a dia.'. Por isso 'descricao' NÃO é mais lido pelo site; a ordem do array é a ordem da frase. Para voltar ao formato de cards, ver o histórico de montarAcessorios em assets/js/site.js.",
+  "_acessorios_copy_removida": {
+    "_motivo": "Texto que estava publicado antes da uniformização. Guardado aqui para não se perder -- é só devolver como 'descricao' no item correspondente.",
+    "Capinhas": "Silicone, antichoque e transparente para os modelos que a rede trabalha.",
+    "Caixas de Som Bluetooth": "JBL e similares, portáteis e à prova de água."
+  },
+  "acessorios": [
+    { "nome": "Capinhas" },
+    { "nome": "Películas HG Fiber" },
+    { "nome": "Películas HG Premium" },
+    { "nome": "Carregadores" },
+    { "nome": "Cabos" },
+    { "nome": "Power Banks" },
+    { "nome": "Fones Bluetooth" },
+    { "nome": "Caixas de Som Bluetooth" },
+    { "nome": "Alexa" },
+    { "nome": "Smartwatches" },
+    { "nome": "Suportes" },
+    { "nome": "Adaptadores" }
+  ]
+}

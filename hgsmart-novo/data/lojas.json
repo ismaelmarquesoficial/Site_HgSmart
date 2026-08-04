@@ -1,0 +1,173 @@
+{
+  "_leia_isto": "FONTE: lista oficial passada pela HG Smart em 2026-07-27 (enderecos + horarios + WhatsApp por unidade). Esta lista SUBSTITUI os dados que vinham do plugin Agile Store Locator do site antigo, que estavam desatualizados. A ordem do array e a ordem de exibicao -- matriz primeiro.",
+  "atualizado_em": "2026-07-27",
+  "divergencias_com_o_site_antigo": {
+    "cachoeira-do-sul": "ENDERECO COMPLETAMENTE DIFERENTE. Plugin antigo: 'Rua Saldanha Marinho, 915'. Lista nova: 'Rua Sete de Setembro, 1385'. A lista de WhatsApp chama esta unidade de 'Unidade 1', o que sugere que pode existir uma Unidade 2. CONFIRMAR se foi mudanca de endereco ou se sao duas lojas.",
+    "cachoeirinha": "Numero e bairro mudaram. Antigo: 'Av. Lidio Batista Soares, 68 - Cohab'. Novo: 'Avenida Lidio Batista, 69 - Centro'.",
+    "domingo": "O plugin antigo indicava Cachoeirinha e Capao da Canoa abrindo domingo. A lista nova NAO menciona domingo em nenhuma unidade. Adotei a lista nova, que e mais recente e oficial. Se alguma unidade abre domingo, acrescentar o campo aqui.",
+    "horarios": "TODOS os horarios mudaram em relacao ao plugin antigo. A lista nova foi adotada integralmente."
+  },
+  "pendencias": {
+    "coordenadas": "Santa Maria, Farroupilha, Bento Goncalves e Cachoeira do Sul (endereco novo) nao tem lat/lng. Enquanto isso o link 'Como chegar' usa o endereco como texto de busca no Google Maps, que funciona bem. Para ficar exato: abrir o Maps, botao direito no ponto, copiar os dois numeros.",
+    "farroupilha_sem_numero": "O endereco de Farroupilha nao tem numero: 'Rua Pinheiro Machado esquina com 13 de Maio'. Confirmar o numero da casa.",
+    "whatsapp_scs_digito": "O primeiro WhatsApp de Santa Cruz do Sul veio como 555198575806 (12 digitos). Celular brasileiro com codigo do pais tem 13: 55 + DDD + 9 digitos. O rodape do site mostra (51) 9 9857-5806, que da 5551998575806. Corrigi para 13 digitos -- CONFERIR se o link funciona."
+  },
+  "lojas": [
+    {
+      "id": "santa-cruz-do-sul",
+      "cidade": "Santa Cruz do Sul",
+      "uf": "RS",
+      "matriz": true,
+      "endereco": "Rua Marechal Floriano, 829",
+      "complemento": "esquina com a Ramiro Barcelos",
+      "bairro": "Centro",
+      "cep": "96810-052",
+      "coord": { "lat": -29.7185488, "lng": -52.427873 },
+      "horarios": { "semana": "08:30 - 19:00", "sabado": "08:30 - 17:00" },
+      "whatsapp": [
+        { "numero": "5551998575806", "exibicao": "(51) 9 9857-5806" },
+        { "numero": "5551920035624", "exibicao": "(51) 9 2003-5624" },
+        { "numero": "5551990178584", "exibicao": "(51) 9 9017-8584" },
+        { "numero": "5551920031613", "exibicao": "(51) 9 2003-1613" }
+      ]
+    },
+    {
+      "id": "lajeado",
+      "cidade": "Lajeado",
+      "uf": "RS",
+      "endereco": "Rua Júlio de Castilhos, 630",
+      "complemento": "esquina com João Batista de Melo",
+      "bairro": "Centro",
+      "cep": "95900-000",
+      "coord": { "lat": -29.4650687, "lng": -51.9642869 },
+      "horarios": { "semana": "08:30 - 19:00", "sabado": "08:30 - 17:00" },
+      "whatsapp": [
+        { "numero": "5551920068940", "exibicao": "(51) 9 2006-8940" },
+        { "numero": "5551920051952", "exibicao": "(51) 9 2005-1952" }
+      ]
+    },
+    {
+      "id": "cachoeira-do-sul",
+      "cidade": "Cachoeira do Sul",
+      "uf": "RS",
+      "unidade": "Unidade 1",
+      "endereco": "Rua Sete de Setembro, 1385",
+      "bairro": "Centro",
+      "coord": null,
+      "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
+      "whatsapp": [
+        { "numero": "5551920069863", "exibicao": "(51) 9 2006-9863" },
+        { "numero": "5551920058687", "exibicao": "(51) 9 2005-8687" }
+      ]
+    },
+    {
+      "id": "capao-da-canoa",
+      "cidade": "Capão da Canoa",
+      "uf": "RS",
+      "endereco": "Rua Andira, 509",
+      "complemento": "Sala 5",
+      "bairro": "Centro",
+      "cep": "95555-000",
+      "coord": { "lat": -29.7608154, "lng": -50.0187694 },
+      "horarios": { "semana": "09:00 - 18:00", "sabado": "09:00 - 17:00" },
+      "whatsapp": [
+        { "numero": "5551920063948", "exibicao": "(51) 9 2006-3948" },
+        { "numero": "5551920051933", "exibicao": "(51) 9 2005-1933" }
+      ]
+    },
+    {
+      "id": "caxias-do-sul",
+      "cidade": "Caxias do Sul",
+      "uf": "RS",
+      "endereco": "Rua Feijó Júnior, 390",
+      "bairro": "São Pelegrino",
+      "cep": "95034-160",
+      "coord": { "lat": -29.1646381, "lng": -51.1884351 },
+      "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
+      "whatsapp": [
+        { "numero": "5554920015583", "exibicao": "(54) 9 2001-5583" },
+        { "numero": "5554920003795", "exibicao": "(54) 9 2000-3795" }
+      ]
+    },
+    {
+      "id": "cachoeirinha",
+      "cidade": "Cachoeirinha",
+      "uf": "RS",
+      "endereco": "Avenida Lídio Batista, 69",
+      "bairro": "Centro",
+      "coord": { "lat": -29.9486248, "lng": -51.0971031 },
+      "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
+      "whatsapp": [
+        { "numero": "5551920074393", "exibicao": "(51) 9 2007-4393" },
+        { "numero": "5551920055643", "exibicao": "(51) 9 2005-5643" }
+      ]
+    },
+    {
+      "id": "tramandai",
+      "cidade": "Tramandaí",
+      "uf": "RS",
+      "endereco": "Rua 24 de Setembro, 241",
+      "complemento": "Sala 5",
+      "bairro": "Centro",
+      "cep": "95590-000",
+      "coord": { "lat": -29.987523, "lng": -50.1375128 },
+      "horarios": { "semana": "09:00 - 18:00", "sabado": "09:00 - 17:00" },
+      "whatsapp": [
+        { "numero": "5551920054059", "exibicao": "(51) 9 2005-4059" },
+        { "numero": "5551920010265", "exibicao": "(51) 9 2001-0265" }
+      ]
+    },
+    {
+      "id": "santa-maria",
+      "cidade": "Santa Maria",
+      "uf": "RS",
+      "endereco": "Rua Serafim Valandro, 835",
+      "complemento": "esquina com Dr. Bozano",
+      "bairro": "Centro",
+      "coord": null,
+      "horarios": { "semana": "08:30 - 19:00", "sabado": "08:30 - 17:00" },
+      "whatsapp": [
+        { "numero": "5555920019043", "exibicao": "(55) 9 2001-9043" },
+        { "numero": "5555920015126", "exibicao": "(55) 9 2001-5126" }
+      ]
+    },
+    {
+      "id": "farroupilha",
+      "cidade": "Farroupilha",
+      "uf": "RS",
+      "endereco": "Rua Pinheiro Machado",
+      "complemento": "esquina com 13 de Maio",
+      "bairro": "Centro",
+      "coord": null,
+      "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
+      "whatsapp": [
+        { "numero": "5554920017051", "exibicao": "(54) 9 2001-7051" },
+        { "numero": "5554920014436", "exibicao": "(54) 9 2001-4436" }
+      ]
+    },
+    {
+      "id": "bento-goncalves",
+      "cidade": "Bento Gonçalves",
+      "uf": "RS",
+      "endereco": "Rua Saldanha Marinho, 164",
+      "bairro": "Centro",
+      "coord": null,
+      "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
+      "whatsapp": [
+        { "numero": "5554920017049", "exibicao": "(54) 9 2001-7049" },
+        { "numero": "5554920014437", "exibicao": "(54) 9 2001-4437" }
+      ]
+    },
+    {
+      "id": "pelotas",
+      "cidade": "Pelotas",
+      "uf": "RS",
+      "em_breve": true,
+      "endereco": null,
+      "bairro": null,
+      "coord": null,
+      "horarios": null,
+      "whatsapp": []
+    }
+  ]
+}
