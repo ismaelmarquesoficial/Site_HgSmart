@@ -35,10 +35,32 @@ const servidor = http.createServer((req, res) => {
   let relativo = url === "/" ? "index.html" : url.replace(/^\/+/, "");
 
   // Impede escapar da raiz do projeto (../../etc/passwd e afins)
-  const destino = path.resolve(RAIZ, relativo);
+  let destino = path.resolve(RAIZ, relativo);
   if (!destino.startsWith(RAIZ)) {
     res.writeHead(403).end("Fora da raiz do projeto.");
     return;
+  }
+
+  /* ─── Diretório → index.html ───────────────────────────────────
+     As páginas de unidade moram em lojas/<id>/index.html e são
+     servidas como /lojas/<id>/. Sem este trecho, fs.readFile num
+     diretório devolve EISDIR e a página cai no 404 — que era
+     exatamente o que acontecia antes de as unidades existirem, porque
+     nenhuma URL do site apontava para uma pasta.
+
+     A barra final não é detalhe: sem ela o navegador resolve os
+     caminhos relativos a partir de /lojas/ em vez de /lojas/<id>/, e
+     o ../../ das páginas de unidade aponta para o lugar errado. Por
+     isso o redirect, e não só o fallback.
+
+     Isto é ferramenta de desenvolvimento. Em produção quem resolve
+     diretório é o host. */
+  if (fs.existsSync(destino) && fs.statSync(destino).isDirectory()) {
+    if (!url.endsWith("/")) {
+      res.writeHead(301, { Location: url + "/" }).end();
+      return;
+    }
+    destino = path.join(destino, "index.html");
   }
 
   fs.readFile(destino, (erro, conteudo) => {

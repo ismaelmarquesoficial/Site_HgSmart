@@ -39,9 +39,9 @@
           <a class="link-sub text-sm text-prata hover:text-branco" href="quem-somos.html">Quem Somos</a>
           <a class="link-sub text-sm text-prata hover:text-branco" href="catalogo.html">Marcas</a>
           <a class="link-sub text-sm text-branco" href="como-comprar.html" aria-current="page">Como comprar</a>
-          <a class="link-sub text-sm text-prata hover:text-branco" href="lojas.html">Lojas</a>
+          <a class="link-sub text-sm text-prata hover:text-branco" href="lojas/">Lojas</a>
         </nav>
-        <a href="lojas.html" class="btn btn-azul hidden lg:inline-flex">Ver as lojas</a>
+        <a href="lojas/" class="btn btn-azul hidden lg:inline-flex">Ver as lojas</a>
         <button type="button" class="flex size-11 items-center justify-center rounded-full border border-branco/20 lg:hidden" data-menu-botao aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
           <span class="sr-only">Menu</span>
           <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" /></svg>
@@ -55,9 +55,9 @@
         <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="quem-somos.html">Quem Somos</a>
         <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="catalogo.html">Marcas</a>
         <a class="border-b border-branco/10 py-5 text-4xl text-azul" href="como-comprar.html">Como comprar</a>
-        <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="lojas.html">Lojas</a>
+        <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="lojas/">Lojas</a>
       </nav>
-      <a href="lojas.html" class="btn btn-azul mt-10 w-full">Ver as lojas</a>
+      <a href="lojas/" class="btn btn-azul mt-10 w-full">Ver as lojas</a>
     </div>
 
     <main id="conteudo">
@@ -125,10 +125,14 @@
 
     <footer class="border-t border-branco/10 bg-preto-alto">
       <div class="mx-auto max-w-[1400px] px-6 py-16 lg:px-10">
-        <!-- Cinco colunas numa linha só. A da marca é mais larga que as
-             outras quatro: ela carrega texto corrido, e as demais são
-             listas curtas. -->
-        <div class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr_1.4fr]">
+        <!-- Seis colunas. A da marca é mais larga que as outras: ela
+             carrega texto corrido, e as demais são listas curtas.
+
+             Seis colunas a partir de xl e não de lg porque a 1024px cada
+             uma cairia para ~150px, e "Cachoeira do Sul" na coluna de
+             unidades quebraria em três linhas. Entre lg e xl a grade vai
+             a 3 × 2, que é onde os nomes de cidade ainda cabem. -->
+        <div class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1.4fr_0.9fr_1.1fr_0.9fr_1.1fr_1.3fr]">
           <div>
             <img
               src="assets/img/icones/LOGO.png"
@@ -151,8 +155,24 @@
               <li><a class="link-sub text-prata hover:text-branco" href="quem-somos.html">Quem Somos</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="servicos.html">Serviços</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="catalogo.html">Marcas</a></li>
-              <li><a class="link-sub text-prata hover:text-branco" href="lojas.html">Lojas</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/">Lojas</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="https://hgsmart.com.br/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-labelledby="rodape-unidades">
+            <h2 id="rodape-unidades" class="rotulo mb-6">Nossas unidades</h2>
+            <ul class="space-y-3 text-sm">
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/santa-cruz-do-sul/">Santa Cruz do Sul</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/lajeado/">Lajeado</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/cachoeira-do-sul/">Cachoeira do Sul</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/capao-da-canoa/">Capão da Canoa</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/caxias-do-sul/">Caxias do Sul</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/cachoeirinha/">Cachoeirinha</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/tramandai/">Tramandaí</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/santa-maria/">Santa Maria</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/farroupilha/">Farroupilha</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="lojas/bento-goncalves/">Bento Gonçalves</a></li>
             </ul>
           </nav>
 

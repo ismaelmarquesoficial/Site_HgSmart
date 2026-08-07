@@ -105,13 +105,19 @@
 
     const limite = Number(container.dataset.limite || 0);
 
+    /* Profundidade da página que está montando os cartões. A home está
+       na raiz e aponta para "lojas/lajeado/"; o índice está em
+       lojas/index.html e precisa de "../lojas/lajeado/". Sem isso o
+       link do índice viraria /lojas/lojas/lajeado/. */
+    const prefixo = container.dataset.prefixo || "";
+
     /* Na home mostramos poucas unidades e nunca a que ainda vai abrir —
        um cartão "em breve" no lugar de uma loja real desperdiça espaço.
        Na página de lojas a lista é completa, Pelotas incluída. */
     const fonte = limite > 0 ? dados.lojas.filter((l) => !l.em_breve) : dados.lojas;
     const lojas = limite > 0 ? fonte.slice(0, limite) : fonte;
 
-    container.innerHTML = lojas.map(cartaoLoja).join("");
+    container.innerHTML = lojas.map((loja) => cartaoLoja(loja, prefixo)).join("");
 
     /* Os contadores vêm do JSON, não de número escrito à mão no HTML.
        "Unidades" conta só as abertas; Pelotas entra separado. */
@@ -156,7 +162,7 @@
       : `${base}${encodeURIComponent(enderecoCompleto(loja))}`;
   }
 
-  function cartaoLoja(loja) {
+  function cartaoLoja(loja, prefixo = "") {
     /* Unidade anunciada e ainda não aberta: cartão em estado próprio,
        sem endereço, sem horário e sem link que não leva a nada. */
     if (loja.em_breve) {
@@ -185,9 +191,18 @@
       ["Domingo", h.domingo],
     ].filter(([, faixa]) => faixa && faixa !== "fechado");
 
+    /* Duas unidades abrem no domingo (confirmado pelo dono em 2026-08-06)
+       e isso é diferencial de busca — merece selo, não só uma linha a
+       mais na tabela de horários. O selo sai do dado: unidade sem o
+       campo `domingo` não recebe nada. */
+    const abreDomingo = Boolean(h.domingo && h.domingo !== "fechado");
+
     const zaps = loja.whatsapp || [];
+    /* Os dois ramos escapam. O de cima já não escapava nem `cidade` nem
+       `unidade`, e o resultado vai para innerHTML — o resto do arquivo
+       escapa tudo, então era o ramo fora da convenção. */
     const titulo = loja.unidade
-      ? `${loja.cidade} <span class="text-prata">· ${loja.unidade}</span>`
+      ? `${escapar(loja.cidade)} <span class="text-prata">· ${escapar(loja.unidade)}</span>`
       : escapar(loja.cidade);
 
     return `
@@ -229,6 +244,15 @@
         }
 
         ${
+          abreDomingo
+            ? `<p class="mt-4 inline-flex rounded-full border border-azul/40 bg-azul/10 px-3 py-1
+                         text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-azul">
+                 Abre no domingo
+               </p>`
+            : ""
+        }
+
+        ${
           zaps.length
             ? `<div class="mt-6">
                  <p class="rotulo mb-2 text-[0.625rem]">
@@ -256,7 +280,10 @@
             : ""
         }
 
-        <div class="mt-6 border-t border-branco/10 pt-5">
+        <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-branco/10 pt-5">
+          <a class="link-sub text-sm text-azul" href="${escapar(prefixo)}lojas/${escapar(loja.id)}/">
+            Ver a página da unidade
+          </a>
           <a class="link-sub text-sm text-prata hover:text-branco"
              href="${escapar(linkRota(loja))}" target="_blank" rel="noopener noreferrer">
             Como chegar${loja.coord ? "" : " (por endereço)"}

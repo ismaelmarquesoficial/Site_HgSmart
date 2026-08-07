@@ -28,7 +28,9 @@ carregarem.
 | `npm run dev` | Recompila o CSS a cada alteração |
 | `npm run serve` | Servidor local em http://localhost:4321 |
 | `npm run seo` | Gera `robots.txt`, `sitemap.xml` e o JSON-LD das 10 lojas |
-| `npm run paginas` | Regenera as 7 páginas montadas por template |
+| `npm run paginas` | Regenera as 8 páginas institucionais montadas por template |
+| `npm run lojas` | Regenera as 10 páginas de unidade em `lojas/<id>/` |
+| `npm run rodape` | Reescreve o rodapé nas 23 páginas a partir de uma definição única |
 | `npm run banners` | Reprocessa as artes do slider (WebP + JPEG, 3 tamanhos) |
 | `npm run zap` | Sincroniza o botão fixo de WhatsApp nas 5 páginas antigas |
 
@@ -58,8 +60,11 @@ Suba a pasta inteira, menos `node_modules/` e `assets/img/banners/original/`
 ├── quem-somos.html               História, missão, visão, valores
 ├── catalogo.html                 As marcas que a rede trabalha (sem preço)
 ├── servicos.html                 Venda, acessórios, aprovação
-├── lojas.html                    As 10 unidades
+├── lojas/index.html              Índice das 10 unidades → /lojas/
 │                                 (as 5 acima têm header/footer à mão)
+│
+├── lojas/<cidade>/index.html     Uma por unidade → /lojas/<cidade>/  ← geradas
+│                                 10 páginas, de data/lojas.json
 │
 ├── como-comprar.html             6 formas de pagamento    ← gerada
 ├── faq.html                      9 perguntas frequentes   ← gerada
@@ -68,6 +73,7 @@ Suba a pasta inteira, menos `node_modules/` e `assets/img/banners/original/`
 ├── contato.html                  Canais de contato        ← gerada
 ├── politica-de-privacidade.html  esqueleto jurídico       ← gerada
 ├── termos-de-uso.html            esqueleto jurídico       ← gerada
+├── politica-de-cookies.html      esqueleto jurídico       ← gerada
 │
 ├── robots.txt                    gerado por npm run seo
 ├── sitemap.xml                   gerado por npm run seo
@@ -94,8 +100,40 @@ Suba a pasta inteira, menos `node_modules/` e `assets/img/banners/original/`
 │       └── icones/           logo, favicon, pictogramas
 │
 └── ferramentas/
-    └── processar-banners.js  normaliza e otimiza os banners
+    ├── layout.js            casca comum das páginas geradas (head, menu, rodapé)
+    ├── schema-loja.js       o MobilePhoneStore de uma unidade
+    ├── gerar-paginas.js     as 8 institucionais
+    ├── gerar-lojas.js       as 10 de unidade
+    ├── gerar-seo.js         robots, sitemap e o JSON-LD do índice
+    ├── aplicar-rodape.js    o rodapé das 23 páginas
+    └── processar-banners.js normaliza e otimiza os banners
 ```
+
+### Ordem de execução dos geradores
+
+```bash
+npm run lojas     # 1. escreve lojas/<id>/index.html
+npm run paginas   # 2. escreve as 8 institucionais
+npm run rodape    # 3. rodapé único nas 23
+npm run build     # 4. CSS (classe nova só existe depois disto)
+npm run seo       # 5. sitemap varre o disco — precisa das unidades já geradas
+```
+
+Inverter 1 e 5 não quebra nada, mas o sitemap sai sem as unidades: ele só publica
+página que existe no disco, de propósito, para nunca listar URL que dá 404.
+
+### Três profundidades, um prefixo
+
+As páginas geradas vivem em três níveis, e todo caminho relativo é parametrizado por
+`prefixo` em `layout.js` e `aplicar-rodape.js`:
+
+| Onde | prefixo | exemplo |
+|---|---|---|
+| raiz | `''` | `assets/css/site.css` |
+| `lojas/index.html` | `'../'` | `../assets/css/site.css` |
+| `lojas/<id>/index.html` | `'../../'` | `../../assets/css/site.css` |
+
+`canonical`, `og:url` e as URLs do JSON-LD **não** levam prefixo — são absolutas.
 
 ---
 
@@ -107,6 +145,13 @@ Quase tudo que muda com frequência está em `data/`.
 
 Adicionar ou remover uma unidade é editar o array `lojas`. O total exibido na
 home e na página de lojas é contado do JSON, não escrito à mão.
+
+Uma unidade nova gera página própria, entra no rodapé de todas as páginas e no
+sitemap sozinha — mas isso não é automático em tempo de visita, é geração:
+depois de editar o JSON, rode `npm run lojas && npm run rodape && npm run seo`.
+Unidade com `"em_breve": true` fica de fora dos três: aparece como cartão "em
+breve" no índice e não ganha página, porque loja que ainda não atende não tem o
+que responder a quem pesquisa.
 
 Para pegar a coordenada de uma loja nova: abra o Google Maps, clique com o botão
 direito no ponto, e copie os dois números.

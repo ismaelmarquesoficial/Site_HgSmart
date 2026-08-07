@@ -3,10 +3,21 @@
  *
  * POR QUE UM SCRIPT
  * O rodapé vive hoje em dois lugares: embutido à mão nas 5 páginas
- * originais e dentro de ferramentas/gerar-paginas.js nas 7 geradas.
+ * originais e dentro de ferramentas/layout.js nas 8 geradas.
  * Editar os dois na mão é como uma delas fica desatualizada. Este script
  * substitui o bloco footer inteiro em todos os arquivos, então a fonte da
  * verdade passa a ser aqui.
+ *
+ * ─── PREFIXO ───
+ * Desde que as páginas de unidade existem, o rodapé é escrito em três
+ * profundidades diferentes, e um `href="index.html"` só funciona na raiz:
+ *
+ *     raiz                    prefixo = ''
+ *     lojas/index.html        prefixo = '../'
+ *     lojas/<id>/index.html   prefixo = '../../'
+ *
+ * Só o que é relativo recebe prefixo. Links externos (redes, blog),
+ * `tel:` e `mailto:` ficam como estão.
  *
  * Uso: npm run rodape
  */
@@ -39,11 +50,30 @@ const INSTITUCIONAL = [
   ['quem-somos.html', 'Quem Somos'],
   ['servicos.html', 'Serviços'],
   ['catalogo.html', 'Marcas'],
-  ['lojas.html', 'Lojas'],
+  ['lojas/', 'Lojas'],
   // O blog continua no WordPress: o site novo não tem essa seção, então
   // o link sai do domínio em vez de apontar para uma página inexistente.
   ['https://hgsmart.com.br/blog', 'Blog', true],
 ];
+
+/* ─── Coluna "Nossas unidades" ─────────────────────────────────────
+   As 10 páginas de unidade precisam de link em HTML estático, não só
+   nos cartões que o site.js monta depois do fetch.
+
+   O motivo é o princípio que o README fixa: nada no site depende de
+   JavaScript para ser lido. Se o único caminho até /lojas/lajeado/
+   fosse um cartão renderizado por JS, o princípio quebraria justamente
+   nas páginas cujo objetivo é ser encontrada — e o rastreador só
+   chegaria nelas pelo sitemap, sem nenhum link interno apontando.
+
+   O rodapé é o lugar certo porque propaga para as 13 páginas de uma vez
+   e já é fonte única. A lista sai de data/lojas.json, então abrir uma
+   unidade nova não exige editar HTML — igual ao resto do site.
+   Pelotas fica fora: `em_breve`, não tem página. */
+const dadosLojas = JSON.parse(fs.readFileSync(path.join(RAIZ, 'data', 'lojas.json'), 'utf8'));
+const UNIDADES = dadosLojas.lojas
+  .filter((l) => !l.em_breve)
+  .map((l) => [`lojas/${l.id}/`, l.cidade]);
 
 /* RESOLVIDO em 2026-08-04: politica-de-cookies.html entrou nesta lista.
 
@@ -75,16 +105,22 @@ const link = (url, rotulo, externo) =>
     externo ? ' target="_blank" rel="noopener noreferrer"' : ''
   }>${rotulo}</a></li>`;
 
-function rodape() {
+function rodape(prefixo = '') {
+  const P = prefixo;
+
   return `    <footer class="border-t border-branco/10 bg-preto-alto">
       <div class="mx-auto max-w-[1400px] px-6 py-16 lg:px-10">
-        <!-- Cinco colunas numa linha só. A da marca é mais larga que as
-             outras quatro: ela carrega texto corrido, e as demais são
-             listas curtas. -->
-        <div class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr_1.4fr]">
+        <!-- Seis colunas. A da marca é mais larga que as outras: ela
+             carrega texto corrido, e as demais são listas curtas.
+
+             Seis colunas a partir de xl e não de lg porque a 1024px cada
+             uma cairia para ~150px, e "Cachoeira do Sul" na coluna de
+             unidades quebraria em três linhas. Entre lg e xl a grade vai
+             a 3 × 2, que é onde os nomes de cidade ainda cabem. -->
+        <div class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1.4fr_0.9fr_1.1fr_0.9fr_1.1fr_1.3fr]">
           <div>
             <img
-              src="assets/img/icones/LOGO.png"
+              src="${P}assets/img/icones/LOGO.png"
               alt="Logo da Rede HG Smart"
               width="132"
               height="36"
@@ -100,7 +136,14 @@ function rodape() {
           <nav aria-labelledby="rodape-institucional">
             <h2 id="rodape-institucional" class="rotulo mb-6">Institucional</h2>
             <ul class="space-y-3 text-sm">
-${INSTITUCIONAL.map(([u, r, ext]) => link(u, r, ext)).join('\n')}
+${INSTITUCIONAL.map(([u, r, ext]) => link(ext ? u : P + u, r, ext)).join('\n')}
+            </ul>
+          </nav>
+
+          <nav aria-labelledby="rodape-unidades">
+            <h2 id="rodape-unidades" class="rotulo mb-6">Nossas unidades</h2>
+            <ul class="space-y-3 text-sm">
+${UNIDADES.map(([u, r]) => link(P + u, r)).join('\n')}
             </ul>
           </nav>
 
@@ -158,7 +201,7 @@ ${TELEFONES.map(([tel, exib]) => `              <li><a class="link-sub text-prat
           <ul class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
 ${LEGAL.map(
   ([u, r], i) =>
-    `${i > 0 ? '            <li aria-hidden="true" class="text-cinza">•</li>\n' : ''}            <li><a class="link-sub text-prata hover:text-branco" href="${u}">${r}</a></li>`
+    `${i > 0 ? '            <li aria-hidden="true" class="text-cinza">•</li>\n' : ''}            <li><a class="link-sub text-prata hover:text-branco" href="${P}${u}">${r}</a></li>`
 ).join('\n')}
           </ul>
         </nav>
@@ -191,28 +234,56 @@ if (require.main !== module) return;
 
 /* ─── Aplicação ──────────────────────────────────────────────── */
 
-const paginas = fs
-  .readdirSync(RAIZ)
-  .filter((f) => f.endsWith('.html'))
-  .sort();
+/* A varredura precisa descer em lojas/. Antes ela era só
+   `readdirSync(RAIZ)`, e com isso as páginas de unidade nasceriam com o
+   rodapé do dia em que foram geradas e nunca mais seriam atualizadas —
+   recriando exatamente a divergência que este script existe para matar.
 
-const novo = rodape();
+   Cada página vem com o prefixo da sua profundidade. */
+function paginasDoSite() {
+  const lista = fs
+    .readdirSync(RAIZ)
+    .filter((f) => f.endsWith('.html'))
+    .sort()
+    .map((f) => ({ arquivo: f, prefixo: '' }));
+
+  const pastaLojas = path.join(RAIZ, 'lojas');
+  if (!fs.existsSync(pastaLojas)) return lista;
+
+  // O índice das unidades: lojas/index.html, um nível abaixo
+  if (fs.existsSync(path.join(pastaLojas, 'index.html'))) {
+    lista.push({ arquivo: path.join('lojas', 'index.html'), prefixo: '../' });
+  }
+
+  // As unidades: lojas/<id>/index.html, dois níveis abaixo
+  for (const entrada of fs.readdirSync(pastaLojas, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+    if (!entrada.isDirectory()) continue;
+    const alvo = path.join('lojas', entrada.name, 'index.html');
+    if (fs.existsSync(path.join(RAIZ, alvo))) {
+      lista.push({ arquivo: alvo, prefixo: '../../' });
+    }
+  }
+
+  return lista;
+}
+
+const paginas = paginasDoSite();
 let trocadas = 0;
 
-for (const arquivo of paginas) {
+for (const { arquivo, prefixo } of paginas) {
   const caminho = path.join(RAIZ, arquivo);
   const html = fs.readFileSync(caminho, 'utf8');
 
   // Casa do <footer ...> até </footer>, inclusive
   const re = /^[ \t]*<footer[\s\S]*?<\/footer>/m;
   if (!re.test(html)) {
-    console.log(`  ${arquivo.padEnd(30)} sem rodapé — pulado`);
+    console.log(`  ${arquivo.padEnd(34)} sem rodapé — pulado`);
     continue;
   }
 
-  fs.writeFileSync(caminho, html.replace(re, novo), 'utf8');
+  fs.writeFileSync(caminho, html.replace(re, rodape(prefixo)), 'utf8');
   trocadas++;
-  console.log(`  ${arquivo.padEnd(30)} rodapé atualizado`);
+  console.log(`  ${arquivo.padEnd(34)} rodapé atualizado${prefixo ? `  (prefixo ${prefixo})` : ''}`);
 }
 
 console.log(`\n  ${trocadas} de ${paginas.length} páginas\n`);

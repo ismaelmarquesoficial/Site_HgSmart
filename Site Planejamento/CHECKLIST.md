@@ -187,9 +187,9 @@ edição de arquivo em vez de contratar designer.
 | Dado | Status | Observação |
 |---|---|---|
 | Nome da unidade | ✅ | 11 entradas: 10 operando + Pelotas "em breve" |
-| Endereço completo | 🟡 | **Farroupilha sem número** · **Cachoeira do Sul com endereço divergente** |
-| Horários | ✅ | semana e sábado |
-| WhatsApp próprio | 🟡 | 22 números, todos com link — **mas sem cara de botão** (sua observação) |
+| Endereço completo | 🟡 | **Farroupilha sem número** · **Cachoeira do Sul com endereço divergente** · **5 das 10 sem CEP** |
+| Horários | ✅ | semana, sábado e **domingo** (Cachoeirinha e Capão da Canoa) |
+| WhatsApp próprio | ✅ | 22 números em chips de 44px, no índice e na página de cada unidade |
 | Botão "Como chegar" | ✅ | link de rota do Google Maps |
 | Foto da fachada | ❌ | **não existe foto por unidade** |
 | Instagram | ❌ | só o perfil geral `@redehgsmart` |
@@ -198,9 +198,38 @@ edição de arquivo em vez de contratar designer.
 | Formas de pagamento da unidade | ❌ | campo não existe |
 | Avaliações dos clientes | ❌ | as 20 avaliações são gerais, não por loja |
 
-**Pendências de dados:** 4 lojas sem coordenada (Santa Maria, Farroupilha, Bento Gonçalves,
-Cachoeira do Sul) · WhatsApp de Santa Cruz precisa ser testado (veio com 12 dígitos, corrigido
-para 13) · confirmar se alguma unidade abre domingo.
+**Pendências de dados** — cada uma vira cartão azul visível na página da unidade, com o
+código `B16-<cidade>`:
+
+| Loja | Falta | Código |
+|---|---|---|
+| Cachoeira do Sul | coordenada · CEP · **endereço divergente** (confirmar se mudou de endereço ou se são duas lojas) | `B16-cachoeira-do-sul` |
+| Santa Maria | coordenada · CEP | `B16-santa-maria` |
+| Farroupilha | coordenada · CEP · **endereço sem número** | `B16-farroupilha` |
+| Bento Gonçalves | coordenada · CEP | `B16-bento-goncalves` |
+| Cachoeirinha | CEP | `B16-cachoeirinha` |
+| todas as 10 | foto real da fachada | `B8-fotos` |
+
+> **B16 é código novo, criado nesta etapa** = dado cadastral da unidade faltando
+> (coordenada, CEP, endereço a confirmar). Não confundir com **B8**, que no
+> `PLANO-DE-APLICACAO.md` já significa **foto da fachada** — são coisas diferentes e por
+> isso têm códigos diferentes.
+
+⚠️ **Correção a este checklist:** a versão anterior registrava só as 4 lojas sem coordenada.
+Auditando `data/lojas.json`, são **6 sem CEP** — as 5 da tabela acima mais Pelotas, que não
+gera página. Sem o dado, `postalCode` e `geo` **saem** do JSON-LD em vez de ir vazios ou
+aproximados.
+
+**Ainda em aberto:** WhatsApp de Santa Cruz precisa ser testado (veio com 12 dígitos,
+corrigido para 13).
+
+✅ **RESOLVIDO em 2026-08-06 — domingo.** O dono confirmou: **Cachoeirinha (09:30–18:30) e
+Capão da Canoa (13:00–19:00) abrem no domingo.** A lista oficial de 2026-07-27 estava
+incompleta neste ponto — ela não menciona domingo em unidade nenhuma, e disso tinha sido
+concluído, errado, que nenhuma abria. O `faq.html` e o `README.md` sempre disseram a coisa
+certa; quem estava incompleto era o JSON. Campo `horarios.domingo` acrescentado às duas
+unidades, selo "Abre no domingo" no cartão, e `OpeningHoursSpecification` de `Sunday` no
+JSON-LD das duas.
 
 ---
 
@@ -328,20 +357,39 @@ se precisa de entrada · onde simular · condições sujeitas à análise · bot
 
 # ESTRATÉGIA DE SEO LOCAL
 
-## 10. Uma página para cada unidade — ❌ NENHUMA EXISTE
+## 10. Uma página para cada unidade — ✅ AS 10 EXISTEM
 
-O sitemap tem 13 URLs, **todas institucionais**. Esta é a maior lacuna de SEO do projeto.
+O sitemap passou de 13 para **23 URLs**. As dez unidades têm página própria, `<title>` e
+`<h1>` únicos com a cidade, e `MobilePhoneStore` apontando para a própria URL.
 
-| URL a criar | Status |
+| URL | Status |
 |---|---|
-| `/lojas/santa-cruz-do-sul` (matriz) · `/lojas/lajeado` · `/lojas/cachoeira-do-sul` · `/lojas/capao-da-canoa` · `/lojas/caxias-do-sul` · `/lojas/cachoeirinha` · `/lojas/tramandai` · `/lojas/santa-maria` · `/lojas/farroupilha` · `/lojas/bento-goncalves` | ❌ |
-| `/lojas/pelotas` | ⏸️ **só quando abrir** — página de loja fechada gera avaliação ruim e não tem Perfil no Google |
+| `/lojas/santa-cruz-do-sul/` (matriz) · `/lojas/lajeado/` · `/lojas/cachoeira-do-sul/` · `/lojas/capao-da-canoa/` · `/lojas/caxias-do-sul/` · `/lojas/cachoeirinha/` · `/lojas/tramandai/` · `/lojas/santa-maria/` · `/lojas/farroupilha/` · `/lojas/bento-goncalves/` | ✅ geradas por `npm run lojas` |
+| `/lojas/pelotas/` | ⏸️ **só quando abrir** — página de loja fechada gera avaliação ruim e não tem Perfil no Google |
 
-Cada página precisa de: endereço e mapa · horários · WhatsApp · **fotos reais** · como chegar ·
-produtos e serviços · formas de pagamento da unidade · **pontos de referência** · avaliações · FAQ da unidade.
+O que cada página entrega hoje, e o que ainda falta:
 
-✅ **A ferramenta de geração já existe** (`ferramentas/gerar-paginas.js`) e monta o esqueleto das 10.
-❌ O que **não** dá para automatizar é o texto local verdadeiro — ver a resposta sobre IA na seção 1.
+| Item pedido | Status | Situação |
+|---|---|---|
+| Endereço completo | ✅ | de `data/lojas.json` |
+| Horários | ✅ | semana, sábado e domingo onde houver |
+| WhatsApp | ✅ | chips de 44px, um por número da unidade |
+| Como chegar | ✅ | rota do Google Maps, sem chave de API |
+| Formas de pagamento | 🟡 | **só link** para `como-comprar.html`, sem número — trava no B1 (18x × 25x) |
+| Mapa embutido | ❌ | decisão de segurança, ver seção 14 |
+| **Fotos reais** | ❌ | `B8-fotos` nas 10 páginas |
+| **Pontos de referência** | ❌ | não existe no cadastro — **não pode ser inventado**, ver seção 1 |
+| Avaliações por unidade | ❌ | as 20 são gerais |
+| FAQ da unidade | ❌ | depende de B1/B2/B4/B5/B6 |
+
+⚠️ **Correção a este checklist:** a versão anterior dizia que
+`ferramentas/gerar-paginas.js` "monta o esqueleto das 10". **Era falso** — o array `PAGINAS`
+daquele arquivo tinha 8 entradas, todas institucionais, e nenhum gerador de unidade existia.
+Quem gera as unidades é `ferramentas/gerar-lojas.js`, escrito nesta etapa.
+
+❌ O que **não** dá para automatizar continua sendo o texto local verdadeiro — ver a resposta
+sobre IA na seção 1. Por isso nenhuma página traz ponto de referência, vizinhança ou tempo
+de deslocamento: o dado não existe, e inventá-lo é o risco de domínio descrito na seção 1.
 
 ---
 
@@ -349,12 +397,13 @@ produtos e serviços · formas de pagamento da unidade · **pontos de referênci
 
 | Item | Status |
 |---|---|
-| Mapear cada expressão para a página que vai respondê-la | ❌ |
-| Título e descrição únicos com a cidade | ❌ depende das páginas de unidade |
-| Sem repetição exagerada de palavra-chave | ✅ o site atual não força palavra-chave |
+| Mapear cada expressão para a página que vai respondê-la | 🟡 as expressões por cidade já têm página; falta o mapa expressão → página escrito |
+| Título e descrição únicos com a cidade | ✅ 10 títulos e 10 descrições, montados a partir do JSON |
+| Sem repetição exagerada de palavra-chave | ✅ o site continua sem forçar palavra-chave |
 
-💡 As 10 expressões só podem ser conquistadas **depois** que as páginas de unidade existirem.
-Hoje não há página nenhuma que responda "celular no boleto em Lajeado".
+💡 "celular no boleto em Lajeado" já tem onde cair: `/lojas/lajeado/`. Mas a página responde
+o **lado da loja** (endereço, horário, WhatsApp), não o lado do boleto — o número de parcelas
+segue travado no B1, e enquanto ele não fechar a unidade só pode linkar `como-comprar.html`.
 
 ---
 
@@ -389,11 +438,11 @@ servem de base para os primeiros textos.
 | Site rápido | ✅ | Sem CDN, fontes e GSAP locais, ~5 MB publicáveis |
 | Responsivo | ✅ | Zero estouro horizontal (ver ressalvas de mobile na seção 1) |
 | Imagens otimizadas | ✅ | WebP + JPEG, 3 tamanhos, `<picture>` por breakpoint |
-| URLs curtas e descritivas | 🟡 | Hoje `/lojas.html`; `/lojas` exige regra no host |
-| Título e descrição exclusivos | ✅ | 13 páginas, todas com canonical |
-| **Sitemap XML** | ✅ | 13 URLs — **faltam as páginas de unidade** |
+| URLs curtas e descritivas | 🟡 | `/lojas/` e `/lojas/<cidade>/` já são pasta com `index.html`, sem depender do host. As outras 12 seguem `.html` |
+| Título e descrição exclusivos | ✅ | 23 páginas, todas com canonical |
+| **Sitemap XML** | ✅ | **23 URLs** — 13 institucionais + 10 unidades |
 | Configuração de indexação | ✅ | `robots.txt` gerado, libera bots de citação de IA |
-| Links internos produto ↔ pagamento ↔ loja | ❌ | |
+| Links internos produto ↔ pagamento ↔ loja | 🟡 | loja: rodapé de todas as 23 páginas linka as 10 unidades em HTML estático, e cada cartão do índice/home linka a sua. Falta o eixo produto ↔ pagamento |
 | **Google Search Console** | ❌ | |
 | **Google Analytics 4** | ❌ | |
 | **Google Tag Manager** | ❌ | |
@@ -545,7 +594,7 @@ acessadas · pesquisas que trazem clientes · posição nas buscas locais · con
 |---|---|
 | Criar a página inicial | ✅ pronta, mas precisa reordenar |
 | Criar o localizador de lojas | 🟡 lista as lojas, **não localiza** |
-| Criar as páginas das unidades | ❌ |
+| Criar as páginas das unidades | ✅ as 10, geradas por `npm run lojas` (Pelotas fica de fora até abrir) |
 | Criar páginas das formas de pagamento | ❌ |
 | Implementar contatos e formulários | ❌ |
 
@@ -667,6 +716,73 @@ Nada disso se resolve no código.
 ---
 
 # HISTÓRICO DE ALTERAÇÕES
+
+## 2026-08-06 — Etapa 2 · Páginas por unidade (SEO local)
+
+**Regra seguida:** nenhuma mudança de layout, ordem de seção ou paleta. A única alteração
+visual autorizada foi a coluna nova do rodapé.
+
+| # | Alteração | Arquivos |
+|---|---|---|
+| D1 | **10 páginas de unidade** em `lojas/<id>/index.html`, geradas a partir de `data/lojas.json` | `ferramentas/gerar-lojas.js` (novo) + 10 páginas |
+| D2 | Casca comum (head, cabeçalho, menu, marcador de pendência) extraída para módulo — o segundo gerador consome a mesma, não uma cópia | `ferramentas/layout.js` (novo), `gerar-paginas.js` |
+| D3 | `MobilePhoneStore` extraído para módulo; `@id`/`url` deixaram de ser âncora (`/lojas#id`) e passaram a ser a própria página (`/lojas/<id>/`) | `ferramentas/schema-loja.js` (novo), `gerar-seo.js` |
+| D4 | **Rota:** `lojas.html` → `lojas/index.html`, servindo `/lojas/`. O sitemap já publicava `/lojas` sem extensão, e o diretório novo colidiria com o arquivo | `lojas/index.html` + 83 referências em 21 arquivos |
+| D5 | Sitemap passou de **13 para 23 URLs** — varre `lojas/*/index.html` no disco em vez de manter uma segunda lista | `gerar-seo.js`, `sitemap.xml` |
+| D6 | Rodapé ganhou a coluna **"Nossas unidades"** com as 10, em HTML estático, nas 23 páginas | `aplicar-rodape.js` + 23 páginas |
+| D7 | `aplicar-rodape.js` passou a varrer `lojas/` com prefixo por profundidade — antes só via a raiz, e as unidades nasceriam com rodapé congelado | `aplicar-rodape.js` |
+| D8 | Cada cartão de loja ganhou link para a página da unidade (índice e home) | `assets/js/site.js` |
+| D9 | Domingo de Cachoeirinha e Capão da Canoa entrou no dado, no cartão (selo) e no JSON-LD | `data/lojas.json`, `assets/js/site.js` |
+| D10 | Servidor local passou a resolver diretório → `index.html`, com redirect para a barra final | `servidor-local.js` |
+| — | `npm run lojas` registrado | `package.json` |
+
+**Correções ao próprio checklist** (erros encontrados na verificação):
+- A seção 10 dizia que `gerar-paginas.js` "monta o esqueleto das 10" unidades. **Falso** —
+  aquele array tinha 8 entradas, todas institucionais, e o gerador de unidades não existia
+- A seção 3 registrava só 4 lojas sem coordenada. São também **6 sem CEP**
+- O `README.md` dizia "7 páginas montadas por template" (são 8 desde a Política de Cookies)
+  e a árvore de estrutura não listava `politica-de-cookies.html`
+
+**Correção de conteúdo que estava no ar:**
+- O `data/lojas.json` afirmava que nenhuma unidade abre domingo. **Estava errado** — o dono
+  confirmou Cachoeirinha e Capão da Canoa. O `faq.html` e o `README` estavam certos desde
+  sempre; o dado é que estava incompleto
+
+**Não feito, de propósito:**
+- **Nenhum número de parcelamento** nas páginas de unidade. Com o B1 aberto (18x na arte do
+  banner × 25x na página de Serviços), publicar um dos dois multiplicaria a contradição por
+  dez. Formas de pagamento na unidade são só um link para `como-comprar.html`
+- **Nenhum ponto de referência, vizinhança, foto ou avaliação por loja.** Não estão no
+  cadastro. Onde falta dado saiu `pendencia()` visível e o campo saiu do JSON-LD
+
+**Pendente de você:**
+- Confirmar coordenada e CEP das 5 unidades marcadas com `B16-<cidade>` na seção 3
+- Fotos de fachada das 10 (`B8-fotos`)
+- Resolver o B1 — é ele que trava a copy de pagamento nas dez páginas
+
+### Correções da revisão — 2026-08-06
+
+| # | O que foi corrigido |
+|---|---|
+| R1 | **Texto de auditoria estava sendo publicado.** `gerar-lojas.js` lia `divergencias_com_o_site_antigo` e `pendencias` do JSON e imprimia no corpo indexável. A página de Cachoeira do Sul publicava o endereço **antigo** (`Rua Saldanha Marinho, 915`) ao lado do novo, em caixa alta e sem acento — dois endereços para o mesmo ponto, o NAP inconsistente que a seção 10 manda evitar. Corrigida a **causa**: os avisos públicos passaram a ser texto próprio do gerador, ligados por sinalizadores por loja (`endereco_em_confirmacao`, `endereco_sem_numero`) |
+| R2 | Cópia morta de `horariosSchema()` sobrou em `gerar-seo.js` após a extração, referenciando `FAIXAS`, que o arquivo não importa mais — `ReferenceError` latente. Removida |
+| R3 | `aria-current="page"` nas 10 unidades apontava para `/lojas/`, que não é a página atual. Virou `aria-current="true"` (item atual do conjunto), destaque visual mantido |
+| R4 | Horário ou WhatsApp ausentes não geravam bloco **nem aviso**. Agora viram pendência visível |
+| R5 | `name` do schema divergia do `<h1>` e do `<title>`. Os três passaram a sair de `nomeLoja()` |
+| R6 | Cachoeirinha não sinalizava endereço em confirmação. Passou a sinalizar |
+| R7 | `</script` escapado no JSON-LD |
+
+> **Regra que passa a valer:** os blocos `divergencias_com_o_site_antigo` e `pendencias` de
+> `data/lojas.json` são **registro interno de auditoria** e nunca podem alcançar página
+> pública. Está escrito dentro do próprio JSON, na chave `_publico_x_auditoria`, para quem
+> mexer nele depois. O que o visitante pode ver sai de campos próprios por loja.
+
+### Dívida conhecida — avaliada e adiada de propósito
+
+| Item | Por que fica |
+|---|---|
+| `data-prefixo` em `assets/js/site.js` poderia ser caminho absoluto em vez de relativo | O argumento é bom — caminho absoluto não depende da profundidade de quem monta o cartão. Mas está correto nos dois únicos usos (home e `/lojas/`), e trocar hoje é mexer em código que funciona por um benefício hipotético. Vale a troca quando surgir um terceiro lugar que monte cartão |
+| `loja.id` não é validado contra path traversal antes de virar caminho de arquivo | O `id` vem de `data/lojas.json`, que é dado próprio do projeto, e o gerador roda na máquina de quem desenvolve — não há entrada de terceiro no caminho. Vira necessário se um dia o JSON passar a ser alimentado de fora |
 
 ## 2026-08-04 — Etapa 1
 

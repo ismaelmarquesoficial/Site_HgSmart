@@ -9,8 +9,9 @@
     "serve": "node servidor-local.js",
     "banners": "node ferramentas/processar-banners.js",
     "seo": "node ferramentas/gerar-seo.js",
-    "zap": "node ferramentas/inserir-zap.js index.html quem-somos.html catalogo.html servicos.html lojas.html",
+    "zap": "node ferramentas/inserir-zap.js index.html quem-somos.html catalogo.html servicos.html lojas/index.html",
     "paginas": "node ferramentas/gerar-paginas.js",
+    "lojas": "node ferramentas/gerar-lojas.js",
     "mapa": "node ferramentas/gerar-mapa.js",
     "rodape": "node ferramentas/aplicar-rodape.js"
   },

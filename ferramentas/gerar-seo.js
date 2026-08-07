@@ -2,8 +2,12 @@
  * Gera os artefatos de SEO a partir de uma fonte única.
  *
  *   - robots.txt   — já liberando os bots de citação de IA
- *   - sitemap.xml  — todas as páginas do site
- *   - o bloco JSON-LD das 10 lojas, injetado em lojas.html
+ *   - sitemap.xml  — todas as páginas do site, unidades incluídas
+ *   - o bloco JSON-LD das 10 lojas, injetado em lojas/index.html
+ *
+ * ORDEM IMPORTA: rode `npm run lojas` antes de `npm run seo`. O sitemap
+ * varre o disco atrás de lojas/<id>/index.html, então unidade que ainda
+ * não foi gerada simplesmente não entra.
  *
  * Por que gerar em vez de escrever à mão: os dados das lojas vivem em
  * data/lojas.json. Se o schema fosse escrito à mão, abrir uma loja nova
@@ -15,8 +19,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
+const { DOMINIO } = require('./layout');
+/* A montagem do MobilePhoneStore saiu daqui para schema-loja.js quando
+   surgiu o segundo emissor: cada página de unidade também publica o
+   schema da sua loja. Um dado estruturado, uma fonte. */
+const { schemaLoja, jsonLdIndentado } = require('./schema-loja');
+
 const RAIZ = path.join(__dirname, '..');
-const DOMINIO = 'https://hgsmart.com.br';
 
 /* Páginas do site. `mudanca` e `prioridade` são dicas para o crawler,
    não garantias — o Google usa como sinal fraco. */
@@ -25,7 +34,12 @@ const PAGINAS = [
   { arquivo: 'quem-somos.html', url: '/quem-somos', prioridade: '0.8', mudanca: 'monthly' },
   { arquivo: 'catalogo.html', url: '/catalogo', prioridade: '0.9', mudanca: 'weekly' },
   { arquivo: 'servicos.html', url: '/servicos', prioridade: '0.8', mudanca: 'monthly' },
-  { arquivo: 'lojas.html', url: '/lojas', prioridade: '0.9', mudanca: 'monthly' },
+  /* O índice das unidades passou de `lojas.html` para `lojas/index.html`.
+     Motivo: o sitemap já publicava `/lojas` sem extensão, e criar o
+     diretório `lojas/` para as unidades faria a maioria dos hosts
+     estáticos resolver `/lojas` para o diretório — que não teria índice.
+     Arquivo e URL passam a concordar, sem depender de regra de rewrite. */
+  { arquivo: 'lojas/index.html', url: '/lojas/', prioridade: '0.9', mudanca: 'monthly' },
   { arquivo: 'como-comprar.html', url: '/como-comprar', prioridade: '0.9', mudanca: 'monthly' },
   { arquivo: 'faq.html', url: '/faq', prioridade: '0.8', mudanca: 'monthly' },
   { arquivo: 'garantia.html', url: '/garantia', prioridade: '0.6', mudanca: 'monthly' },
@@ -35,14 +49,6 @@ const PAGINAS = [
   { arquivo: 'termos-de-uso.html', url: '/termos-de-uso', prioridade: '0.3', mudanca: 'yearly' },
   { arquivo: 'politica-de-cookies.html', url: '/politica-de-cookies', prioridade: '0.3', mudanca: 'yearly' },
 ];
-
-/* Os horários vêm agrupados na fonte (semana / sabado / domingo), que é
-   como a HG Smart divulga. O schema.org quer os dias nomeados. */
-const FAIXAS = {
-  semana: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-  sabado: ['Saturday'],
-  domingo: ['Sunday'],
-};
 
 const todasAsLojas = JSON.parse(fs.readFileSync(path.join(RAIZ, 'data', 'lojas.json'), 'utf8')).lojas;
 
@@ -107,9 +113,35 @@ Sitemap: ${DOMINIO}/sitemap.xml
 /* ─────────────────────────────────────────────────────────────
    sitemap.xml — só entram páginas que existem no disco
    ───────────────────────────────────────────────────────────── */
+/* As páginas de unidade não estão na lista PAGINAS: elas são geradas a
+   partir de data/lojas.json e mudam quando a rede abre ou fecha uma
+   loja. Manter uma segunda lista aqui daria a chance de ela ficar
+   defasada — então o sitemap lê o disco.
+
+   Vale a mesma regra da lista fixa: entra só o que existe. Se alguém
+   rodar `npm run seo` antes de `npm run lojas`, o sitemap sai sem as
+   unidades em vez de publicar 10 URLs que dão 404. */
+function unidadesNoDisco() {
+  const pasta = path.join(RAIZ, 'lojas');
+  if (!fs.existsSync(pasta)) return [];
+
+  return fs
+    .readdirSync(pasta, { withFileTypes: true })
+    .filter((e) => e.isDirectory() && fs.existsSync(path.join(pasta, e.name, 'index.html')))
+    .map((e) => e.name)
+    .sort()
+    .map((id) => ({
+      arquivo: path.join('lojas', id, 'index.html'),
+      url: `/lojas/${id}/`,
+      prioridade: '0.8',
+      mudanca: 'monthly',
+    }));
+}
+
 function gerarSitemap(dataIso) {
-  const existentes = PAGINAS.filter((p) => fs.existsSync(path.join(RAIZ, p.arquivo)));
-  const ausentes = PAGINAS.filter((p) => !fs.existsSync(path.join(RAIZ, p.arquivo)));
+  const todas = [...PAGINAS, ...unidadesNoDisco()];
+  const existentes = todas.filter((p) => fs.existsSync(path.join(RAIZ, p.arquivo)));
+  const ausentes = todas.filter((p) => !fs.existsSync(path.join(RAIZ, p.arquivo)));
 
   const entradas = existentes
     .map(
@@ -136,78 +168,19 @@ ${entradas}
 /* ─────────────────────────────────────────────────────────────
    JSON-LD das lojas — MobilePhoneStore por unidade
    ───────────────────────────────────────────────────────────── */
-function horariosSchema(horarios) {
-  if (!horarios) return [];
-
-  const saida = [];
-  for (const [faixaNome, dias] of Object.entries(FAIXAS)) {
-    const valor = horarios[faixaNome];
-    if (!valor || valor === 'fechado') continue;
-
-    const [abre, fecha] = valor.split('-').map((s) => s.trim());
-    saida.push({
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: dias.length === 1 ? dias[0] : dias,
-      opens: abre,
-      closes: fecha,
-    });
-  }
-  return saida;
-}
-
 function gerarSchemaLojas() {
-  const grafo = lojas.map((loja) => {
-    const zap = loja.whatsapp?.[0];
-
-    const endereco = {
-      '@type': 'PostalAddress',
-      streetAddress: [loja.endereco, loja.complemento].filter(Boolean).join(' — '),
-      addressLocality: loja.cidade,
-      addressRegion: loja.uf,
-      addressCountry: 'BR',
-    };
-    // Sem CEP a chave sai do objeto em vez de ir vazia
-    if (loja.cep) endereco.postalCode = loja.cep;
-
-    const item = {
-      '@type': 'MobilePhoneStore',
-      '@id': `${DOMINIO}/lojas#${loja.id}`,
-      name: `HG Smart — ${loja.cidade}${loja.unidade ? ` (${loja.unidade})` : ''}`,
-      parentOrganization: { '@id': `${DOMINIO}/#organizacao` },
-      url: `${DOMINIO}/lojas#${loja.id}`,
-      ...(zap ? { telephone: `+${zap.numero}` } : {}),
-      address: endereco,
-      openingHoursSpecification: horariosSchema(loja.horarios),
-      currenciesAccepted: 'BRL',
-      paymentAccepted: 'Boleto, Pix, Cartão de crédito, Conta de luz',
-      areaServed: { '@type': 'City', name: loja.cidade },
-    };
-
-    // `geo` só entra com coordenada real. Inventar ponto aproximado
-    // colocaria a loja no lugar errado no mapa do Google.
-    if (loja.coord) {
-      item.geo = {
-        '@type': 'GeoCoordinates',
-        latitude: Number(loja.coord.lat.toFixed(7)),
-        longitude: Number(loja.coord.lng.toFixed(7)),
-      };
-    }
-
-    return item;
-  });
-
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'CollectionPage',
-        '@id': `${DOMINIO}/lojas#pagina`,
+        '@id': `${DOMINIO}/lojas/#pagina`,
         name: 'Lojas da Rede HG Smart',
-        url: `${DOMINIO}/lojas`,
+        url: `${DOMINIO}/lojas/`,
         inLanguage: 'pt-BR',
         isPartOf: { '@id': `${DOMINIO}/#site` },
       },
-      ...grafo,
+      ...lojas.map(schemaLoja),
     ],
   };
 }
@@ -250,13 +223,7 @@ if (sm.ausentes.length) {
 }
 
 const schema = gerarSchemaLojas();
-const bloco =
-  '<script type="application/ld+json">\n' +
-  JSON.stringify(schema, null, 2)
-    .split('\n')
-    .map((l) => '      ' + l)
-    .join('\n') +
-  '\n    </script>';
+const bloco = '<script type="application/ld+json">\n' + jsonLdIndentado(schema) + '\n    </script>';
 
-console.log('  ' + injetar('lojas.html', 'schema-lojas', bloco) + ` — ${lojas.length} lojas no JSON-LD`);
+console.log('  ' + injetar(path.join('lojas', 'index.html'), 'schema-lojas', bloco) + ` — ${lojas.length} lojas no JSON-LD`);
 console.log('');

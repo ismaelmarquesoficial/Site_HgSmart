@@ -1,10 +1,11 @@
 {
   "_leia_isto": "FONTE: lista oficial passada pela HG Smart em 2026-07-27 (enderecos + horarios + WhatsApp por unidade). Esta lista SUBSTITUI os dados que vinham do plugin Agile Store Locator do site antigo, que estavam desatualizados. A ordem do array e a ordem de exibicao -- matriz primeiro.",
   "atualizado_em": "2026-07-27",
+  "_publico_x_auditoria": "REGRA: os blocos 'divergencias_com_o_site_antigo' e 'pendencias' sao REGISTRO INTERNO DE AUDITORIA. Estao em ASCII sem acento e em linguagem de auditoria de proposito, para outro publico. NENHUM deles pode ser impresso em pagina publica -- isso ja aconteceu uma vez e pos na pagina de Cachoeira do Sul o endereco ANTIGO ao lado do novo, dois enderecos para o mesmo ponto, que e exatamente o NAP inconsistente que as paginas de unidade existem para evitar. O que o visitante pode ver sai de campos POR LOJA, proprios para isso: 'endereco_em_confirmacao' e 'endereco_sem_numero'. Eles sao apenas sinalizadores booleanos -- o texto do aviso e escrito em ferramentas/gerar-lojas.js, em registro de producao e com acentuacao.",
   "divergencias_com_o_site_antigo": {
     "cachoeira-do-sul": "ENDERECO COMPLETAMENTE DIFERENTE. Plugin antigo: 'Rua Saldanha Marinho, 915'. Lista nova: 'Rua Sete de Setembro, 1385'. A lista de WhatsApp chama esta unidade de 'Unidade 1', o que sugere que pode existir uma Unidade 2. CONFIRMAR se foi mudanca de endereco ou se sao duas lojas.",
     "cachoeirinha": "Numero e bairro mudaram. Antigo: 'Av. Lidio Batista Soares, 68 - Cohab'. Novo: 'Avenida Lidio Batista, 69 - Centro'.",
-    "domingo": "O plugin antigo indicava Cachoeirinha e Capao da Canoa abrindo domingo. A lista nova NAO menciona domingo em nenhuma unidade. Adotei a lista nova, que e mais recente e oficial. Se alguma unidade abre domingo, acrescentar o campo aqui.",
+    "domingo": "RESOLVIDO em 2026-08-06: o dono confirmou que Cachoeirinha e Capao da Canoa ABREM no domingo. A lista oficial de 2026-07-27 estava INCOMPLETA neste ponto -- ela nao menciona domingo em unidade nenhuma, e eu tinha concluido errado que isso significava 'nao abre'. O plugin antigo estava certo. Os campos horarios.domingo dessas duas unidades foram acrescentados com os horarios confirmados (Cachoeirinha 09:30-18:30, Capao da Canoa 13:00-19:00). As outras oito seguem sem o campo, o que significa fechado no domingo.",
     "horarios": "TODOS os horarios mudaram em relacao ao plugin antigo. A lista nova foi adotada integralmente."
   },
   "pendencias": {
@@ -53,6 +54,7 @@
       "unidade": "Unidade 1",
       "endereco": "Rua Sete de Setembro, 1385",
       "bairro": "Centro",
+      "endereco_em_confirmacao": true,
       "coord": null,
       "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
       "whatsapp": [
@@ -69,7 +71,7 @@
       "bairro": "Centro",
       "cep": "95555-000",
       "coord": { "lat": -29.7608154, "lng": -50.0187694 },
-      "horarios": { "semana": "09:00 - 18:00", "sabado": "09:00 - 17:00" },
+      "horarios": { "semana": "09:00 - 18:00", "sabado": "09:00 - 17:00", "domingo": "13:00 - 19:00" },
       "whatsapp": [
         { "numero": "5551920063948", "exibicao": "(51) 9 2006-3948" },
         { "numero": "5551920051933", "exibicao": "(51) 9 2005-1933" }
@@ -95,8 +97,9 @@
       "uf": "RS",
       "endereco": "Avenida Lídio Batista, 69",
       "bairro": "Centro",
+      "endereco_em_confirmacao": true,
       "coord": { "lat": -29.9486248, "lng": -51.0971031 },
-      "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
+      "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00", "domingo": "09:30 - 18:30" },
       "whatsapp": [
         { "numero": "5551920074393", "exibicao": "(51) 9 2007-4393" },
         { "numero": "5551920055643", "exibicao": "(51) 9 2005-5643" }
@@ -138,6 +141,7 @@
       "endereco": "Rua Pinheiro Machado",
       "complemento": "esquina com 13 de Maio",
       "bairro": "Centro",
+      "endereco_sem_numero": true,
       "coord": null,
       "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
       "whatsapp": [
