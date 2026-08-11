@@ -58,8 +58,6 @@ Suba a pasta inteira para a hospedagem. Não há passo de compilação.
 ├── robots.txt
 ├── sitemap.xml
 │
-├── data/                     ⚠️ REFERÊNCIA, não é lido pelo site — veja abaixo
-│
 └── assets/
     ├── css/site.css          O estilo, num arquivo só
     ├── js/site.js            Menu mobile, ano do rodapé, faixa de depoimentos
@@ -74,8 +72,9 @@ Suba a pasta inteira para a hospedagem. Não há passo de compilação.
 
 ## Editar conteúdo
 
-**O conteúdo está no HTML.** Para mudar o horário de uma loja, o endereço, um
-WhatsApp ou o texto de uma seção, edite a página onde aquilo aparece.
+**O conteúdo está no HTML, e só no HTML.** Para mudar o horário de uma loja, o
+endereço, um WhatsApp ou o texto de uma seção, edite a página onde aquilo
+aparece. Não há banco, JSON de dados nem painel — o arquivo é a fonte.
 
 ### O preço disso: repetição
 
@@ -102,18 +101,6 @@ utilitários (`mt-10`, `text-branco`, `grid-cols-3`).
 **Consequência:** usar uma classe do Tailwind que ainda não esteja no arquivo
 não faz nada, porque não há mais quem a compile. Ou você reaproveita as classes
 que já existem, ou escreve a regra nova no `site.css` na mão.
-
----
-
-## A pasta `data/`
-
-Os quatro JSON (`lojas`, `catalogo`, `banners`, `depoimentos`) **não são lidos
-pelo site**. Ficaram como registro: são a lista oficial que a HG Smart passou,
-com o histórico de auditoria — divergências com o site antigo, o que foi
-confirmado com o dono e o que segue pendente.
-
-⚠️ **Editar um JSON não muda nada na tela.** Se for atualizar um dado, atualize
-o HTML; o JSON é consulta.
 
 ---
 

@@ -50,7 +50,7 @@
 
          O bloco MobilePhoneStore abaixo descreve a MESMA loja que
          lojas/santa-cruz-do-sul/index.html descreve, e aquela página é
-         gerada de data/lojas.json. Em 2026-08-11 os dois já tinham
+         a página da unidade. Em 2026-08-11 os dois já tinham
          divergido: aqui dizia semana 08:00 e sábado até 14:00, contra
          08:30 e 17:00 na fonte. Três horas de sábado a menos, publicadas
          em dado estruturado.
@@ -58,7 +58,7 @@
          O `@id` agora é o mesmo dos dois lados, então o Google lê UMA
          entidade em vez de duas lojas na mesma rua. Mas isso só continua
          verdade se alguém mantiver: ao mexer em horário, endereço ou
-         telefone da MATRIZ no data/lojas.json, atualize aqui também. -->
+         telefone da MATRIZ, atualize os dois lugares. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -474,7 +474,7 @@
            As artes já trazem título e CTA dentro do próprio JPEG, por isso
            não há legenda sobreposta: cada slide inteiro é um link, para o
            botão desenhado na arte levar a algum lugar de verdade.
-           Conteúdo e ordem saem de data/banners.json.
+           A ordem dos slides é a ordem em que estão escritos aqui.
            ═══════════════════════════════════════════════ -->
       <section
         class="relative border-y border-branco/10"
@@ -914,8 +914,6 @@
            Carrossel sem biblioteca: a faixa tem rolagem horizontal nativa
            com scroll-snap, e os botões só empurram o scroll. Arrastar com o
            dedo, rolar no trackpad e navegar pelo teclado saem de graça.
-
-           O conteúdo vem de data/depoimentos.json.
 
            A seção é CLARA e os halos ficam dentro de cada card, não aqui.
            Chegou a existir uma versão com a seção escura e cards de vidro
