@@ -1,4 +1,5 @@
 {
+  "_atencao_nao_e_lido_pelo_site": "ATENCAO: este arquivo NAO e lido pelo site desde 2026-08-11. O conteudo passou a ser escrito direto no HTML e nao ha mais fetch(). Editar aqui nao muda nada na tela -- atualize o HTML. Este JSON fica como REFERENCIA: e a lista oficial passada pela HG Smart, com o registro de auditoria.",
   "_leia_isto": "Banners do site antigo, reprocessados por ferramentas/processar-banners.js. Os originais ficam em assets/img/banners/original/. Todos saem na MESMA proporcao (desktop 1920x740, mobile 900x900) porque o script forca cover+corte central -- trocar um arquivo por outro de proporcao diferente nao muda a altura do slider. Para tirar um banner do ar, ponha \"ativo\": false. A ordem do array e a ordem de exibicao.",
   "atualizado_em": "2026-07-26",
   "config": {

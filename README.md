@@ -1,55 +1,30 @@
 # Rede HG Smart — site institucional
 
-HTML estático + JavaScript vanilla + Tailwind CSS. Sem WordPress, sem banco de
-dados, sem PHP. Sobe em qualquer host estático.
+HTML, CSS e JavaScript. Só isso. **Sem Node, sem build, sem geradores.**
 
-O site é **institucional**: mostra a empresa, as marcas/modelos que as lojas
-trabalham e as dez unidades. Não tem carrinho, checkout nem fluxo de compra.
+O site é **institucional**: mostra a empresa, as marcas que as lojas trabalham,
+as seis formas de pagamento e as dez unidades. Não tem carrinho, checkout nem
+fluxo de compra.
 
 ---
 
-## Rodar localmente
+## Rodar
 
-```bash
-npm install
-npm run serve      # http://localhost:4321
-```
+Dê **duplo clique no `index.html`**. É isso.
 
-O servidor local existe por um motivo específico: lojas, catálogo e banners são
-lidos com `fetch()` de `data/*.json`, e o navegador bloqueia `fetch` em páginas
-abertas via `file://`. Abrir o `index.html` com dois cliques faz os cards não
-carregarem.
+Não precisa de servidor, de `npm install` nem de nada instalado. Todo o conteúdo
+está escrito dentro dos arquivos `.html` — nenhuma página busca dados em tempo de
+visita.
 
-## Scripts
-
-| Comando | O que faz |
-|---|---|
-| `npm run build` | Compila o CSS minificado. **Rode antes de publicar** |
-| `npm run dev` | Recompila o CSS a cada alteração |
-| `npm run serve` | Servidor local em http://localhost:4321 |
-| `npm run seo` | Gera `robots.txt`, `sitemap.xml` e o JSON-LD das 10 lojas |
-| `npm run paginas` | Regenera as 8 páginas institucionais montadas por template |
-| `npm run lojas` | Regenera as 10 páginas de unidade em `lojas/<id>/` |
-| `npm run rodape` | Reescreve o rodapé nas 23 páginas a partir de uma definição única |
-| `npm run banners` | Reprocessa as artes do slider (WebP + JPEG, 3 tamanhos) |
-| `npm run zap` | Sincroniza o botão fixo de WhatsApp nas 5 páginas antigas |
-
-## Mexer no visual
-
-```bash
-npm run dev        # recompila o CSS a cada alteração
-npm run build      # compila minificado (rode antes de publicar)
-```
-
-**O `assets/css/site.css` está commitado de propósito.** Assim o site funciona
-como arquivo estático puro, sem exigir Node de quem publica. Mas se você mudar
-qualquer classe do Tailwind no HTML, precisa rodar `npm run build` — senão a
-classe nova não existe no CSS compilado.
+> Isto mudou em 2026-08-11. Antes, lojas, catálogo, depoimentos e banners eram
+> montados por JavaScript a partir de `data/*.json` com `fetch()`, e o navegador
+> bloqueia `fetch` em `file://` — o site só abria com um servidor local rodando.
+> Também significava que o buscador precisava executar JavaScript para enxergar
+> os cartões de loja. As duas coisas acabaram.
 
 ## Publicar
 
-Suba a pasta inteira, menos `node_modules/` e `assets/img/banners/original/`
-(são os JPEGs pesados de origem, não usados pelo site).
+Suba a pasta inteira para a hospedagem. Não há passo de compilação.
 
 ---
 
@@ -60,251 +35,161 @@ Suba a pasta inteira, menos `node_modules/` e `assets/img/banners/original/`
 ├── quem-somos.html               História, missão, visão, valores
 ├── catalogo.html                 As marcas que a rede trabalha (sem preço)
 ├── servicos.html                 Venda, acessórios, aprovação
-├── lojas/index.html              Índice das 10 unidades → /lojas/
-│                                 (as 5 acima têm header/footer à mão)
+├── lojas/index.html              Índice das 10 unidades
+├── lojas/<cidade>/index.html     Uma página por unidade (10)
 │
-├── lojas/<cidade>/index.html     Uma por unidade → /lojas/<cidade>/  ← geradas
-│                                 10 páginas, de data/lojas.json
+├── como-comprar.html             As seis formas, lado a lado
+├── boleto.html                   ┐
+├── conta-de-luz.html             │
+├── credito-clt.html              │ uma página por forma
+├── cartao-de-credito.html        │ de pagamento
+├── a-vista.html                  │
+├── troca-do-usado.html           ┘
 │
-├── como-comprar.html             6 formas de pagamento    ← gerada
-├── faq.html                      9 perguntas frequentes   ← gerada
-├── garantia.html                 Garantia estendida       ← gerada
-├── ceo.html                      Eduardo Hermes           ← gerada
-├── contato.html                  Canais de contato        ← gerada
-├── politica-de-privacidade.html  esqueleto jurídico       ← gerada
-├── termos-de-uso.html            esqueleto jurídico       ← gerada
-├── politica-de-cookies.html      esqueleto jurídico       ← gerada
+├── faq.html                      9 perguntas frequentes
+├── garantia.html                 Garantia estendida
+├── ceo.html                      Eduardo Hermes
+├── contato.html                  Canais de contato
+├── politica-de-privacidade.html  ┐
+├── termos-de-uso.html            │ esqueleto jurídico
+├── politica-de-cookies.html      ┘
+├── 404.html                      Página de erro
 │
-├── robots.txt                    gerado por npm run seo
-├── sitemap.xml                   gerado por npm run seo
+├── robots.txt
+├── sitemap.xml
 │
-├── data/
-│   ├── lojas.json        10 unidades: endereço, coordenada, WhatsApp, horário
-│   ├── catalogo.json      Marcas, marcas parceiras, acessórios (sem preço)
-│   └── banners.json      Slider da home
+├── data/                     ⚠️ REFERÊNCIA, não é lido pelo site — veja abaixo
 │
-├── assets/
-│   ├── css/src.css       FONTE do estilo — edite este
-│   ├── css/site.css      compilado (não edite à mão)
-│   ├── js/site.js        menu, e montagem de lojas/catálogo
-│   ├── js/banner.js      slider de banners
-│   ├── js/motion.js      camada de animação (GSAP)
-│   ├── vendor/           GSAP, ScrollTrigger, Lenis — locais, sem CDN
-│   ├── fontes/           Bebas Neue + Inter auto-hospedadas
-│   └── img/
-│       ├── banners/          processados (webp + jpg, 3 tamanhos)
-│       ├── banners/original/ JPEGs de origem, só para reprocessar
-│       ├── marcas/           logos do marquee
-│       ├── produtos/         logos de 5 das 9 marcas (as outras 4 em marcas/)
-│       ├── fotos/            fachada e ambiente
-│       └── icones/           logo, favicon, pictogramas
-│
-└── ferramentas/
-    ├── layout.js            casca comum das páginas geradas (head, menu, rodapé)
-    ├── schema-loja.js       o MobilePhoneStore de uma unidade
-    ├── gerar-paginas.js     as 8 institucionais
-    ├── gerar-lojas.js       as 10 de unidade
-    ├── gerar-seo.js         robots, sitemap e o JSON-LD do índice
-    ├── aplicar-rodape.js    o rodapé das 23 páginas
-    └── processar-banners.js normaliza e otimiza os banners
+└── assets/
+    ├── css/site.css          O estilo, num arquivo só
+    ├── js/site.js            Menu mobile, ano do rodapé, faixa de depoimentos
+    ├── js/banner.js          Controles do slider
+    ├── js/motion.js          Animação (GSAP)
+    ├── vendor/               GSAP, ScrollTrigger, Lenis — locais, sem CDN
+    ├── fontes/               Bebas Neue + Inter, auto-hospedadas
+    └── img/
 ```
 
-### Ordem de execução dos geradores
+---
 
-```bash
-npm run lojas     # 1. escreve lojas/<id>/index.html
-npm run paginas   # 2. escreve as 8 institucionais
-npm run rodape    # 3. rodapé único nas 23
-npm run build     # 4. CSS (classe nova só existe depois disto)
-npm run seo       # 5. sitemap varre o disco — precisa das unidades já geradas
-```
+## Editar conteúdo
 
-Inverter 1 e 5 não quebra nada, mas o sitemap sai sem as unidades: ele só publica
-página que existe no disco, de propósito, para nunca listar URL que dá 404.
+**O conteúdo está no HTML.** Para mudar o horário de uma loja, o endereço, um
+WhatsApp ou o texto de uma seção, edite a página onde aquilo aparece.
 
-### Três profundidades, um prefixo
+### O preço disso: repetição
 
-As páginas geradas vivem em três níveis, e todo caminho relativo é parametrizado por
-`prefixo` em `layout.js` e `aplicar-rodape.js`:
+Alguns dados aparecem em mais de um lugar, e o navegador não vai avisar quando
+um deles ficar para trás. Os pontos que exigem atenção:
 
-| Onde | prefixo | exemplo |
+| O que muda | Onde precisa mexer |
+|---|---|
+| Dados de uma loja | `lojas/<cidade>/index.html`, o cartão dela em `lojas/index.html` e — se estiver entre as 3 da home — em `index.html` |
+| **Horário/endereço da matriz** | os dois acima **e** o JSON-LD no `<head>` do `index.html` |
+| Menu | as 30 páginas |
+| Rodapé | as 30 páginas |
+| Um banner do slider | `index.html` |
+
+É a troca consciente por não ter etapa de geração: publicar ficou trivial,
+manter ficou manual.
+
+### Mudar o visual
+
+`assets/css/site.css` é o CSS final, escrito à mão a partir de agora. Ele foi
+gerado com Tailwind até 2026-08-11 — por isso os nomes de classe parecem
+utilitários (`mt-10`, `text-branco`, `grid-cols-3`).
+
+**Consequência:** usar uma classe do Tailwind que ainda não esteja no arquivo
+não faz nada, porque não há mais quem a compile. Ou você reaproveita as classes
+que já existem, ou escreve a regra nova no `site.css` na mão.
+
+---
+
+## A pasta `data/`
+
+Os quatro JSON (`lojas`, `catalogo`, `banners`, `depoimentos`) **não são lidos
+pelo site**. Ficaram como registro: são a lista oficial que a HG Smart passou,
+com o histórico de auditoria — divergências com o site antigo, o que foi
+confirmado com o dono e o que segue pendente.
+
+⚠️ **Editar um JSON não muda nada na tela.** Se for atualizar um dado, atualize
+o HTML; o JSON é consulta.
+
+---
+
+## Decisões que valem saber
+
+**O conteúdo não depende de JavaScript.** Texto, cartões de loja, depoimentos e
+banners estão no HTML. O JS cuida do menu mobile, do movimento da faixa de
+depoimentos, dos controles do slider e da animação.
+
+**Movimento reduzido é respeitado.** Com `prefers-reduced-motion: reduce` as
+animações não rodam, o slider não avança sozinho (WCAG 2.2.2) e a faixa de
+depoimentos fica parada — ainda arrastável.
+
+**Nenhuma requisição externa.** GSAP, Lenis e as fontes são servidos do próprio
+domínio. Nada de `fonts.googleapis.com`, CDN, analytics ou pixel.
+
+**Nenhum cookie.** Sem login, sem carrinho, sem sessão, sem medição.
+
+**Sem chave de API de mapa.** As páginas de loja usam link de rota do Google
+Maps em vez de mapa embutido — o site antigo expunha uma chave no HTML.
+
+**A seção pinada só pina no desktop.** Abaixo de 1024px o `pin` do ScrollTrigger
+briga com a altura dinâmica da viewport, então cada capítulo revela no lugar.
+
+---
+
+## Dados que faltam antes de publicar
+
+O site traz **avisos visíveis** de conteúdo faltante, em cartão azul com
+`data-pendencia`. É deliberado: placeholder invisível vira conteúdo publicado
+por esquecimento.
+
+Para achar todos:
+
+    grep -rn "data-pendencia" *.html lojas/*/index.html
+
+O que cada um espera:
+
+| Código | O que falta | Com quem |
 |---|---|---|
-| raiz | `''` | `assets/css/site.css` |
-| `lojas/index.html` | `'../'` | `../assets/css/site.css` |
-| `lojas/<id>/index.html` | `'../../'` | `../../assets/css/site.css` |
+| `B1` | O critério que separa **18x de 25x** no boleto — as duas condições existem, mas nada diz quando vale cada uma | Eduardo |
+| `B2` | Conta de luz: teto de valor e se a conta precisa estar no nome do cliente | vendas |
+| `B4` | Crédito CLT: mecânica, financeira, limites | vendas |
+| `B5` | Troca do usado: critérios de avaliação | vendas |
+| `B6` | Garantia estendida: prazos e coberturas | produtos |
+| `B7` | Percentual do desconto no Pix | vendas |
+| `B9` | História do CEO Eduardo Hermes | marketing |
+| `B12` | Textos jurídicos — **hoje são esqueleto, não documento válido** | advogado |
+| `B13` | Dados de contato que faltam | marketing |
+| `B16-<cidade>` | Por unidade: CEP, Instagram próprio, telefone fixo | marketing |
+| `B8-fotos` | Fotos reais de fachada, equipe e interior das 10 lojas | marketing |
+| `FAQPage schema` | As 9 respostas do FAQ — o schema só entra com todas fechadas | marketing |
 
-`canonical`, `og:url` e as URLs do JSON-LD **não** levam prefixo — são absolutas.
-
----
-
-## Editar conteúdo sem tocar em HTML
-
-Quase tudo que muda com frequência está em `data/`.
-
-### Lojas — `data/lojas.json`
-
-Adicionar ou remover uma unidade é editar o array `lojas`. O total exibido na
-home e na página de lojas é contado do JSON, não escrito à mão.
-
-Uma unidade nova gera página própria, entra no rodapé de todas as páginas e no
-sitemap sozinha — mas isso não é automático em tempo de visita, é geração:
-depois de editar o JSON, rode `npm run lojas && npm run rodape && npm run seo`.
-Unidade com `"em_breve": true` fica de fora dos três: aparece como cartão "em
-breve" no índice e não ganha página, porque loja que ainda não atende não tem o
-que responder a quem pesquisa.
-
-Para pegar a coordenada de uma loja nova: abra o Google Maps, clique com o botão
-direito no ponto, e copie os dois números.
-
-### Marcas — `data/catalogo.json`
-
-> **O site não mostra preço e não vende.** Decisão do cliente em 2026-07-28: a
-> página é institucional e lista apenas as marcas que a rede trabalha. A lista de
-> modelos com valores que existia aqui era estrutura de exemplo — nunca foram
-> dados reais — e foi removida junto com o código que a renderizava.
-
-- Cada marca tem `id`, `nome`, `logo` e `resumo`. O `id` é a âncora usada pelos
-  cards da home (`catalogo.html#samsung`) e pelos filtros do topo
-- `marcas_parceiras` é a faixa de logos secundária; `acessorios` é a grade final
-- `condicoes_globais` guarda as parcelas máximas (boleto, conta de luz, cartão).
-  São condições de pagamento, não preço
-- Se um dia a rede quiser listar modelos, o combinado é listar **sem valor** — o
-  preço sai da simulação presencial na loja
-
-### Banners — `data/banners.json`
-
-- `"ativo": false` tira um banner do ar sem apagar arquivo
-- A ordem do array é a ordem de exibição
-- `intervalo_ms` controla a troca automática
-
-Para trocar as artes: coloque os arquivos novos em
-`assets/img/banners/original/` seguindo o padrão `desktop-N.jpg` e
-`mobile-N.jpg`, e rode:
-
-```bash
-npm run banners
-```
-
-O script força todos na mesma proporção (desktop `1920×740`, mobile `900×900`)
-com corte centralizado, e gera WebP + JPEG em três tamanhos. **Por isso a altura
-do slider nunca muda**, mesmo que alguém suba uma arte de proporção diferente.
-
----
-
-## Pendências do slider
-
-### 1. O banner da Troop Telecom está no ar — e deve estar
-
-Eu tinha desativado esse banner por achar que era anúncio de terceiro. Errado: o
-briefing (`Informação.md`, slide 7) diz **"Troop Telecom — Operadora do Grupo
-Hermes"**. É empresa irmã. Está com `"ativo": true`.
-
-Fica o registro visual: a arte tem fundo branco e identidade própria da Troop, o
-que destoa do resto do slider. É intencional, não bug.
-
-### 2. A arte do banner 6 diz "18X no boleto"
-
-A página de Serviços diz **25x**, e o briefing não especifica. Três fontes, dois
-números, nenhuma resposta. Confirme o valor correto e refaça a arte ou ajuste a
-copy — hoje o site se contradiz. É o item **B1** do `PLANO-DE-APLICACAO.md`.
-
-### 3. Faltam 4 artes de banner
-
-O briefing descreve 8 slides; existe arte para 4. Faltam: **Crédito CLT**,
-**Películas HG Fiber/Premium**, **Capinhas HG Smart** e **Aporte Financeiro**.
-O slider já está pronto para recebê-las — é só colocar em
-`assets/img/banners/original/`, rodar `npm run banners` e adicionar no JSON.
-
----
-
-## Decisões técnicas que valem saber
-
-**Nada depende de JavaScript para ser lido.** O CSS entrega o estado final por
-padrão. Só depois de confirmar que o visitante aceita movimento é que o JS marca
-`<html class="motion-ok">` e o CSS esconde os elementos para o GSAP trazer. Se o
-GSAP não carregar, o conteúdo aparece inteiro em vez de ficar invisível.
-
-**Movimento reduzido é respeitado de verdade.** Com
-`prefers-reduced-motion: reduce` as animações não rodam, o slider não avança
-sozinho (WCAG 2.2.2) e os contadores mostram o valor final direto.
-
-**Sem requisição externa nenhuma.** GSAP, Lenis e as fontes são servidos do
-próprio domínio. Nada de `fonts.googleapis.com` nem CDN no caminho crítico.
-
-**Sem chave de API de mapa.** A página de lojas usa link de rota do Google Maps
-em vez de mapa embutido. O site antigo expunha uma chave da Google no HTML de
-`/lojas` — este não repete isso.
-
-**A seção pinada só pina no desktop.** Em telas pequenas o `pin` do
-ScrollTrigger briga com a altura dinâmica da viewport e a barra de endereço do
-navegador; abaixo de 1024px cada capítulo revela no lugar.
+**Conta de luz não existe em Capão da Canoa e Tramandaí.** As páginas dessas
+duas unidades avisam isso, e o dado estruturado delas não lista a modalidade.
+Se abrir uma unidade nova, confira isso antes de copiar a página de outra.
 
 ---
 
 ## O que este site corrige do anterior
 
-Medido com SEOmator e o audit de GEO no site antigo, e verificado no navegador
-aqui:
-
 | Item | Antes | Agora |
 |---|---|---|
 | `<h1>` na home | nenhum | 1, único |
 | Meta description | ausente em 10 páginas | em todas |
-| Imagens sem alt | 70 de 76 | 0 |
+| Imagens sem alt | 70 de 76 | 0 de 129 |
 | Scroll horizontal no mobile | 68 elementos | nenhum |
-| JSON-LD estruturado | nenhum | Organization + WebSite + MobilePhoneStore |
+| JSON-LD | nenhum | Organization, WebSite, MobilePhoneStore e BreadcrumbList |
 | Open Graph | ausente | completo, com imagem |
 | Arquivos CSS | 31 externos | 1 |
 | Peso dos banners | 6,7 MB | 1,0 MB (WebP) |
 | Chave de API exposta | Google Maps em `/lojas` | nenhuma |
+| Páginas por unidade | nenhuma | 10, com conteúdo próprio |
+| Páginas de forma de pagamento | nenhuma | 6 |
 
-O que **não** está resolvido aqui porque depende do servidor, não do código:
-cabeçalhos de segurança (HSTS, CSP, X-Frame-Options, X-Content-Type-Options) e
-o redirect HTTP→HTTPS. Precisam ser configurados no host.
-
----
-
-## Duas dívidas técnicas conhecidas
-
-**1. Cabeçalho e rodapé estão em dois sistemas.** As 7 páginas novas são geradas
-por `ferramentas/gerar-paginas.js`, que tem o cabeçalho, o menu, o rodapé e o
-botão de WhatsApp num só lugar. As 5 páginas originais (`index`, `quem-somos`,
-`catalogo`, `servicos`, `lojas`) ainda têm tudo isso embutido à mão.
-
-Consequência prática: **mudar um item de menu exige editar o gerador e as 5
-páginas antigas.** Migrar as 5 para o gerador é a próxima limpeza. Enquanto isso,
-o `npm run zap` existe justamente para sincronizar o botão de WhatsApp nelas.
-
-**2. A seção pinada só existe em `quem-somos.html`.** Foi removida da home porque
-contava a mesma história da seção "Nossa história", que a home ganhou depois.
-O `motion.js` procura `[data-pinada]` e não faz nada quando não encontra — sem erro.
-
----
-
-## Marcadores de pendência nas páginas
-
-As páginas geradas trazem avisos **visíveis** de conteúdo faltante, em cartão azul
-com `data-pendencia`. Isso é deliberado: placeholder invisível vira conteúdo
-publicado por esquecimento.
-
-Para achar todos antes de publicar:
-
-    grep -rn "data-pendencia" *.html
-
-Os códigos (`B1`, `B4`, `B12`…) remetem ao `PLANO-DE-APLICACAO.md` na pasta acima,
-que lista o que cada um trava.
-
----
-
-## Correção importante sobre os dados das lojas
-
-O plugin do site antigo usava `"0"` **e** `"1"` (string) para dizer "fechado". Meu
-primeiro conversor só tratava o `"1"`, então três lojas ficaram com `"0"` cru no
-campo de domingo.
-
-Consequência: eu havia escrito na página de lojas que "domingo as lojas não abrem".
-**É falso.** Cachoeirinha abre domingo 09:30–18:30 e Capão da Canoa 13:00–19:00.
-Corrigido no `data/lojas.json`, no cartão de cada loja (com selo "Abre no domingo")
-e no `openingHoursSpecification` do JSON-LD.
-
-Se você editar horários à mão, use `"fechado"` — nunca `"0"` nem `"1"`.
+O que **não** se resolve no código, e depende da hospedagem: HTTPS e os
+cabeçalhos de segurança (HSTS, CSP, X-Frame-Options, X-Content-Type-Options).
+A página `404.html` também precisa ser apontada no painel — no cPanel, em
+**Error Pages**.
