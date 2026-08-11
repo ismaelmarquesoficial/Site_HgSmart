@@ -11,7 +11,7 @@
 
 ## 🔴 PARA O EDUARDO — trava o site inteiro
 
-### 1. Boleto: 18x ou 25x? ⚠️ o mais urgente
+### 1. Boleto — o site já publica 18x; falta alinhar os outros canais ⚠️
 
 **A própria HG Smart publica os dois números hoje**, em canais diferentes:
 
@@ -33,8 +33,13 @@ contradizendo a si mesma**. Um cliente que vê 25x no Instagram da rede e
 **Se existirem as duas condições, qual é o critério?** Valor do aparelho?
 Financeira aprovada? Percentual de entrada? Cidade?
 
-Enquanto não houver resposta, a página de boleto informa a faixa
-("de 18 a 25 vezes") em vez de prometer um número.
+**O site publica 18x desde 11/08**, seguindo o site oficial, as bios da
+maioria das unidades e os dois documentos internos de estratégia.
+
+**Falta corrigir onde ainda diz 25x:** o perfil `@hgsmart_` (o da rede,
+7 mil seguidores), o `@hgsmart.tramandai` e os posts do blog. Enquanto isso
+não acontecer, o cliente continua recebendo dois números conforme o canal
+por onde chega.
 
 📍 `boleto.html`, `como-comprar.html`, `servicos.html`, `catalogo.html`,
 `index.html`, `faq.html` e a arte do banner 6.
@@ -57,14 +62,13 @@ juros. **Confirmar as duas condições e como se apresentam.**
 
 ---
 
-### 3. Crédito CLT: 44x é oficial?
+### 3. Crédito CLT — 44x publicado; falta a mecânica
 
-**Todos os perfis do Instagram anunciam "CLT 44x"**, e o blog também
-("parcelamento em até 44x no Crédito CLT"). O site novo não traz número
-nenhum, porque nenhum documento interno mencionava.
+**O site publica 44x desde 11/08**: o número aparece nas bios de todos os
+perfis e no blog, e nenhuma fonte contradiz.
 
-Confirmar: 44x é o teto? Qual a financeira? Há limite de valor? Precisa de
-tempo mínimo de carteira assinada?
+Ainda falta: qual a financeira parceira, se há limite de valor e se existe
+tempo mínimo de carteira assinada. Confirmar também que 44x é o teto.
 
 📍 `credito-clt.html` (cartão de pendência B4), `como-comprar.html`, `faq.html`.
 
@@ -259,6 +263,11 @@ par site ↔ Maps em cada cidade.
 ---
 
 ## ✅ Resolvido nesta rodada (11/08/2026)
+
+- **Boleto: 18x** publicado em todo o site (home, Marcas, Serviços, página do
+  boleto e FAQ). Era 25x, número que vinha do site antigo
+- **Crédito CLT: 44x** publicado — a página, o FAQ e os resumos deixaram de
+  ser "a definir"
 
 - **Conta de luz** não é mais anunciada em Capão da Canoa e Tramandaí — nem no
   texto, nem no dado estruturado. _(As bios do Instagram dessas duas unidades
