@@ -31,23 +31,34 @@ const RAIZ = path.join(__dirname, '..');
    não garantias — o Google usa como sinal fraco. */
 const PAGINAS = [
   { arquivo: 'index.html', url: '/', prioridade: '1.0', mudanca: 'weekly' },
-  { arquivo: 'quem-somos.html', url: '/quem-somos', prioridade: '0.8', mudanca: 'monthly' },
-  { arquivo: 'catalogo.html', url: '/catalogo', prioridade: '0.9', mudanca: 'weekly' },
-  { arquivo: 'servicos.html', url: '/servicos', prioridade: '0.8', mudanca: 'monthly' },
+  { arquivo: 'quem-somos.html', url: '/quem-somos.html', prioridade: '0.8', mudanca: 'monthly' },
+  { arquivo: 'catalogo.html', url: '/catalogo.html', prioridade: '0.9', mudanca: 'weekly' },
+  { arquivo: 'servicos.html', url: '/servicos.html', prioridade: '0.8', mudanca: 'monthly' },
   /* O índice das unidades passou de `lojas.html` para `lojas/index.html`.
      Motivo: o sitemap já publicava `/lojas` sem extensão, e criar o
      diretório `lojas/` para as unidades faria a maioria dos hosts
      estáticos resolver `/lojas` para o diretório — que não teria índice.
      Arquivo e URL passam a concordar, sem depender de regra de rewrite. */
   { arquivo: 'lojas/index.html', url: '/lojas/', prioridade: '0.9', mudanca: 'monthly' },
-  { arquivo: 'como-comprar.html', url: '/como-comprar', prioridade: '0.9', mudanca: 'monthly' },
-  { arquivo: 'faq.html', url: '/faq', prioridade: '0.8', mudanca: 'monthly' },
-  { arquivo: 'garantia.html', url: '/garantia', prioridade: '0.6', mudanca: 'monthly' },
-  { arquivo: 'ceo.html', url: '/ceo', prioridade: '0.6', mudanca: 'yearly' },
-  { arquivo: 'contato.html', url: '/contato', prioridade: '0.7', mudanca: 'monthly' },
-  { arquivo: 'politica-de-privacidade.html', url: '/politica-de-privacidade', prioridade: '0.3', mudanca: 'yearly' },
-  { arquivo: 'termos-de-uso.html', url: '/termos-de-uso', prioridade: '0.3', mudanca: 'yearly' },
-  { arquivo: 'politica-de-cookies.html', url: '/politica-de-cookies', prioridade: '0.3', mudanca: 'yearly' },
+  { arquivo: 'como-comprar.html', url: '/como-comprar.html', prioridade: '0.9', mudanca: 'monthly' },
+  /* As seis formas de pagamento têm página própria desde 2026-08-11.
+     Prioridade alta de propósito: "celular no boleto" e "celular na conta
+     de luz" são as buscas que a estratégia da rede elegeu como o
+     diferencial competitivo, e antes disso existia UMA URL
+     (/como-comprar.html) tentando responder seis perguntas diferentes. */
+  { arquivo: 'boleto.html', url: '/boleto.html', prioridade: '0.9', mudanca: 'monthly' },
+  { arquivo: 'conta-de-luz.html', url: '/conta-de-luz.html', prioridade: '0.9', mudanca: 'monthly' },
+  { arquivo: 'credito-clt.html', url: '/credito-clt.html', prioridade: '0.8', mudanca: 'monthly' },
+  { arquivo: 'cartao-de-credito.html', url: '/cartao-de-credito.html', prioridade: '0.7', mudanca: 'monthly' },
+  { arquivo: 'a-vista.html', url: '/a-vista.html', prioridade: '0.7', mudanca: 'monthly' },
+  { arquivo: 'troca-do-usado.html', url: '/troca-do-usado.html', prioridade: '0.8', mudanca: 'monthly' },
+  { arquivo: 'faq.html', url: '/faq.html', prioridade: '0.8', mudanca: 'monthly' },
+  { arquivo: 'garantia.html', url: '/garantia.html', prioridade: '0.6', mudanca: 'monthly' },
+  { arquivo: 'ceo.html', url: '/ceo.html', prioridade: '0.6', mudanca: 'yearly' },
+  { arquivo: 'contato.html', url: '/contato.html', prioridade: '0.7', mudanca: 'monthly' },
+  { arquivo: 'politica-de-privacidade.html', url: '/politica-de-privacidade.html', prioridade: '0.3', mudanca: 'yearly' },
+  { arquivo: 'termos-de-uso.html', url: '/termos-de-uso.html', prioridade: '0.3', mudanca: 'yearly' },
+  { arquivo: 'politica-de-cookies.html', url: '/politica-de-cookies.html', prioridade: '0.3', mudanca: 'yearly' },
 ];
 
 const todasAsLojas = JSON.parse(fs.readFileSync(path.join(RAIZ, 'data', 'lojas.json'), 'utf8')).lojas;
@@ -156,7 +167,7 @@ function gerarSitemap(dataIso) {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <!-- Gerado por ferramentas/gerar-seo.js -- nao edite a mao -->
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entradas}
 </urlset>
 `.replace('www.sitemap.org', 'www.sitemaps.org');

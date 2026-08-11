@@ -45,11 +45,26 @@ const TELEFONES = [
   ['+5551990178584', '(51) 9 9017-8584'],
 ];
 
+/* RESOLVIDO em 2026-08-11: ceo, garantia, faq e contato entraram nesta
+   lista — mesmo caso da política de cookies logo abaixo, quatro anos-luz
+   depois de ninguém notar. As quatro existiam, estavam no sitemap.xml e
+   não recebiam UM link em todo o site: o Google indexava, o visitante
+   nunca chegava. Elas nasceram para o menu de 9 itens do briefing, que
+   não foi construído, e ficaram sem porta de entrada nenhuma.
+
+   O header ficou com 7 itens (layout.js) e esta coluna com o mapa
+   completo. É a divisão que o rodapé já fazia pelas páginas legais:
+   quem procura acha, e o topo não vira lista de 11 links. */
 const INSTITUCIONAL = [
   ['index.html', 'Início'],
   ['quem-somos.html', 'Quem Somos'],
+  ['ceo.html', 'Conheça o CEO'],
   ['servicos.html', 'Serviços'],
   ['catalogo.html', 'Marcas'],
+  ['como-comprar.html', 'Como comprar'],
+  ['garantia.html', 'Garantia'],
+  ['faq.html', 'FAQ'],
+  ['contato.html', 'Contato'],
   ['lojas/', 'Lojas'],
   // O blog continua no WordPress: o site novo não tem essa seção, então
   // o link sai do domínio em vez de apontar para uma página inexistente.
@@ -87,8 +102,16 @@ const LEGAL = [
   ['politica-de-cookies.html', 'Política de Cookies'],
 ];
 
+/* CORRIGIDO em 2026-08-11 — o Instagram daqui era `@redehgsmart`, que
+   não aparece em NENHUM documento do planejamento. O registro de canais
+   diz que o site sempre linkou `@hgsmart.scs`, o perfil da matriz.
+
+   A rede usa `@hgsmart` como conta geral e `@hgsmart.scs` na sede; cada
+   unidade tem a sua. Esta coluna é o rodapé de todas as páginas, então
+   leva a conta GERAL — o perfil de cada loja sai na página da loja, de
+   `data/lojas.json`. */
 const REDES = [
-  ['https://www.instagram.com/redehgsmart/', 'Instagram'],
+  ['https://www.instagram.com/hgsmart/', 'Instagram'],
   ['https://www.facebook.com/redehgsmart/', 'Facebook'],
   ['https://www.tiktok.com/@redehgsmart', 'TikTok'],
   ['https://www.youtube.com/@redehgsmart', 'YouTube'],
@@ -240,10 +263,18 @@ if (require.main !== module) return;
    recriando exatamente a divergência que este script existe para matar.
 
    Cada página vem com o prefixo da sua profundidade. */
+/* 404.html fica FORA da varredura.
+   Ela é servida para qualquer URL inexistente, inclusive dentro de
+   lojas/<algo>/, então todo caminho dela é absoluto. Este script escreve
+   caminhos RELATIVOS a partir de um prefixo — e prefixo é justamente o
+   que não existe quando a URL é desconhecida. Passar o rodapé nela
+   deixaria os links do rodapé quebrados exatamente nas URLs profundas. */
+const FORA_DA_VARREDURA = new Set(['404.html']);
+
 function paginasDoSite() {
   const lista = fs
     .readdirSync(RAIZ)
-    .filter((f) => f.endsWith('.html'))
+    .filter((f) => f.endsWith('.html') && !FORA_DA_VARREDURA.has(f))
     .sort()
     .map((f) => ({ arquivo: f, prefixo: '' }));
 

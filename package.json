@@ -13,6 +13,7 @@
     "paginas": "node ferramentas/gerar-paginas.js",
     "lojas": "node ferramentas/gerar-lojas.js",
     "mapa": "node ferramentas/gerar-mapa.js",
+    "menu": "node ferramentas/aplicar-menu.js",
     "rodape": "node ferramentas/aplicar-rodape.js"
   },
   "devDependencies": {

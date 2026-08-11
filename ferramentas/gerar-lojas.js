@@ -162,6 +162,15 @@ function pendenciasDaLoja(loja) {
     faltando.push('o <strong>WhatsApp próprio da unidade</strong>');
   }
 
+  /* Cada unidade tem Instagram próprio, como tem WhatsApp e Perfil da
+     Empresa próprios. Só o da matriz foi confirmado até agora.
+     Entra na lista de faltantes em vez de cair no perfil da rede: o
+     visitante que abre o Instagram esperando ver a loja da cidade dele
+     e encontra a conta geral não volta para reclamar — só não segue. */
+  if (!loja.instagram) {
+    faltando.push('o <strong>Instagram próprio da unidade</strong>');
+  }
+
   const cartoes = [];
 
   if (faltando.length) {
@@ -277,22 +286,66 @@ ${chips}
             </article>`;
 }
 
+/* Instagram DA UNIDADE, não o da rede.
+   Cada loja tem o seu perfil, junto com o seu WhatsApp e o seu Google
+   Meu Negócio. Apontar o perfil da rede na página de Caxias mandaria o
+   visitante para o lugar errado — e é o Perfil da Empresa de cada
+   unidade que precisa apontar de volta para a própria página, senão o
+   par site↔Maps não fecha em cidade nenhuma.
+
+   Só a matriz tem o perfil confirmado até agora. Onde falta, entra o
+   cartão de pendência visível em vez de cair no perfil da rede por
+   padrão: link errado é pior que link ausente, porque ninguém percebe. */
+function blocoInstagram(loja) {
+  if (!loja.instagram) return '';
+
+  return `            <article class="cartao p-8">
+              <h3 class="text-xl text-branco">Instagram da unidade</h3>
+              <p class="mt-3 text-sm leading-relaxed text-prata">
+                Fotos, novidades e campanhas desta loja.
+              </p>
+              <p class="mt-5">
+                <a class="link-sub text-azul" href="https://www.instagram.com/${atributo(loja.instagram)}/" target="_blank" rel="noopener noreferrer">@${texto(loja.instagram)}</a>
+              </p>
+            </article>`;
+}
+
 /* Formas de pagamento: SÓ o link. Nenhum número de parcela sai daqui
    enquanto o B1 (18x × 25x) estiver aberto — publicar um dos dois na
-   página de dez unidades é multiplicar a contradição por dez. */
+   página de dez unidades é multiplicar a contradição por dez.
+
+   O que MUDA por unidade é quais formas existem ali. Esta frase dizia
+   "as condições são as mesmas em toda a rede" nas dez páginas, e isso é
+   falso em Capão da Canoa e Tramandaí, que não trabalham com conta de
+   luz. A ressalva é escrita, não omitida: quem pesquisa "celular na
+   conta de luz em Tramandaí" precisa da resposta certa na página da
+   unidade — inclusive quando a resposta é não. */
 function blocoPagamento(loja) {
+  const ressalva =
+    loja.conta_luz === true
+      ? `As condições são as mesmas em toda a rede, e a simulação é presencial —
+                aqui em ${texto(loja.cidade)} inclusive.`
+      : `Esta unidade <strong class="text-branco">não trabalha com o parcelamento na conta
+                de luz</strong>. As demais formas valem normalmente, e a simulação é
+                presencial aqui em ${texto(loja.cidade)}.`;
+
   return `            <article class="cartao p-8">
               <h3 class="text-xl text-branco">Formas de pagamento</h3>
               <p class="mt-3 text-sm leading-relaxed text-prata">
-                As condições são as mesmas em toda a rede, e a simulação é presencial —
-                aqui em ${texto(loja.cidade)} inclusive. Veja os caminhos disponíveis em
+                ${ressalva} Veja os caminhos disponíveis em
                 <a class="link-sub text-azul" href="${PREFIXO}como-comprar.html">Como comprar</a>.
               </p>
             </article>`;
 }
 
 function corpo(loja) {
-  const cartoes = [blocoEndereco(loja), blocoHorarios(loja), blocoWhatsapp(loja), blocoPagamento(loja)]
+  const cartoes = [
+    blocoEndereco(loja),
+    blocoHorarios(loja),
+    blocoWhatsapp(loja),
+    blocoInstagram(loja),
+    blocoPagamento(loja),
+  ]
     .filter(Boolean)
     .join('\n');
 
@@ -324,8 +377,20 @@ function metaDaLoja(loja) {
      que o <h1> monta. Antes o título dizia "(matriz)", que o schema não
      tinha, e o schema dizia "(Unidade 1)", que o <h1> não tinha.
      "matriz" saiu daqui: é papel na rede, não nome da loja, e continua
-     visível no rótulo do topo. */
-  const titulo = `${nomeLoja(loja)} — Celulares e acessórios em ${cidade}/RS`;
+     visível no rótulo do topo.
+
+     ─── O FORMATO ───
+     Era `${'${nomeLoja}'} — Celulares e acessórios em ${'${cidade}'}/RS`, que
+     escrevia a cidade DUAS vezes ("HG Smart Cachoeira do Sul — Celulares
+     e acessórios em Cachoeira do Sul/RS": 85 caracteres). O Google corta
+     por volta de 60, então a metade útil do título — a marca — sumia do
+     resultado justamente na busca em que ela é o diferencial.
+
+     O formato agora é o que a estratégia de SEO local já definia:
+     "Loja de celulares em [Cidade] — HG Smart". Começa pelo termo que o
+     visitante digita, cabe nos 60 e ainda sobra espaço para a unidade
+     entre parênteses onde ela existe. */
+  const titulo = `Loja de celulares em ${cidade}${loja.unidade ? ` (${loja.unidade})` : ''} — HG Smart`;
 
   const horarioCurto = [
     h.semana && h.semana !== 'fechado' ? `Seg a sex ${h.semana}` : null,
@@ -352,9 +417,28 @@ function metaDaLoja(loja) {
 
   const oferece = [temZap ? 'WhatsApp da unidade' : null, 'link de rota'].filter(Boolean);
 
-  const descricao =
-    `${nomeLoja(loja)}: ${local}. ${horarioCurto ? horarioCurto + '. ' : ''}` +
-    `${oferece.join(' e ').replace(/^./, (c) => c.toUpperCase())}.`;
+  /* A description é montada por prioridade e para de crescer aos 160
+     caracteres, que é onde o Google corta o snippet.
+
+     Cachoeirinha batia 163 e perdia o fim da frase no resultado — e o
+     fim era justamente "WhatsApp da unidade e link de rota", a parte que
+     diz o que a página resolve. A ordem abaixo é a da utilidade para
+     quem está pesquisando: quem é e onde fica, depois quando abre,
+     depois como falar. O que não couber fica de fora inteiro, em vez de
+     entrar pela metade. */
+  const LIMITE_DESCRICAO = 160;
+  const partes = [
+    `${nomeLoja(loja)}: ${local}.`,
+    horarioCurto ? `${horarioCurto}.` : null,
+    `${oferece.join(' e ').replace(/^./, (c) => c.toUpperCase())}.`,
+  ].filter(Boolean);
+
+  let descricao = '';
+  for (const parte of partes) {
+    const tentativa = descricao ? `${descricao} ${parte}` : parte;
+    if (tentativa.length > LIMITE_DESCRICAO) break;
+    descricao = tentativa;
+  }
 
   const temNaPagina = ['endereço'];
   if (temHora) temNaPagina.push('horário');
@@ -397,6 +481,9 @@ for (const loja of lojas) {
     titulo: atributo(titulo),
     descricao: atributo(descricao),
     rotulo: loja.matriz ? 'Matriz' : 'Unidade',
+    // Na trilha vale a cidade: "Início › Lojas › Caxias do Sul" localiza,
+    // "Início › Lojas › Unidade" serve para as dez ao mesmo tempo.
+    migalha: loja.cidade,
     h1: linhasH1.map((l) => '            ' + l).join('\n'),
     intro: texto(intro),
     corpo: corpo(loja),

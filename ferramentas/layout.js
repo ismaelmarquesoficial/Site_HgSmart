@@ -35,12 +35,25 @@ const ZAP_MATRIZ = '5551998575806';
 /* Navegação — um só lugar.
    `lojas/` (e não `lojas.html`) porque o índice das unidades passou a ser
    lojas/index.html. Ver o comentário de rota em gerar-seo.js. */
+/* O MENU é fonte única para as 23 páginas — as geradas o recebem daqui, e
+   as 5 escritas à mão são sincronizadas por `npm run menu`.
+
+   Antes disso os dois grupos divergiam: as 5 antigas mostravam "Serviços"
+   e as 18 geradas mostravam "Como comprar". Quem entrava por uma página
+   de unidade nunca encontrava Serviços; quem entrava pela home nunca
+   encontrava Como comprar. Metade do site escondia metade do site.
+
+   Sete itens é o teto para caber numa linha no desktop. O resto do mapa
+   vive na coluna "Institucional" do rodapé, que é gerada por
+   aplicar-rodape.js e alcança as mesmas 23 páginas. */
 const MENU = [
   { url: 'index.html', rotulo: 'Início' },
   { url: 'quem-somos.html', rotulo: 'Quem Somos' },
   { url: 'catalogo.html', rotulo: 'Marcas' },
+  { url: 'servicos.html', rotulo: 'Serviços' },
   { url: 'como-comprar.html', rotulo: 'Como comprar' },
   { url: 'lojas/', rotulo: 'Lojas' },
+  { url: 'contato.html', rotulo: 'Contato' },
 ];
 
 /* ─── Marcador de pendência: vira um aviso visível na própria página ─── */
@@ -78,23 +91,35 @@ function atributo(valor) {
    de tela anuncia "página atual" sobre um link de saída. `true` diz apenas
    "item atual do conjunto", que é o que de fato acontece: a unidade está
    dentro de Lojas. O destaque visual é o mesmo nos dois casos. */
-function cabecalho(atual, prefixo = '', atualEhExato = true) {
-  const P = prefixo;
-  const marcaAtual = atualEhExato ? 'page' : 'true';
-
-  const itens = MENU.map(
+/* Os itens saem de funções próprias porque têm DOIS consumidores: o
+   cabecalho() daqui, que monta as 18 páginas geradas, e o
+   aplicar-menu.js, que troca só os <nav> das 5 escritas à mão. Se cada
+   um montasse os seus, os dois grupos voltariam a divergir — que é
+   exatamente o defeito que o MENU único existe para fechar. */
+function itensMenuDesktop(atual, P = '', marcaAtual = 'page') {
+  return MENU.map(
     (m) =>
       `          <a class="link-sub text-sm ${
         m.url === atual ? 'text-branco" href="' + P + m.url + '" aria-current="' + marcaAtual : 'text-prata hover:text-branco" href="' + P + m.url + ''
       }">${m.rotulo}</a>`
   ).join('\n');
+}
 
-  const mobile = MENU.map(
+function itensMenuMobile(atual, P = '') {
+  return MENU.map(
     (m) =>
       `        <a class="border-b border-branco/10 py-5 text-4xl ${
         m.url === atual ? 'text-azul' : 'text-branco'
       }" href="${P}${m.url}">${m.rotulo}</a>`
   ).join('\n');
+}
+
+function cabecalho(atual, prefixo = '', atualEhExato = true) {
+  const P = prefixo;
+  const marcaAtual = atualEhExato ? 'page' : 'true';
+
+  const itens = itensMenuDesktop(atual, P, marcaAtual);
+  const mobile = itensMenuMobile(atual, P);
 
   return `    <header class="cabecalho fixed inset-x-0 top-0 z-50 border-b border-transparent" data-cabecalho>
       <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-5 lg:px-10">
@@ -125,8 +150,66 @@ ${mobile}
    que o rodapé mudou. */
 const { rodape } = require('./aplicar-rodape');
 
-function pagina({ arquivo, titulo, descricao, url, rotulo, h1, intro, corpo, schema, atual, prefixo = '', atualEhExato = true }) {
+/* Serializa um objeto para dentro de <script type="application/ld+json">.
+
+   Duplica de propósito o jsonLdIndentado() de schema-loja.js: aquele
+   módulo já faz `require('./layout')`, e importar de volta fecharia um
+   ciclo. São seis linhas — mais barato que o ciclo.
+
+   O `</script` escapado importa: JSON.stringify não faz isso, e uma
+   string com essa sequência fecharia a tag mais cedo. */
+function jsonLd(objeto, recuo = '      ') {
+  return JSON.stringify(objeto, null, 2)
+    .replace(/<\/(script)/gi, '<\\/$1')
+    .split('\n')
+    .map((linha) => recuo + linha)
+    .join('\n');
+}
+
+/* ─── BreadcrumbList ─────────────────────────────────────────────
+   Diz ao Google onde a página fica dentro do site. O ganho visível é o
+   resultado de busca trocar a URL crua por "hgsmart.com.br › Lojas ›
+   Caxias do Sul" — mais legível, e mais clicável em resultado local.
+
+   A trilha é derivada da própria URL, não escrita à mão: `lojas/x/`
+   vira Início › Lojas › <rótulo>, e uma página de raiz vira
+   Início › <rótulo>. Assim nenhuma página nova nasce sem trilha nem com
+   trilha errada, que é o risco de manter uma lista paralela.
+
+   As URLs saem absolutas de propósito, como o canonical e o og:url — o
+   `item` do schema não aceita caminho relativo. */
+function trilha(url, rotulo) {
+  const itens = [{ nome: 'Início', url: `${DOMINIO}/` }];
+
+  // Uma página dentro de lojas/<id>/ passa por "Lojas" antes de si
+  if (/^lojas\/.+/.test(url)) {
+    itens.push({ nome: 'Lojas', url: `${DOMINIO}/lojas/` });
+  }
+
+  const propria = `${DOMINIO}/${url}`;
+  if (propria !== `${DOMINIO}/` && itens[itens.length - 1].url !== propria) {
+    itens.push({ nome: rotulo, url: propria });
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: itens.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.nome,
+      item: it.url,
+    })),
+  };
+}
+
+function pagina({ arquivo, titulo, descricao, url, rotulo, h1, intro, corpo, schema, atual, prefixo = '', atualEhExato = true, migalha }) {
   const P = prefixo;
+
+  /* O rótulo do topo ("Unidade", "Matriz") não serve de nome na trilha —
+     `migalha` permite passar o nome real da página quando os dois
+     divergem, como nas unidades, onde a trilha quer a cidade. */
+  const blocoTrilha = jsonLd(trilha(url, migalha || rotulo));
 
   return `<!doctype html>
 <html lang="pt-BR" class="scroll-smooth">
@@ -153,7 +236,11 @@ function pagina({ arquivo, titulo, descricao, url, rotulo, h1, intro, corpo, sch
     <link rel="preload" href="${P}assets/fontes/BebasNeue-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="${P}assets/fontes/Inter-variavel.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="${P}assets/css/site.css" />
-${schema ? `\n    <script type="application/ld+json">\n${schema}\n    </script>\n` : ''}  </head>
+${schema ? `\n    <script type="application/ld+json">\n${schema}\n    </script>\n` : ''}
+    <script type="application/ld+json">
+${blocoTrilha}
+    </script>
+  </head>
 
   <body class="antialiased">
     <div class="progresso" data-progresso aria-hidden="true"></div>
@@ -207,4 +294,15 @@ ${rodape(P)}
 `;
 }
 
-module.exports = { DOMINIO, ZAP_MATRIZ, MENU, pendencia, cabecalho, pagina, texto, atributo };
+module.exports = {
+  DOMINIO,
+  ZAP_MATRIZ,
+  MENU,
+  pendencia,
+  cabecalho,
+  itensMenuDesktop,
+  itensMenuMobile,
+  pagina,
+  texto,
+  atributo,
+};

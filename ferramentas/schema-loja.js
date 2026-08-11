@@ -82,6 +82,22 @@ function jsonLdIndentado(objeto, recuo = '      ') {
     .join('\n');
 }
 
+/* A conta de luz NÃO existe em toda a rede: Capão da Canoa e Tramandaí
+   não a oferecem. Enquanto isto era uma constante, as dez páginas
+   declaravam a mesma lista, e as duas do litoral anunciavam — em dado
+   estruturado, que é o que alimenta o Maps e as respostas de IA — uma
+   forma de pagamento que aquelas lojas não fazem. O cliente chegava na
+   loja com a conta na mão.
+
+   Sem o campo `conta_luz` a oferta SAI da lista, nunca entra por
+   omissão. É a mesma regra do `geo` e do `postalCode`: unidade nova cujo
+   dado ninguém confirmou anuncia de menos, não de mais. */
+function pagamentosAceitos(loja) {
+  const formas = ['Boleto', 'Pix', 'Cartão de crédito'];
+  if (loja.conta_luz === true) formas.push('Conta de luz');
+  return formas.join(', ');
+}
+
 function schemaLoja(loja) {
   const zap = loja.whatsapp?.[0];
 
@@ -105,9 +121,20 @@ function schemaLoja(loja) {
     address: endereco,
     openingHoursSpecification: horariosSchema(loja.horarios),
     currenciesAccepted: 'BRL',
-    paymentAccepted: 'Boleto, Pix, Cartão de crédito, Conta de luz',
+    paymentAccepted: pagamentosAceitos(loja),
     areaServed: { '@type': 'City', name: loja.cidade },
   };
+
+  /* `sameAs` liga esta página ao perfil da PRÓPRIA unidade. É o que
+     ajuda o Google a entender que a página, o Instagram e o Perfil da
+     Empresa daquela cidade são a mesma entidade — e não três lojas.
+
+     Perfil da rede aqui seria pior que nada: diria ao Google que as dez
+     unidades são a mesma conta, exatamente a confusão que as páginas por
+     unidade existem para desfazer. Sem perfil próprio, a chave sai. */
+  if (loja.instagram) {
+    item.sameAs = [`https://www.instagram.com/${loja.instagram}/`];
+  }
 
   // `geo` só entra com coordenada real. Inventar ponto aproximado
   // colocaria a loja no lugar errado no mapa do Google.
@@ -122,4 +149,12 @@ function schemaLoja(loja) {
   return item;
 }
 
-module.exports = { FAIXAS, horariosSchema, schemaLoja, urlLoja, nomeLoja, jsonLdIndentado };
+module.exports = {
+  FAIXAS,
+  horariosSchema,
+  pagamentosAceitos,
+  schemaLoja,
+  urlLoja,
+  nomeLoja,
+  jsonLdIndentado,
+};

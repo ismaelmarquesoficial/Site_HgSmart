@@ -16,6 +16,7 @@
   "lojas": [
     {
       "id": "santa-cruz-do-sul",
+      "instagram": "hgsmart.scs",
       "cidade": "Santa Cruz do Sul",
       "uf": "RS",
       "matriz": true,
@@ -24,6 +25,7 @@
       "bairro": "Centro",
       "cep": "96810-052",
       "coord": { "lat": -29.7185488, "lng": -52.427873 },
+      "conta_luz": true,
       "horarios": { "semana": "08:30 - 19:00", "sabado": "08:30 - 17:00" },
       "whatsapp": [
         { "numero": "5551998575806", "exibicao": "(51) 9 9857-5806" },
@@ -41,6 +43,7 @@
       "bairro": "Centro",
       "cep": "95900-000",
       "coord": { "lat": -29.4650687, "lng": -51.9642869 },
+      "conta_luz": true,
       "horarios": { "semana": "08:30 - 19:00", "sabado": "08:30 - 17:00" },
       "whatsapp": [
         { "numero": "5551920068940", "exibicao": "(51) 9 2006-8940" },
@@ -56,6 +59,7 @@
       "bairro": "Centro",
       "endereco_em_confirmacao": true,
       "coord": null,
+      "conta_luz": true,
       "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
       "whatsapp": [
         { "numero": "5551920069863", "exibicao": "(51) 9 2006-9863" },
@@ -71,6 +75,7 @@
       "bairro": "Centro",
       "cep": "95555-000",
       "coord": { "lat": -29.7608154, "lng": -50.0187694 },
+      "conta_luz": false,
       "horarios": { "semana": "09:00 - 18:00", "sabado": "09:00 - 17:00", "domingo": "13:00 - 19:00" },
       "whatsapp": [
         { "numero": "5551920063948", "exibicao": "(51) 9 2006-3948" },
@@ -85,6 +90,7 @@
       "bairro": "São Pelegrino",
       "cep": "95034-160",
       "coord": { "lat": -29.1646381, "lng": -51.1884351 },
+      "conta_luz": true,
       "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
       "whatsapp": [
         { "numero": "5554920015583", "exibicao": "(54) 9 2001-5583" },
@@ -99,6 +105,7 @@
       "bairro": "Centro",
       "endereco_em_confirmacao": true,
       "coord": { "lat": -29.9486248, "lng": -51.0971031 },
+      "conta_luz": true,
       "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00", "domingo": "09:30 - 18:30" },
       "whatsapp": [
         { "numero": "5551920074393", "exibicao": "(51) 9 2007-4393" },
@@ -114,6 +121,7 @@
       "bairro": "Centro",
       "cep": "95590-000",
       "coord": { "lat": -29.987523, "lng": -50.1375128 },
+      "conta_luz": false,
       "horarios": { "semana": "09:00 - 18:00", "sabado": "09:00 - 17:00" },
       "whatsapp": [
         { "numero": "5551920054059", "exibicao": "(51) 9 2005-4059" },
@@ -128,6 +136,7 @@
       "complemento": "esquina com Dr. Bozano",
       "bairro": "Centro",
       "coord": null,
+      "conta_luz": true,
       "horarios": { "semana": "08:30 - 19:00", "sabado": "08:30 - 17:00" },
       "whatsapp": [
         { "numero": "5555920019043", "exibicao": "(55) 9 2001-9043" },
@@ -143,6 +152,7 @@
       "bairro": "Centro",
       "endereco_sem_numero": true,
       "coord": null,
+      "conta_luz": true,
       "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
       "whatsapp": [
         { "numero": "5554920017051", "exibicao": "(54) 9 2001-7051" },
@@ -156,6 +166,7 @@
       "endereco": "Rua Saldanha Marinho, 164",
       "bairro": "Centro",
       "coord": null,
+      "conta_luz": true,
       "horarios": { "semana": "08:30 - 18:30", "sabado": "08:30 - 17:00" },
       "whatsapp": [
         { "numero": "5554920017049", "exibicao": "(54) 9 2001-7049" },

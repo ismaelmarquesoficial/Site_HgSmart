@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Página não encontrada — Rede HG Smart</title>
+    <meta name="robots" content="noindex, follow" />
+
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="/assets/img/icones/FAVICON.png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+  </head>
+
+  <!--
+    ─── POR QUE ESTA PÁGINA É ESCRITA À MÃO ───
+    Todo caminho aqui é ABSOLUTO (/assets/…, /lojas/…), e é isso que a
+    separa das outras 29. O servidor devolve este MESMO arquivo para
+    qualquer URL que não existe — inclusive /lojas/cidade-que-nao-existe/,
+    dois níveis abaixo da raiz. Com caminho relativo, o CSS viraria
+    /lojas/cidade-que-nao-existe/assets/css/site.css e a página de erro
+    apareceria sem estilo nenhum, que é a pior hora para isso acontecer.
+
+    Por isso ela também não passa por gerar-paginas.js nem por
+    aplicar-rodape.js: os dois montam caminhos relativos a partir de um
+    prefixo, e prefixo é justamente o que não existe quando a URL é
+    desconhecida.
+
+    `noindex, follow`: não faz sentido indexar um erro, mas os links
+    daqui devem continuar sendo seguidos.
+
+    ─── PARA ATIVAR NA HOSPEDAGEM ───
+    No cPanel: Error Pages → escolha o domínio → 404 (Not Found) → e
+    aponte para este arquivo. É pela interface, não precisa editar
+    arquivo de configuração. Sem isso, o Apache mostra a tela de erro
+    padrão dele e este arquivo fica no servidor sem ser usado.
+  -->
+  <body class="antialiased">
+    <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-70 focus:rounded-full focus:bg-azul focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white">Ir para o conteúdo</a>
+
+    <header class="cabecalho fixed inset-x-0 top-0 z-50 border-b border-transparent">
+      <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-5 lg:px-10">
+        <a href="/" class="flex items-center gap-3" aria-label="Rede HG Smart — página inicial">
+          <img src="/assets/img/icones/LOGO.png" alt="Logo da Rede HG Smart" width="132" height="36" class="h-8 w-auto" />
+        </a>
+        <a href="/lojas/" class="btn btn-azul hidden lg:inline-flex">Ver as lojas</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="granulado relative overflow-hidden pb-24 pt-40 lg:pt-52">
+        <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div class="absolute -left-[14%] top-[-26%] size-[54rem] halo-azul opacity-35"></div>
+        </div>
+
+        <div class="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10">
+          <p class="filete-rotulo rotulo mb-8">Erro 404</p>
+          <h1 class="texto-grande titulo-na-grade max-w-4xl text-branco">
+            <span class="linha-mask"><span>Esta página</span></span>
+            <span class="linha-mask"><span class="text-azul">não existe.</span></span>
+          </h1>
+          <p class="mt-10 max-w-2xl text-base leading-relaxed text-prata">
+            O endereço pode ter mudado ou o link estar errado. As lojas continuam
+            todas aqui — e quem atende também.
+          </p>
+
+          <div class="mt-12 flex flex-wrap gap-4">
+            <a class="btn btn-azul" href="/lojas/">Ver as 10 lojas</a>
+            <a class="btn" href="/como-comprar.html">Formas de pagamento</a>
+            <a class="btn" href="/">Ir para a home</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao-clara relative overflow-hidden" aria-labelledby="titulo-atalhos">
+        <div class="relative z-10 mx-auto max-w-[1400px] px-6 py-20 lg:px-10">
+          <h2 id="titulo-atalhos" class="filete-rotulo rotulo mb-10">O que costuma ser procurado</h2>
+          <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <li class="cartao p-7">
+              <h3 class="text-lg text-branco"><a class="link-sub" href="/boleto.html">Celular no boleto</a></h3>
+              <p class="mt-2 text-sm leading-relaxed text-prata">Sem cartão e sem conta em banco.</p>
+            </li>
+            <li class="cartao p-7">
+              <h3 class="text-lg text-branco"><a class="link-sub" href="/conta-de-luz.html">Conta de luz</a></h3>
+              <p class="mt-2 text-sm leading-relaxed text-prata">Até 24x, sem entrada.</p>
+            </li>
+            <li class="cartao p-7">
+              <h3 class="text-lg text-branco"><a class="link-sub" href="/lojas/">Lojas da rede</a></h3>
+              <p class="mt-2 text-sm leading-relaxed text-prata">Endereço, horário e WhatsApp das 10 unidades.</p>
+            </li>
+            <li class="cartao p-7">
+              <h3 class="text-lg text-branco"><a class="link-sub" href="/faq.html">Perguntas frequentes</a></h3>
+              <p class="mt-2 text-sm leading-relaxed text-prata">Documentos, negativado, simulação e garantia.</p>
+            </li>
+            <li class="cartao p-7">
+              <h3 class="text-lg text-branco"><a class="link-sub" href="/catalogo.html">Marcas</a></h3>
+              <p class="mt-2 text-sm leading-relaxed text-prata">O que as lojas da rede trabalham.</p>
+            </li>
+            <li class="cartao p-7">
+              <h3 class="text-lg text-branco"><a class="link-sub" href="/contato.html">Contato</a></h3>
+              <p class="mt-2 text-sm leading-relaxed text-prata">WhatsApp, e-mail e redes da rede.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-branco/10 bg-preto-alto">
+      <div class="mx-auto max-w-[1400px] px-6 py-12 lg:px-10">
+        <p class="text-center text-xs leading-relaxed text-cinza">
+          © <span data-ano>2026</span> HG Smart LTDA
+          <span aria-hidden="true" class="px-2">•</span>
+          <span class="tabular-nums">CNPJ 54.988.129/0001-89</span>
+        </p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/site.js" defer></script>
+  </body>
+</html>

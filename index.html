@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Rede HG Smart — Celulares com condições reais no Rio Grande do Sul</title>
+    <title>Rede HG Smart — Celulares com condições reais no RS</title>
     <meta
       name="description"
-      content="Rede HG Smart: 10 lojas no Rio Grande do Sul com celulares das principais marcas, garantia oficial e parcelamento no boleto, na conta de luz ou no cartão. Tecnologia acessível para todos."
+      content="Rede HG Smart: 10 lojas no Rio Grande do Sul, com garantia oficial e parcelamento no boleto, na conta de luz ou no cartão. Tecnologia acessível para todos."
     />
     <link rel="canonical" href="https://hgsmart.com.br/" />
 
@@ -45,6 +45,20 @@
     />
     <link rel="stylesheet" href="assets/css/site.css" />
 
+    <!-- ⚠️ Este JSON-LD é escrito à MÃO — a home é uma das 5 páginas que
+         ainda não passam pelos geradores.
+
+         O bloco MobilePhoneStore abaixo descreve a MESMA loja que
+         lojas/santa-cruz-do-sul/index.html descreve, e aquela página é
+         gerada de data/lojas.json. Em 2026-08-11 os dois já tinham
+         divergido: aqui dizia semana 08:00 e sábado até 14:00, contra
+         08:30 e 17:00 na fonte. Três horas de sábado a menos, publicadas
+         em dado estruturado.
+
+         O `@id` agora é o mesmo dos dois lados, então o Google lê UMA
+         entidade em vez de duas lojas na mesma rua. Mas isso só continua
+         verdade se alguém mantiver: ao mexer em horário, endereço ou
+         telefone da MATRIZ no data/lojas.json, atualize aqui também. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -79,7 +93,7 @@
               }
             ],
             "sameAs": [
-              "https://www.instagram.com/redehgsmart/",
+              "https://www.instagram.com/hgsmart/",
               "https://www.facebook.com/redehgsmart/",
               "https://www.youtube.com/@redehgsmart",
               "https://www.tiktok.com/@redehgsmart"
@@ -95,13 +109,15 @@
           },
           {
             "@type": "MobilePhoneStore",
-            "name": "HG Smart — Santa Cruz do Sul",
+            "@id": "https://hgsmart.com.br/lojas/santa-cruz-do-sul/",
+            "name": "HG Smart Santa Cruz do Sul",
             "parentOrganization": { "@id": "https://hgsmart.com.br/#organizacao" },
+            "url": "https://hgsmart.com.br/lojas/santa-cruz-do-sul/",
             "image": "https://hgsmart.com.br/assets/img/fotos/fachada1.jpg",
-            "telephone": "+55-51-99857-5806",
+            "telephone": "+5551998575806",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "R. Marechal Floriano, 829",
+              "streetAddress": "Rua Marechal Floriano, 829 — esquina com a Ramiro Barcelos",
               "addressLocality": "Santa Cruz do Sul",
               "addressRegion": "RS",
               "postalCode": "96810-052",
@@ -112,16 +128,19 @@
               {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "08:00",
+                "opens": "08:30",
                 "closes": "19:00"
               },
               {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": "Saturday",
                 "opens": "08:30",
-                "closes": "14:00"
+                "closes": "17:00"
               }
-            ]
+            ],
+            "currenciesAccepted": "BRL",
+            "paymentAccepted": "Boleto, Pix, Cartão de crédito, Conta de luz",
+            "sameAs": ["https://www.instagram.com/hgsmart.scs/"]
           }
         ]
       }
@@ -160,7 +179,9 @@
           <a class="link-sub text-sm text-prata hover:text-branco" href="quem-somos.html">Quem Somos</a>
           <a class="link-sub text-sm text-prata hover:text-branco" href="catalogo.html">Marcas</a>
           <a class="link-sub text-sm text-prata hover:text-branco" href="servicos.html">Serviços</a>
+          <a class="link-sub text-sm text-prata hover:text-branco" href="como-comprar.html">Como comprar</a>
           <a class="link-sub text-sm text-prata hover:text-branco" href="lojas/">Lojas</a>
+          <a class="link-sub text-sm text-prata hover:text-branco" href="contato.html">Contato</a>
         </nav>
 
         <a href="lojas/" class="btn btn-azul hidden lg:inline-flex">Ver as lojas</a>
@@ -189,11 +210,13 @@
       data-aberto="false"
     >
       <nav aria-label="Navegação mobile" class="flex flex-col gap-2">
-        <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="index.html">Início</a>
+        <a class="border-b border-branco/10 py-5 text-4xl text-azul" href="index.html">Início</a>
         <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="quem-somos.html">Quem Somos</a>
         <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="catalogo.html">Marcas</a>
         <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="servicos.html">Serviços</a>
+        <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="como-comprar.html">Como comprar</a>
         <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="lojas/">Lojas</a>
+        <a class="border-b border-branco/10 py-5 text-4xl text-branco" href="contato.html">Contato</a>
       </nav>
       <a href="lojas/" class="btn btn-azul mt-10 w-full">Ver as lojas</a>
     </div>
@@ -800,8 +823,13 @@
             <ul class="space-y-3 text-sm">
               <li><a class="link-sub text-prata hover:text-branco" href="index.html">Início</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="quem-somos.html">Quem Somos</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="ceo.html">Conheça o CEO</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="servicos.html">Serviços</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="catalogo.html">Marcas</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="como-comprar.html">Como comprar</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="garantia.html">Garantia</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="faq.html">FAQ</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="contato.html">Contato</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="lojas/">Lojas</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="https://hgsmart.com.br/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
             </ul>
@@ -826,7 +854,7 @@
           <nav aria-labelledby="rodape-redes">
             <h2 id="rodape-redes" class="rotulo mb-6">Redes</h2>
             <ul class="space-y-3 text-sm">
-              <li><a class="link-sub text-prata hover:text-branco" href="https://www.instagram.com/redehgsmart/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a class="link-sub text-prata hover:text-branco" href="https://www.instagram.com/hgsmart/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="https://www.facebook.com/redehgsmart/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="https://www.tiktok.com/@redehgsmart" target="_blank" rel="noopener noreferrer">TikTok</a></li>
               <li><a class="link-sub text-prata hover:text-branco" href="https://www.youtube.com/@redehgsmart" target="_blank" rel="noopener noreferrer">YouTube</a></li>
