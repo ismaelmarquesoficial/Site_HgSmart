@@ -34,6 +34,7 @@
 | `areas/projeto-site-2026.md` | Estratégia do novo site (execução) | 🟢 Documentado |
 | `areas/design-motion.md` | Direção criativa: abertura, 3D, cor por seção | 🟢 Documentado (aguarda aprovação) |
 | `checklist.md` | Produção e verificação | 🟢 Ativo |
+| `pendencias.md` | **O que falta para publicar, por responsável** | 🔴 Ativo (11/08) |
 
 ## Fontes recebidas
 
