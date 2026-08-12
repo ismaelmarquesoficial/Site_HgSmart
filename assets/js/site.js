@@ -68,6 +68,21 @@
     });
   }
 
+
+  /* Duas constantes que a faixa de depoimentos usa. Elas viviam fora da
+     função e se perderam quando este arquivo foi enxugado — o console
+     acusava "DURACAO_VOLTA is not defined" a cada quadro da animação.
+
+     A velocidade não é fixa em pixels por segundo: sai daqui dividida
+     pelo comprimento do ciclo, então se ajusta sozinha a cada breakpoint.
+     No celular o ciclo é mais curto e o movimento fica proporcionalmente
+     mais lento, mantendo a sensação de leitura. */
+  const DURACAO_VOLTA = 40000;
+
+  /* Depois de arrastar, a rolagem por inércia continua sozinha por um
+     tempo. Retomar no `pointerup` faria o laço disputar com ela. */
+  const ESPERA_APOS_ARRASTO = 700;
+
   /* ─────────────────────────────────────────────────────────────
      Faixa de depoimentos: rolagem horizontal nativa com scroll-snap,
      e um movimento contínuo por cima. Arrastar com o dedo, rolar no

@@ -234,10 +234,17 @@ Com `prefers-reduced-motion`, sem GSAP ou com falha nas mídias:
 
 ---
 
-## O que falta decidir com você
+## Decidido em 12/08
 
-1. Isto vira a **home** ou é página à parte?
-2. **10,7 MB** de quadros para as três passagens é aceitável? Cortando
-   de 40 para 24 quadros por passagem cai para ~6,5 MB.
-3. As nove lojas sem foto: publico a faixa só com a matriz, ou seguro a
-   cena 04 até o material chegar?
+1. **É a home.** Implementado no `index.html`, preservando os 20
+   depoimentos, o JSON-LD, o menu e o rodapé que já existiam.
+2. A cena "As lojas" ficou **curta e aponta para `/lojas/`** — aquela
+   página já traz as dez unidades com endereço, horário e WhatsApp.
+   Some junto o problema das nove lojas sem foto: a home não tenta ser
+   um catálogo de unidades.
+
+## Ainda em aberto
+
+- **10,7 MB** de quadros nas três passagens. Cortando de 40 para 24
+  quadros por passagem cai para ~6,5 MB, e o scrub continua utilizável
+  com a inércia do Lenis.

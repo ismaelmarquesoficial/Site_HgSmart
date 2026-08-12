@@ -1,0 +1,425 @@
+/* ==========================================================================
+   A EXPERIÊNCIA — aplicação do DESIGN.md na home
+   Arquivo próprio, à mão. O site.css é saída congelada do Tailwind e não
+   tem mais quem o compile; classe utilitária nova não existe mais.
+   ========================================================================== */
+
+/* ─── Tokens ─────────────────────────────────────────────────────────
+   Nomeados por função. O dia em que o azul mudar, `--acao` continua
+   valendo e nada mais precisa ser reescrito. */
+.exp {
+  --fundo:       #07080a;
+  --fundo-2:     #0d1117;
+  --tinta:       #fff;
+  --tinta-2:     rgba(255,255,255,.76);
+  --tinta-3:     rgba(255,255,255,.5);
+  --acao:        #00a2c7;
+  --acao-clara:  #16b7dc;
+  --acao-tinta:  #00232c;
+  --linha:       rgba(255,255,255,.12);
+  --linha-forte: rgba(255,255,255,.24);
+
+  --margem:  clamp(1.5rem, 6vw, 6rem);
+  --ritmo:   clamp(5rem, 14vh, 10rem);
+  --curva-entrada: cubic-bezier(.16, 1, .3, 1);
+  --curva-micro:   cubic-bezier(.2, .7, .3, 1);
+
+  background: var(--fundo);
+  color: var(--tinta);
+}
+
+.exp * { box-sizing: border-box; }
+
+.exp .display {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: .008em;
+}
+
+/* Rótulo — r1 da escala */
+/* Sombra no rótulo e no apoio: sobre a fachada clara do primeiro quadro
+   o texto de baixo contraste desaparecia. */
+.cena-chegada .rotulo-exp,
+.cena-chegada .apoio { text-shadow: 0 2px 18px rgba(0,0,0,.75); }
+.cena-chegada h1 { text-shadow: 0 4px 30px rgba(0,0,0,.5); }
+
+.exp .rotulo-exp {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-3);
+}
+.exp .rotulo-exp b { color: var(--acao); font-weight: 600; }
+
+/* ─── Máscara de texto ───────────────────────────────────────────────
+   O respiro em CIMA existe porque o overflow decepa o acento agudo —
+   "próximo" saía "proximo". Embaixo, pelas descidas e pela cedilha. A
+   margem negativa devolve o espaço ao layout, senão cada linha empurra
+   a seguinte e o título abre buraco. */
+.exp .masc {
+  display: block;
+  overflow: hidden;
+  padding: .16em 0 .1em;
+  margin: -.16em 0 -.1em;
+}
+.exp .masc > span { display: block; will-change: transform; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   CENA 00 — Chegada
+   ══════════════════════════════════════════════════════════════════════ */
+.cena-chegada {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-content: end;
+  overflow: hidden;
+}
+
+/* Sem padding aqui: elemento absoluto com inset:0 se posiciona pelo
+   PADDING BOX, e qualquer padding no pai viraria moldura em volta da
+   imagem. O respiro vive no bloco interno. */
+.cena-chegada-fundo { position: absolute; inset: 0; }
+.cena-chegada-fundo img { width: 100%; height: 100%; object-fit: cover; }
+.cena-chegada-fundo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.12) 34%, var(--fundo) 97%),
+    linear-gradient(100deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.2) 46%, transparent 72%);
+}
+
+.cena-chegada-bloco {
+  position: relative;
+  z-index: 2;
+  padding: var(--margem);
+  padding-bottom: clamp(3rem, 10vh, 7rem);
+  display: grid;
+  align-content: end;
+  min-height: 100svh;
+}
+
+.cena-chegada .marca-topo {
+  height: 2rem; width: auto;
+  margin-bottom: auto;
+  padding-top: clamp(1rem, 3vh, 2rem);
+}
+
+.cena-chegada h1 {
+  font-size: clamp(3rem, 9vw, 8rem);   /* d1 */
+  max-width: 15ch;
+  margin: 1.75rem 0 0;
+}
+.cena-chegada h1 .acento { color: var(--acao); }
+
+.cena-chegada .apoio {
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);   /* t1 */
+  line-height: 1.62;
+  color: var(--tinta-2);
+  max-width: 44ch;
+  margin: 1.5rem 0 0;
+}
+
+.cena-chegada .indica {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: clamp(2rem, 6vh, 3rem);
+}
+.cena-chegada .indica i { font-style: normal; display: inline-block; animation: desce 2s ease-in-out infinite; }
+@keyframes desce { 0%,100% { transform: translateY(0); opacity: .5 } 50% { transform: translateY(5px); opacity: 1 } }
+
+/* Pular introdução — obrigatório quando a abertura toma a tela */
+/* z-60 e fixed: o cabeçalho do site é z-50 e cobria o botão. Pular a
+   introdução precisa estar sempre alcançável — é requisito quando a
+   abertura ocupa a tela inteira. */
+.pular {
+  position: fixed;
+  top: clamp(4.5rem, 9vh, 6rem);
+  right: var(--margem);
+  z-index: 60;
+  padding: .55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--linha-forte);
+  background: rgba(7,8,10,.55);
+  backdrop-filter: blur(8px);
+  color: var(--tinta-2);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .75rem;
+  text-decoration: none;
+  transition: color var(--curva-micro) 200ms, border-color var(--curva-micro) 200ms;
+}
+.pular:hover, .pular:focus-visible { color: var(--tinta); border-color: var(--acao); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   PASSAGENS — vídeo em tela cheia, sem interface por cima
+   ══════════════════════════════════════════════════════════════════════ */
+.passagem { position: relative; }
+.passagem-palco {
+  position: sticky; top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: #000;
+}
+.passagem canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.passagem-palco::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.5), transparent 28%, transparent 58%, rgba(7,8,10,.92));
+  pointer-events: none;
+}
+.passagem-trilho { height: 240svh; }
+
+.passagem-frase {
+  position: absolute;
+  left: var(--margem);
+  bottom: clamp(3rem, 12vh, 7rem);
+  z-index: 2;
+  max-width: 18ch;
+  font-size: clamp(1.6rem, 3.4vw, 3rem);   /* d3 */
+  opacity: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   CAPÍTULOS
+   ══════════════════════════════════════════════════════════════════════ */
+.capitulo {
+  position: relative;
+  padding: var(--ritmo) var(--margem);
+  overflow: hidden;
+}
+.capitulo-alt { background: var(--fundo-2); }
+
+/* Marca d'água: o número do capítulo dá profundidade sem custar imagem */
+.capitulo .agua {
+  position: absolute;
+  right: clamp(.5rem, 3vw, 4rem);
+  top: -.16em;
+  font-size: clamp(9rem, 24vw, 24rem);
+  line-height: .78;
+  color: rgba(255,255,255,.032);
+  pointer-events: none;
+  user-select: none;
+}
+
+.capitulo h2 {
+  position: relative;
+  font-size: clamp(2.25rem, 6vw, 5rem);   /* d2 */
+  max-width: 17ch;
+  margin: 0;
+}
+.capitulo h2 .acento { color: var(--acao); }
+
+.capitulo .num {
+  display: block;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--acao);
+  margin-bottom: 1.25rem;
+}
+
+/* O degrau editorial: o parágrafo recua da margem do título. É o que dá
+   ar de página diagramada em vez de tudo colado à esquerda. */
+.capitulo .texto {
+  position: relative;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  line-height: 1.64;
+  color: var(--tinta-2);
+  max-width: 58ch;
+  margin: clamp(1.75rem, 4vh, 2.5rem) 0 0 clamp(0rem, 8vw, 9rem);
+}
+
+/* ─── Régua de números ─────────────────────────────────────────────── */
+.regua {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  border-top: 1px solid var(--linha);
+}
+.regua > div { padding: 1.5rem 1.25rem 0 0; border-right: 1px solid var(--linha); }
+.regua > div:last-child { border-right: 0; padding-right: 0; }
+.regua b {
+  display: block;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  line-height: .82;
+  font-variant-numeric: tabular-nums;
+}
+.regua .acento { color: var(--acao); }
+.regua span {
+  display: block;
+  margin-top: .7rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .875rem;
+  color: var(--tinta-3);
+}
+
+/* ─── Cidades: tipografia como mapa ────────────────────────────────── */
+.cidades {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 2.25rem;
+  margin: clamp(2.5rem, 6vh, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.cidades li {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(1.25rem, 2.3vw, 2rem);
+  color: rgba(255,255,255,.84);
+}
+.cidades li a { color: inherit; text-decoration: none; transition: color 200ms var(--curva-micro); }
+.cidades li a:hover, .cidades li a:focus-visible { color: var(--acao); }
+.cidades li.breve { color: var(--tinta-3); }
+.cidades li.breve::after {
+  content: "em breve";
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .5625rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--acao);
+  vertical-align: super;
+  margin-left: .35rem;
+}
+
+/* ─── Marcas ───────────────────────────────────────────────────────── */
+.faixa-marcas {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: clamp(1.25rem, 3.5vw, 3rem);
+  align-items: center;
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+}
+.faixa-marcas img {
+  width: 100%;
+  height: auto;
+  max-height: 2.5rem;
+  object-fit: contain;
+  border-radius: .35rem;
+  filter: grayscale(1) brightness(1.85) contrast(.85);
+  opacity: .7;
+  transition: filter 240ms var(--curva-micro), opacity 240ms var(--curva-micro);
+}
+.faixa-marcas img:hover { filter: none; opacity: 1; }
+
+/* ─── O que fazemos: linhas, não cartões ───────────────────────────── */
+.oferta { position: relative; margin-top: clamp(2rem, 5vh, 3rem); border-top: 1px solid var(--linha); }
+.oferta-item {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: baseline;
+  padding: clamp(1.5rem, 3.5vh, 2.25rem) 0;
+  border-bottom: 1px solid var(--linha);
+}
+.oferta-item > span {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  color: var(--tinta-3);
+}
+.oferta-item h3 {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.375rem, 2.6vw, 2.25rem);
+  line-height: 1;
+  margin: 0 0 .5rem;
+}
+.oferta-item p {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: var(--tinta-3);
+  max-width: 58ch;
+  margin: 0;
+}
+
+/* ─── Chamada para a página de lojas ───────────────────────────────── */
+.leva-a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  margin-top: clamp(2rem, 5vh, 3rem);
+  padding: 1rem 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .9375rem;
+  font-weight: 500;
+  color: var(--tinta);
+  text-decoration: none;
+  border-bottom: 1px solid var(--linha-forte);
+  transition: border-color 300ms var(--curva-micro), color 300ms var(--curva-micro);
+}
+.leva-a:hover, .leva-a:focus-visible { color: var(--acao); border-color: var(--acao); }
+.leva-a i { font-style: normal; transition: transform 400ms var(--curva-entrada); }
+.leva-a:hover i { transform: translateX(6px); }
+
+/* ─── Fecho ────────────────────────────────────────────────────────── */
+.fecho-exp {
+  position: relative;
+  padding: var(--ritmo) var(--margem);
+  min-height: 78svh;
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+  border-top: 1px solid var(--linha);
+}
+.fecho-exp h2 { font-size: clamp(2.5rem, 7vw, 6rem); max-width: 16ch; margin: 0; }
+.fecho-exp .rotulo-exp { margin-top: 2rem; }
+
+/* O Eduardo entra sobre fundo SÓLIDO — sobre a cena ele lê como recorte
+   colado, porque a luz de estúdio dele não combina com a sombra do vídeo. */
+.fecho-exp .eduardo-fecho {
+  position: absolute;
+  right: clamp(-3rem, 2vw, 4rem);
+  bottom: 0;
+  height: min(72svh, 34rem);
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(-20px 26px 40px rgba(0,0,0,.6));
+}
+
+/* ─── Revelação ────────────────────────────────────────────────────── */
+.exp [data-entra] { opacity: 0; transform: translateY(24px); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   Mobile — o percurso encurta, nada se sobrepõe
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  .passagem-trilho { height: 150svh; }
+  .capitulo .texto { margin-left: 0; }
+  .capitulo .agua { font-size: 40vw; opacity: .7; }
+  .regua { grid-template-columns: 1fr 1fr; }
+  .regua > div:nth-child(2n) { border-right: 0; padding-right: 0; }
+  .faixa-marcas { grid-template-columns: repeat(3, 1fr); }
+  .faixa-marcas img { filter: none; opacity: .92; }
+  .fecho-exp .eduardo-fecho { height: 44svh; right: -2rem; opacity: .5 !important; }
+  .fecho-exp h2 { max-width: 12ch; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Movimento reduzido — a mesma história, sem percurso
+   ══════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .exp [data-entra] { opacity: 1; transform: none; }
+  .passagem-frase { opacity: 1; }
+  .passagem-trilho { height: 0; }
+  .passagem-palco { position: relative; height: 62svh; }
+  .cena-chegada .indica i { animation: none; }
+  .fecho-exp .eduardo-fecho { opacity: 1; }
+  .exp .masc > span { transform: none !important; }
+}
