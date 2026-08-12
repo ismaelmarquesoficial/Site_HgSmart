@@ -1,0 +1,442 @@
+/* ==========================================================================
+   "Entre na HG" — abertura em scroll
+   Arquivo próprio, fora do site.css: aquele é a saída congelada do Tailwind
+   e não tem mais quem o compile. Aqui é CSS escrito à mão mesmo.
+   ========================================================================== */
+
+:root {
+  --azul: #00a2c7;
+  --preto: #000;
+  --grafite: #0d1117;
+  --branco: #fff;
+  --prata: #a7b2bc;
+  --sombra-texto: 0 2px 24px rgba(0, 0, 0, .55);
+}
+
+/* --------------------------------------------------------------------------
+   Palco
+   O canvas fica FIXO e a altura de rolagem vem do trilho invisível abaixo.
+   É o que permite "rolar o vídeo" sem mover o vídeo da tela.
+   -------------------------------------------------------------------------- */
+.entrada {
+  position: relative;
+  background: var(--preto);
+}
+
+.entrada-palco {
+  position: sticky;
+  top: 0;
+  height: 100svh;              /* svh e não vh: a barra do navegador móvel não faz a cena pular */
+  overflow: hidden;
+}
+
+.entrada-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Escurecimento que entra quando a câmera chega ao ponto do menu.
+   Sem ele o texto branco compete com a parede clara da loja. */
+.entrada-veu {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 80% at 50% 40%, transparent 30%, rgba(0, 0, 0, .55) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, .35), rgba(0, 0, 0, .15) 35%, rgba(0, 0, 0, .8));
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Texto por máscara
+   Cada linha vive dentro de um bloco que corta o que passa dele. A linha
+   sobe de baixo — revelação por máscara, não fade. É a diferença entre
+   "apareceu" e "entrou".
+   -------------------------------------------------------------------------- */
+.mascara {
+  display: block;
+  overflow: hidden;
+
+  /* O respiro precisa existir EM CIMA e embaixo. Em cima porque o overflow
+     decepa o acento agudo — "próximo" saía "proximo", e o problema passava
+     despercebido porque o cedilha de "começa" fica ABAIXO da linha e
+     sobrevivia. Embaixo pelas descidas (g, p, q).
+
+     A margem negativa devolve o espaço ao layout: sem ela cada linha
+     mascarada empurraria a seguinte, e o título abriria buraco entre as
+     linhas. */
+  padding-top: .16em;
+  margin-top: -.16em;
+  padding-bottom: .1em;
+  margin-bottom: -.02em;
+}
+
+.mascara > span {
+  display: block;
+  will-change: transform;
+}
+
+/* --------------------------------------------------------------------------
+   Camadas de conteúdo sobre a cena
+   -------------------------------------------------------------------------- */
+.entrada-camada {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  pointer-events: none;
+}
+
+.entrada-camada > * { pointer-events: auto; }
+
+.entrada-abertura { max-width: 56rem; }
+
+.entrada-rotulo {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--azul);
+  margin-bottom: 1.75rem;
+}
+
+.entrada-titulo {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: .005em;
+  font-size: clamp(2.75rem, 8.5vw, 8rem);
+  color: var(--branco);
+  text-shadow: var(--sombra-texto);
+  margin: 0;
+}
+
+.entrada-titulo .destaque { color: var(--azul); }
+
+.entrada-linha-apoio {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: clamp(1rem, 1.7vw, 1.375rem);
+  line-height: 1.55;
+  color: var(--branco);
+  opacity: .92;
+  max-width: 34ch;
+  margin: 1.75rem 0 0;
+  text-shadow: var(--sombra-texto);
+}
+
+/* Frases do percurso: nascem em pontos diferentes da tela, acompanhando
+   a perspectiva de onde a câmera está — não empilhadas no centro. */
+.entrada-frase {
+  position: absolute;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(1.75rem, 4.6vw, 4.25rem);
+  line-height: 1;
+  color: var(--branco);
+  text-shadow: var(--sombra-texto);
+  max-width: 18ch;
+  opacity: 0;
+}
+
+.entrada-frase[data-ancora="porta"]   { left: clamp(1.5rem, 8vw, 9rem);  top: 22%; }
+.entrada-frase[data-ancora="balcao"]  { right: clamp(1.5rem, 8vw, 9rem); bottom: 24%; text-align: right; }
+.entrada-frase[data-ancora="parede"]  { left: clamp(1.5rem, 8vw, 9rem);  bottom: 26%; }
+
+/* --------------------------------------------------------------------------
+   Chamadas da abertura
+   -------------------------------------------------------------------------- */
+.entrada-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .25s cubic-bezier(.2, .7, .3, 1), background-color .25s, color .25s;
+}
+
+.botao-azul { background: var(--azul); color: #00232c; }
+.botao-azul:hover { transform: translateY(-2px); background: #16b7dc; }
+
+.botao-vidro {
+  background: rgba(255, 255, 255, .1);
+  color: var(--branco);
+  border: 1px solid rgba(255, 255, 255, .28);
+  backdrop-filter: blur(6px);
+}
+.botao-vidro:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .18); }
+
+.entrada-role {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 2.75rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .8125rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .72);
+}
+
+.entrada-role .seta {
+  display: inline-block;
+  animation: descer 1.8s ease-in-out infinite;
+}
+
+@keyframes descer {
+  0%, 100% { transform: translateY(0); opacity: .55; }
+  50%      { transform: translateY(6px); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   O menu — a loja vira navegação
+   -------------------------------------------------------------------------- */
+.entrada-menu {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: clamp(1.75rem, 3vw, 2.75rem);
+  padding: 6rem clamp(1.25rem, 5vw, 4rem) 4rem;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+}
+
+.entrada-menu[data-aberto="true"] { visibility: visible; }
+
+.entrada-pergunta {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+  color: var(--branco);
+  text-align: center;
+  text-shadow: var(--sombra-texto);
+  margin: 0;
+}
+
+.entrada-caminhos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
+  width: min(64rem, 100%);
+}
+
+/* A partir de 1100px o Eduardo ocupa a direita da tela. O menu recua para
+   não passar por baixo dele — caso contrário o último item de cada lista
+   fica atrás da figura, e o visitante não descobre que ele existe. */
+@media (min-width: 1100px) {
+  .entrada-menu { justify-items: start; padding-right: clamp(16rem, 26vw, 26rem); padding-left: clamp(2rem, 6vw, 6rem); }
+  .entrada-pergunta { text-align: left; }
+  .entrada-caminhos { width: 100%; }
+}
+
+.caminho {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
+  background: rgba(10, 14, 20, .62);
+  border: 1px solid rgba(255, 255, 255, .14);
+  backdrop-filter: blur(14px);
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  transition: transform .3s cubic-bezier(.2, .7, .3, 1), border-color .3s, background-color .3s;
+}
+
+.caminho:hover,
+.caminho:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(0, 162, 199, .65);
+  background: rgba(10, 14, 20, .78);
+}
+
+.caminho-rotulo {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+
+.caminho-titulo {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1.02;
+  color: var(--branco);
+  margin: .75rem 0 0;
+}
+
+.caminho-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.caminho-lista a {
+  display: inline-block;
+  padding: .5rem .95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .2);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .8125rem;
+  color: rgba(255, 255, 255, .88);
+  text-decoration: none;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+
+.caminho-lista a:hover,
+.caminho-lista a:focus-visible {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: #00232c;
+}
+
+/* --------------------------------------------------------------------------
+   Eduardo — recorte em camadas, com leve profundidade
+   Não é 3D de verdade: é um cutout com perspectiva e paralaxe. O que dá a
+   sensação de volume é a inclinação sutil somada à sombra projetada.
+   -------------------------------------------------------------------------- */
+.eduardo {
+  position: absolute;
+  right: clamp(-2rem, 1vw, 3rem);
+  bottom: 0;
+  height: min(74svh, 40rem);
+  pointer-events: none;
+  opacity: 0;
+  perspective: 900px;
+  z-index: 3;
+}
+
+.eduardo img {
+  height: 100%;
+  width: auto;
+  display: block;
+  filter: drop-shadow(-18px 24px 34px rgba(0, 0, 0, .55));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* O balão fica ACIMA da figura — nem ao lado, nem sobreposto. Ao lado ele
+   avançava sobre o cartão "Quero descobrir como comprar" e tapava as
+   opções que o Eduardo está justamente apresentando. Acima, ele ocupa a
+   faixa vazia da fachada, onde não disputa com nada. */
+.eduardo-balao {
+  position: absolute;
+  left: auto;
+  right: 0;
+  bottom: calc(100% + .75rem);
+  top: auto;
+  width: min(17rem, 60vw);
+  padding: 1rem 1.15rem;
+  border-radius: 1rem 1rem .25rem 1rem;
+  background: var(--branco);
+  color: var(--grafite);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .875rem;
+  line-height: 1.5;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .4);
+  opacity: 0;
+  transform: translateY(10px) scale(.96);
+}
+
+/* --------------------------------------------------------------------------
+   Cabeçalho compacto, depois da experiência
+   -------------------------------------------------------------------------- */
+.barra {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: .85rem clamp(1rem, 4vw, 2.5rem);
+  background: rgba(5, 7, 10, .82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  transform: translateY(-100%);
+}
+
+.barra img { height: 1.75rem; width: auto; }
+
+.barra nav {
+  display: flex;
+  gap: 1.25rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.barra a {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .875rem;
+  color: rgba(255, 255, 255, .82);
+  text-decoration: none;
+}
+
+.barra a:hover { color: var(--branco); }
+
+.barra .voltar {
+  border: 1px solid rgba(0, 162, 199, .5);
+  color: var(--azul);
+  border-radius: 999px;
+  padding: .45rem 1rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .barra nav { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Trilho de rolagem: é ele que dá "distância" para a câmera percorrer.
+   -------------------------------------------------------------------------- */
+.entrada-trilho { height: 520svh; }
+
+@media (max-width: 860px) {
+  /* Percurso mais curto no celular — a mesma história em menos rolagem */
+  .entrada-trilho { height: 360svh; }
+  .eduardo { height: min(52svh, 26rem); right: -1.5rem; }
+  .eduardo-balao { left: auto; right: 6rem; top: 6%; }
+}
+
+/* --------------------------------------------------------------------------
+   Movimento reduzido: sem percurso, sem paralaxe. A cena vira uma imagem e
+   o menu já entra aberto — quem pediu menos movimento não deve precisar
+   rolar cinco telas para navegar.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .entrada-trilho { height: 0; }
+  .entrada-palco { position: relative; height: auto; min-height: 100svh; }
+  .entrada-veu { opacity: 1; }
+  /* 7rem e não 3: aqui a barra já está fixa no topo desde o carregamento,
+     e com 3rem a pergunta do menu passava por baixo dela */
+  .entrada-menu { opacity: 1; visibility: visible; position: relative; padding-top: 7rem; }
+  .entrada-abertura, .entrada-frase { display: none; }
+  .eduardo { opacity: 1; }
+  .eduardo-balao { opacity: 1; transform: none; }
+  .barra { transform: none; }
+  .entrada-role .seta { animation: none; }
+}
