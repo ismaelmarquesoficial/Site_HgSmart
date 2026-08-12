@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Direção A — sóbrio cinematográfico</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preload" href="../assets/fontes/BebasNeue-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../assets/fontes/Inter-variavel.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../assets/css/site.css" />
+
+    <style>
+      /* ══════════════════════════════════════════════════════════════════
+         DIREÇÃO A — sóbrio, cinematográfico (Apple / Oryzo)
+
+         A regra é a subtração. Nenhum cartão, nenhum vidro, nenhum balão:
+         a cena e o tipo carregam tudo. A escolha não é um componente de
+         interface — é uma frase grande que o visitante lê e clica.
+
+         O que some em relação ao protótipo anterior:
+           · cartões translúcidos (o fundo vazava e sujava o texto)
+           · balão de fala (lia como widget de chat)
+           · etiquetas espalhadas (confete sobre a imagem)
+         ══════════════════════════════════════════════════════════════════ */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        background: #000;
+        color: #fff;
+        font-family: Inter, system-ui, sans-serif;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .cena { position: fixed; inset: 0; }
+
+      /* A imagem entra bem escura e dessaturada. Ela é ambiente, não
+         assunto — se competir com o texto, os dois perdem. */
+      .cena img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        filter: brightness(.34) saturate(.55) contrast(1.06);
+        transform: scale(1.04);
+      }
+
+      /* Vinheta pesada nas bordas: é o que dá o "corte de cinema" e
+         empurra o olho para o centro-esquerda, onde o texto vive. */
+      .cena::after {
+        content: "";
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(75% 60% at 38% 52%, transparent 0%, rgba(0,0,0,.55) 78%, rgba(0,0,0,.88) 100%),
+          linear-gradient(105deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.25) 46%, rgba(0,0,0,.6) 100%);
+      }
+
+      /* Grão sutil, do jeito que filme tem. Sem isso o degradê em tela
+         grande mostra faixas (banding) no preto. */
+      .grao {
+        position: fixed; inset: -50%;
+        opacity: .045;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      .quadro {
+        position: relative;
+        height: 100vh;
+        display: grid;
+        align-content: center;
+        padding: 0 clamp(2rem, 8vw, 10rem);
+        max-width: 96rem;
+      }
+
+      .rotulo {
+        font-size: .6875rem;
+        letter-spacing: .34em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.42);
+        margin-bottom: 2.5rem;
+      }
+
+      .pergunta {
+        font-family: "Bebas Neue", Impact, sans-serif;
+        font-size: clamp(2.5rem, 6.4vw, 6rem);
+        line-height: .95;
+        letter-spacing: .01em;
+        margin-bottom: clamp(2.5rem, 5vh, 4rem);
+      }
+
+      .pergunta em { font-style: normal; color: #00a2c7; }
+
+      /* As duas escolhas: linhas, não caixas. O peso vem do tamanho e do
+         filete que corre embaixo — não de fundo, borda ou sombra. */
+      .escolhas { display: grid; gap: 0; max-width: 52rem; }
+
+      .escolha {
+        display: grid;
+        grid-template-columns: 3.5rem 1fr auto;
+        align-items: baseline;
+        gap: clamp(1rem, 3vw, 2.5rem);
+        padding: clamp(1.4rem, 3vh, 2.2rem) 0;
+        border-top: 1px solid rgba(255,255,255,.14);
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        transition: padding-left .5s cubic-bezier(.16,1,.3,1);
+      }
+      .escolha:last-child { border-bottom: 1px solid rgba(255,255,255,.14); }
+
+      /* O filete azul cresce da esquerda no hover — a única "decoração"
+         da tela, e mesmo assim é uma linha. */
+      .escolha::before {
+        content: "";
+        position: absolute; left: 0; bottom: -1px;
+        height: 1px; width: 0;
+        background: #00a2c7;
+        transition: width .6s cubic-bezier(.16,1,.3,1);
+      }
+      .escolha:hover::before { width: 100%; }
+      .escolha:hover { padding-left: 1.25rem; }
+
+      .escolha-num {
+        font-size: .75rem;
+        letter-spacing: .18em;
+        color: rgba(255,255,255,.34);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .escolha-titulo {
+        font-family: "Bebas Neue", Impact, sans-serif;
+        font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+        line-height: 1;
+        transition: color .4s;
+      }
+      .escolha:hover .escolha-titulo { color: #00a2c7; }
+
+      .escolha-nota {
+        font-size: .875rem;
+        color: rgba(255,255,255,.5);
+        max-width: 22ch;
+        line-height: 1.5;
+      }
+
+      .escolha-seta {
+        font-size: 1.5rem;
+        color: rgba(255,255,255,.3);
+        transition: transform .5s cubic-bezier(.16,1,.3,1), color .4s;
+      }
+      .escolha:hover .escolha-seta { transform: translateX(10px); color: #00a2c7; }
+
+      /* Eduardo: quase invisível de propósito. Silhueta escura no canto,
+         integrada à penumbra em vez de recortada por cima dela. */
+      .figura {
+        position: fixed;
+        right: -2%;
+        bottom: 0;
+        height: 82vh;
+        pointer-events: none;
+        filter: brightness(.42) contrast(1.1);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 100%);
+        opacity: .85;
+      }
+
+      .rodape-nota {
+        position: fixed;
+        left: clamp(2rem, 8vw, 10rem);
+        bottom: 2.5rem;
+        font-size: .75rem;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.3);
+      }
+
+      .marca {
+        position: fixed;
+        left: clamp(2rem, 8vw, 10rem);
+        top: 2.5rem;
+        height: 1.6rem;
+        opacity: .75;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="cena"><img src="fundo-8.4.jpg" alt="" /></div>
+    <div class="grao"></div>
+
+    <img class="marca" src="../assets/img/icones/LOGO.png" alt="HG Smart" />
+    <img class="figura" src="../assets/img/eduardo/eduardo-pose-02.webp" alt="" />
+
+    <main class="quadro">
+      <p class="rotulo">Você está dentro da loja</p>
+
+      <h1 class="pergunta">
+        Por onde você<br />quer <em>começar?</em>
+      </h1>
+
+      <div class="escolhas">
+        <a class="escolha" href="../catalogo.html">
+          <span class="escolha-num">01</span>
+          <span class="escolha-titulo">Quero escolher um celular</span>
+          <span class="escolha-seta">→</span>
+        </a>
+
+        <a class="escolha" href="../como-comprar.html">
+          <span class="escolha-num">02</span>
+          <span class="escolha-titulo">Quero descobrir como comprar</span>
+          <span class="escolha-seta">→</span>
+        </a>
+      </div>
+    </main>
+
+    <p class="rodape-nota">10 lojas · Rio Grande do Sul</p>
+  </body>
+</html>
