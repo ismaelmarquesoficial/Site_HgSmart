@@ -130,6 +130,127 @@
             </div>
           </div>
 
+          <!-- ══════════════ ETIQUETAS NO CENÁRIO ══════════════
+               Aparecem quando o visitante escolhe um caminho. Cada uma fica
+               ancorada onde aquilo estaria na loja: as marcas junto do
+               expositor, os acessórios perto do balcão, as formas de
+               pagamento numa faixa embaixo. -->
+          <div class="cenario" data-cenario data-modo="" aria-hidden="true">
+            <button class="cenario-voltar" data-cenario-voltar type="button">← Voltar aos caminhos</button>
+
+            <!-- Caminho 1: escolher um celular -->
+            <a class="etiqueta" data-grupo="produto" data-ancora="expositor"
+               href="catalogo.html#apple"
+               data-produto="assets/img/produtos/apple.png"
+               data-descricao="iPhone novo e seminovo, com garantia e procedência declarada.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">iPhone</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="produto" data-ancora="parede-alta"
+               href="catalogo.html#samsung"
+               data-produto="assets/img/produtos/samsung.png"
+               data-descricao="A linha Galaxy completa, do básico ao topo.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Samsung</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="produto" data-ancora="centro"
+               href="catalogo.html#xiaomi"
+               data-produto="assets/img/produtos/Xiaomi.png"
+               data-descricao="Xiaomi e Redmi: a melhor relação entre preço e ficha técnica.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Xiaomi</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="produto" data-ancora="balcao-dir"
+               href="catalogo.html#motorola"
+               data-produto="assets/img/produtos/Motorola2.png"
+               data-descricao="Motorola: bateria que dura e Android limpo.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Motorola</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="produto" data-ancora="baixo-esq"
+               href="catalogo.html#realme"
+               data-produto="assets/img/produtos/realme2.png"
+               data-descricao="Realme: desempenho de sobra por menos.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Realme</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="produto" data-ancora="baixo-dir"
+               href="troca-do-usado.html"
+               data-descricao="Seminovos com estado declarado — e o seu usado abate no novo.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Seminovos</span>
+            </a>
+
+            <!-- Caminho 2: como comprar -->
+            <a class="etiqueta" data-grupo="pagamento" data-ancora="expositor"
+               href="conta-de-luz.html"
+               data-descricao="A parcela entra na fatura de energia. Até 24x, sem entrada.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Conta de luz</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="pagamento" data-ancora="parede-alta"
+               href="boleto.html"
+               data-descricao="Até 18x, sem cartão e sem conta em banco. Atende negativado.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Boleto</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="pagamento" data-ancora="centro"
+               href="credito-clt.html"
+               data-descricao="Em até 44x, para quem tem carteira assinada.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Crédito CLT</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="pagamento" data-ancora="balcao-dir"
+               href="cartao-de-credito.html"
+               data-descricao="Até 10x sem juros, ou até 18x parcelado.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Cartão</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="pagamento" data-ancora="baixo-esq"
+               href="a-vista.html"
+               data-descricao="Pix ou dinheiro, com desconto no valor.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">À vista</span>
+            </a>
+
+            <a class="etiqueta" data-grupo="pagamento" data-ancora="baixo-dir"
+               href="contato.html"
+               data-descricao="Fale com quem atende na loja da sua cidade.">
+              <span class="etiqueta-ponto" aria-hidden="true"></span>
+              <span class="etiqueta-nome">Falar com consultor</span>
+            </a>
+
+            <!-- Fica nos dois modos: achar a loja é sempre útil -->
+            <a class="etiqueta etiqueta-local" data-grupo="sempre" data-ancora="topo-dir"
+               href="lojas/index.html"
+               data-descricao="Endereço, horário e WhatsApp das 10 unidades.">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11z" stroke-linejoin="round" />
+                <circle cx="12" cy="10" r="2.6" />
+              </svg>
+              <span class="etiqueta-nome">Encontrar uma loja</span>
+            </a>
+
+            <!-- Painel que abre no hover/foco de uma etiqueta -->
+            <div class="cenario-detalhe" data-detalhe>
+              <img data-detalhe-img alt="" width="300" height="300" />
+              <div>
+                <p class="cenario-detalhe-titulo" data-detalhe-titulo></p>
+                <p class="cenario-detalhe-texto" data-detalhe-texto></p>
+                <span class="botao botao-azul cenario-detalhe-botao">Ver opções</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Eduardo entra depois do menu, como guia -->
           <div class="eduardo" data-eduardo aria-hidden="true">
             <div class="eduardo-balao" data-balao>

@@ -440,3 +440,231 @@
   .barra { transform: none; }
   .entrada-role .seta { animation: none; }
 }
+
+/* ==========================================================================
+   FASE 4 — Navegação integrada ao cenário
+   As opções viram etiquetas ancoradas onde aquilo estaria na loja. No hover,
+   o cenário desfoca e escurece, e só a etiqueta escolhida segue nítida: é o
+   foco fazendo o trabalho que uma seta faria pior.
+   ========================================================================== */
+.cenario {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.cenario[data-modo="produto"],
+.cenario[data-modo="pagamento"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Cada etiqueta pertence a um caminho. As do caminho que não está aberto
+   somem do fluxo — e do foco do teclado, que é o motivo de usar display
+   e não só opacidade. */
+.etiqueta { display: none; }
+.cenario[data-modo="produto"]   .etiqueta[data-grupo="produto"],
+.cenario[data-modo="pagamento"] .etiqueta[data-grupo="pagamento"],
+.cenario[data-modo="produto"]   .etiqueta[data-grupo="sempre"],
+.cenario[data-modo="pagamento"] .etiqueta[data-grupo="sempre"] { display: inline-flex; }
+
+.etiqueta {
+  position: absolute;
+  align-items: center;
+  gap: .55rem;
+  padding: .6rem 1.1rem .6rem .75rem;
+  border-radius: 999px;
+  background: rgba(8, 12, 18, .72);
+  border: 1px solid rgba(255, 255, 255, .18);
+  backdrop-filter: blur(10px);
+  color: var(--branco);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .875rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .3s cubic-bezier(.2,.7,.3,1), background-color .3s,
+              border-color .3s, box-shadow .3s;
+}
+
+.etiqueta:hover,
+.etiqueta:focus-visible {
+  transform: translateY(-3px) scale(1.04);
+  background: rgba(0, 162, 199, .92);
+  border-color: rgba(255, 255, 255, .5);
+  box-shadow: 0 12px 34px rgba(0, 162, 199, .35);
+  color: #00232c;
+}
+
+/* O ponto pulsa devagar: é o que faz a etiqueta parecer ancorada num lugar
+   do cenário, e não flutuando solta por cima dele. */
+.etiqueta-ponto {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 999px;
+  background: var(--azul);
+  box-shadow: 0 0 0 0 rgba(0, 162, 199, .7);
+  animation: pulsar 2.4s ease-out infinite;
+}
+
+.etiqueta:hover .etiqueta-ponto { background: #00232c; animation: none; }
+
+@keyframes pulsar {
+  0%   { box-shadow: 0 0 0 0 rgba(0, 162, 199, .65); }
+  70%  { box-shadow: 0 0 0 .55rem rgba(0, 162, 199, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 162, 199, 0); }
+}
+
+/* Ancoragem: cada ponto corresponde a um lugar do quadro final do vídeo —
+   expositor à esquerda, parede alta, centro da loja, balcão à direita. */
+.etiqueta[data-ancora="expositor"]   { left: 8%;  top: 42%; }
+.etiqueta[data-ancora="parede-alta"] { left: 26%; top: 24%; }
+.etiqueta[data-ancora="centro"]      { left: 46%; top: 52%; }
+.etiqueta[data-ancora="balcao-dir"]  { right: 24%; top: 36%; }
+.etiqueta[data-ancora="baixo-esq"]   { left: 14%; bottom: 18%; }
+.etiqueta[data-ancora="baixo-dir"]   { right: 20%; bottom: 22%; }
+.etiqueta[data-ancora="topo-dir"]    { right: 4%;  top: 12%; }
+
+/* Desfoque do cenário quando uma etiqueta está em foco.
+   O filtro entra no CANVAS e não no palco inteiro: aplicar no pai criaria
+   um contexto de empilhamento novo e as etiquetas desfocariam junto. */
+.entrada[data-foco="true"] .entrada-canvas {
+  filter: blur(5px) brightness(.55);
+  transform: scale(1.03);   /* esconde a borda que o blur deixa transparente */
+}
+
+.entrada-canvas { transition: filter .45s ease, transform .45s ease; }
+
+.entrada[data-foco="true"] .etiqueta:not(:hover):not(:focus-visible) { opacity: .35; }
+.etiqueta { transition-property: transform, background-color, border-color, box-shadow, opacity; }
+
+.entrada[data-foco="true"] .entrada-menu,
+.entrada[data-foco="true"] .eduardo { opacity: .25; }
+
+.cenario-voltar {
+  position: absolute;
+  left: clamp(1rem, 4vw, 3rem);
+  top: clamp(4.5rem, 9vh, 6.5rem);
+  padding: .55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(8,12,18,.7);
+  backdrop-filter: blur(10px);
+  color: var(--branco);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .8125rem;
+  cursor: pointer;
+}
+.cenario-voltar:hover { background: rgba(8,12,18,.9); border-color: rgba(255,255,255,.45); }
+
+/* Painel de detalhe — o aparelho vem para a frente */
+.cenario-detalhe {
+  position: absolute;
+  right: clamp(1.5rem, 6vw, 6rem);
+  bottom: clamp(2rem, 8vh, 6rem);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: min(30rem, 78vw);
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: rgba(8, 12, 18, .82);
+  border: 1px solid rgba(255, 255, 255, .16);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s cubic-bezier(.2,.7,.3,1);
+}
+
+.cenario-detalhe[data-visivel="true"] { opacity: 1; transform: translateY(0); }
+
+.cenario-detalhe img {
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 26px rgba(0,0,0,.6));
+  flex: none;
+}
+.cenario-detalhe img[hidden] { display: none; }
+
+.cenario-detalhe-titulo {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--branco);
+  margin: 0 0 .4rem;
+}
+
+.cenario-detalhe-texto {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: var(--prata);
+  margin: 0 0 .9rem;
+}
+
+.cenario-detalhe-botao { padding: .55rem 1.15rem; font-size: .8125rem; }
+
+/* ==========================================================================
+   FASE 6 — Transição: o card cresce e vira o banner da categoria
+   Um clone do card é fixado sobre a tela e cresce até preencher tudo,
+   enquanto o cenário recua. A página de destino só é chamada no fim, para o
+   movimento não ser interrompido pelo carregamento.
+   ========================================================================== */
+.transicao {
+  position: fixed;
+  z-index: 90;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--grafite);
+  border: 1px solid rgba(255,255,255,.18);
+  display: grid;
+  place-items: center;
+  will-change: transform, width, height, top, left;
+}
+
+.transicao img {
+  width: 42%;
+  max-width: 16rem;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(0,0,0,.65));
+}
+
+.transicao-titulo {
+  position: absolute;
+  bottom: 12%;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(2rem, 7vw, 5.5rem);
+  color: var(--branco);
+  opacity: 0;
+}
+
+@media (max-width: 860px) {
+  /* No celular as etiquetas viram uma faixa rolável no rodapé: espalhadas
+     pela tela elas se sobrepõem e o alvo de toque fica pequeno demais. */
+  .cenario[data-modo="produto"],
+  .cenario[data-modo="pagamento"] {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: .6rem;
+    overflow-x: auto;
+    padding: 0 1rem 1.5rem;
+    scrollbar-width: none;
+  }
+  .cenario::-webkit-scrollbar { display: none; }
+  .etiqueta { position: static; flex: none; }
+  .cenario-voltar { position: fixed; }
+  .cenario-detalhe { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entrada[data-foco="true"] .entrada-canvas { filter: none; transform: none; }
+  .etiqueta-ponto { animation: none; }
+  .cenario-detalhe { transition: none; }
+}

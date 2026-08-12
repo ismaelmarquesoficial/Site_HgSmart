@@ -267,4 +267,137 @@
     const alvo = palco.offsetTop + palco.offsetHeight * 0.88;
     window.scrollTo({ top: alvo, behavior: 'smooth' });
   });
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     FASE 4 — a loja vira navegação
+     Escolher um caminho recolhe o menu e espalha as opções pelo cenário,
+     cada uma ancorada onde aquilo estaria na loja.
+     ═══════════════════════════════════════════════════════════════════════ */
+  const cenario = palco.querySelector('[data-cenario]');
+  const detalhe = palco.querySelector('[data-detalhe]');
+  const detalheImg = palco.querySelector('[data-detalhe-img]');
+  const detalheTitulo = palco.querySelector('[data-detalhe-titulo]');
+  const detalheTexto = palco.querySelector('[data-detalhe-texto]');
+
+  function abrirCenario(modo) {
+    cenario.dataset.modo = modo;
+    cenario.setAttribute('aria-hidden', 'false');
+    gsap.to(menu, { autoAlpha: 0, y: -20, duration: .45, ease: 'power2.inOut' });
+    /* As etiquetas entram escalonadas, e não todas de uma vez: em bloco elas
+       viram uma parede de botões e o olho não sabe por onde começar. */
+    const visiveis = [...cenario.querySelectorAll('.etiqueta')]
+      .filter((el) => getComputedStyle(el).display !== 'none');
+    gsap.fromTo(visiveis,
+      { autoAlpha: 0, scale: .82, y: 12 },
+      { autoAlpha: 1, scale: 1, y: 0, duration: .5, stagger: .05, ease: 'back.out(1.7)' });
+  }
+
+  function fecharCenario() {
+    cenario.dataset.modo = '';
+    cenario.setAttribute('aria-hidden', 'true');
+    detalhe.dataset.visivel = 'false';
+    palco.dataset.foco = 'false';
+    gsap.to(menu, { autoAlpha: 1, y: 0, duration: .45, ease: 'power2.out' });
+  }
+
+  palco.querySelectorAll('[data-caminho]').forEach((cartao) => {
+    cartao.addEventListener('click', (e) => {
+      /* Clique num item específico da lista não abre o cenário — leva direto
+         para a página, que é o que a pessoa pediu ao mirar naquele link. */
+      if (e.target.closest('a')) return;
+      abrirCenario(cartao.dataset.caminho);
+    });
+  });
+
+  palco.querySelector('[data-cenario-voltar]')?.addEventListener('click', fecharCenario);
+
+  /* Deep link: entrada.html#produto e #pagamento abrem o caminho direto.
+     Serve para campanha ("veja as formas de pagamento") cair já no lugar
+     certo, sem obrigar a percorrer a abertura de novo. */
+  const caminhoNaUrl = location.hash.replace('#', '');
+  if (caminhoNaUrl === 'produto' || caminhoNaUrl === 'pagamento') {
+    requestAnimationFrame(() => {
+      /* 88% e não o fim do documento: no fim o sticky já soltou e a cena
+         saiu da tela, sobrando o fundo preto do trilho. 88% é onde o
+         percurso termina e o menu está no ar — o mesmo ponto que o
+         "Voltar à loja" usa. */
+      window.scrollTo(0, palco.offsetTop + palco.offsetHeight * 0.88);
+      setTimeout(() => abrirCenario(caminhoNaUrl), 260);
+    });
+  }
+
+  /* Foco: o cenário desfoca e a etiqueta apontada segue nítida, com o
+     aparelho e a descrição vindo para a frente. */
+  cenario.querySelectorAll('.etiqueta').forEach((etq) => {
+    const entrar = () => {
+      palco.dataset.foco = 'true';
+      const img = etq.dataset.produto;
+      detalheImg.hidden = !img;
+      if (img) detalheImg.src = img;
+      detalheTitulo.textContent = etq.querySelector('.etiqueta-nome').textContent;
+      detalheTexto.textContent = etq.dataset.descricao || '';
+      detalhe.dataset.visivel = 'true';
+    };
+    const sair = () => {
+      palco.dataset.foco = 'false';
+      detalhe.dataset.visivel = 'false';
+    };
+    etq.addEventListener('pointerenter', entrar);
+    etq.addEventListener('focus', entrar);
+    etq.addEventListener('pointerleave', sair);
+    etq.addEventListener('blur', sair);
+
+    /* ═══════════════════════════════════════════════════════════════════
+       FASE 6 — o card cresce e vira o banner da categoria
+       ═══════════════════════════════════════════════════════════════════ */
+    etq.addEventListener('click', (e) => {
+      if (!querMovimento) return;              /* sem movimento, navegação seca */
+      e.preventDefault();
+      crescerEIr(etq);
+    });
+  });
+
+  /* FLIP na mão: mede onde a etiqueta está, cria um clone fixo exatamente
+     ali e o faz crescer até a tela inteira. O destino só é chamado quando a
+     animação termina — carregar no meio congela o movimento, e um
+     movimento que trava é pior do que não ter movimento. */
+  function crescerEIr(etq) {
+    const destino = etq.getAttribute('href');
+    const r = etq.getBoundingClientRect();
+
+    const clone = document.createElement('div');
+    clone.className = 'transicao';
+    Object.assign(clone.style, {
+      left: `${r.left}px`, top: `${r.top}px`,
+      width: `${r.width}px`, height: `${r.height}px`,
+    });
+
+    if (etq.dataset.produto) {
+      const img = document.createElement('img');
+      img.src = etq.dataset.produto;
+      img.alt = '';
+      clone.appendChild(img);
+    }
+    const titulo = document.createElement('p');
+    titulo.className = 'transicao-titulo';
+    titulo.textContent = etq.querySelector('.etiqueta-nome').textContent;
+    clone.appendChild(titulo);
+
+    document.body.appendChild(clone);
+
+    const t = gsap.timeline({
+      onComplete: () => { window.location.href = destino; },
+    });
+    t.to(clone, {
+      left: 0, top: 0, width: '100vw', height: '100svh', borderRadius: 0,
+      duration: .62, ease: 'power3.inOut',
+    });
+    /* O cenário recua enquanto o card cresce: é o que dá a leitura de que o
+       produto foi retirado da loja, e não de que uma caixa cobriu a tela. */
+    t.to(palco, { scale: .94, autoAlpha: .35, duration: .62, ease: 'power3.inOut' }, 0);
+    t.to(titulo, { opacity: 1, y: 0, duration: .3, ease: 'power2.out' }, .34);
+    t.fromTo(clone.querySelector('img'),
+      { scale: .7, opacity: .6 },
+      { scale: 1, opacity: 1, duration: .55, ease: 'power2.out' }, .1);
+  }
 })();
