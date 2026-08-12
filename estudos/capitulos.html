@@ -314,7 +314,7 @@
     </header>
 
     <!-- ══════════════ PASSAGEM 1 — a fachada ══════════════ -->
-    <section class="passagem" data-passagem data-de="1" data-ate="34">
+    <section class="passagem" data-passagem data-pasta="p1" data-total="40">
       <div class="passagem-palco">
         <canvas data-canvas></canvas>
         <p class="passagem-frase display" data-frase>Uma loja de rua, na esquina de sempre.</p>
@@ -351,7 +351,7 @@
     </section>
 
     <!-- ══════════════ PASSAGEM 2 — entrando ══════════════ -->
-    <section class="passagem" data-passagem data-de="35" data-ate="68">
+    <section class="passagem" data-passagem data-pasta="p2" data-total="40">
       <div class="passagem-palco">
         <canvas data-canvas></canvas>
         <p class="passagem-frase display" data-frase>Por dentro, o mesmo padrão em todas.</p>
@@ -380,10 +380,10 @@
     </section>
 
     <!-- ══════════════ PASSAGEM 3 — os aparelhos ══════════════ -->
-    <section class="passagem" data-passagem data-de="69" data-ate="100">
+    <section class="passagem" data-passagem data-pasta="p3" data-total="40">
       <div class="passagem-palco">
         <canvas data-canvas></canvas>
-        <p class="passagem-frase display" data-frase>Todas as marcas, lado a lado.</p>
+        <p class="passagem-frase display" data-frase>E a marca, no fim do corredor.</p>
       </div>
       <div class="passagem-trilho"></div>
     </section>
@@ -480,15 +480,22 @@
          quadros são compartilhados entre elas num cache único — o mesmo
          arquivo não é baixado duas vezes se dois trechos se tocarem. */
       (() => {
+        /* Cada passagem tem a SUA sequência, de um vídeo diferente.
+           Antes as três eram trechos do mesmo arquivo, contínuos no tempo:
+           o fim de uma e o começo da seguinte eram quase o mesmo quadro, e
+           com um capítulo inteiro no meio a leitura era de que o vídeo
+           tinha voltado. Vídeos distintos por passagem resolvem — cada
+           retomada mostra um lugar novo da loja. */
         const cache = new Map();
-        const caminho = (i) => `../assets/img/entrada/desktop/f${String(i).padStart(3,'0')}.webp`;
+        const chave = (pasta, i) => `${pasta}/${i}`;
 
-        function carregar(i) {
-          if (cache.has(i)) return cache.get(i);
+        function carregar(pasta, i) {
+          const k = chave(pasta, i);
+          if (cache.has(k)) return cache.get(k);
           const img = new Image();
           img.decoding = 'async';
-          img.src = caminho(i);
-          cache.set(i, img);
+          img.src = `../assets/img/entrada/${pasta}/f${String(i).padStart(3,'0')}.webp`;
+          cache.set(k, img);
           return img;
         }
 
@@ -520,10 +527,11 @@
         document.querySelectorAll('[data-passagem]').forEach((secao) => {
           const canvas = secao.querySelector('[data-canvas]');
           const ctx = canvas.getContext('2d', { alpha: false });
-          const de = +secao.dataset.de, ate = +secao.dataset.ate;
+          const pasta = secao.dataset.pasta;
+          const de = 1, ate = +secao.dataset.total;
 
           const desenhar = (i) => {
-            const img = cache.get(i);
+            const img = cache.get(chave(pasta, i));
             if (!img?.complete || !img.naturalWidth) return;
             const e = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
             const w = img.naturalWidth * e, h = img.naturalHeight * e;
@@ -540,8 +548,16 @@
 
           /* O primeiro quadro do trecho entra na frente; os outros vêm
              depois, para a passagem já ter o que mostrar de imediato. */
-          carregar(de).onload = () => { medir(); };
-          for (let i = de; i <= ate; i++) carregar(i);
+          /* O primeiro quadro entra na frente. Os demais só começam a
+             baixar quando a passagem se aproxima da tela — com três
+             sequências, carregar tudo de uma vez disputaria banda com o
+             que está sendo visto agora. */
+          carregar(pasta, de).onload = () => medir();
+          new IntersectionObserver((e, obs) => {
+            if (!e[0].isIntersecting) return;
+            for (let i = de; i <= ate; i++) carregar(pasta, i);
+            obs.disconnect();
+          }, { rootMargin: '150% 0px' }).observe(secao);
 
           medir();
           addEventListener('resize', medir, { passive: true });
