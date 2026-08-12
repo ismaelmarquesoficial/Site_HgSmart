@@ -229,11 +229,13 @@
         data-hero
       >
         <!-- ─── Fundo do hero ───────────────────────────────────────
-             A foto da loja ocupa a faixa direita. O recorte é ancorado
-             à ESQUERDA da imagem de propósito: o fundador está do lado
-             esquerdo do quadro, e um corte à direita o deixaria fora.
-             Por cima, o mesmo gradiente da versão anterior — preto
-             sólido onde entra o texto, dissolvendo até a foto.
+             A foto é a fachada da MATRIZ (Rua Marechal Floriano, 829 —
+             a mesma de assets/lojas/santa-cruz/fachada.webp). O recorte
+             puxa para a DIREITA de propósito: a árvore ocupa o terço
+             esquerdo do quadro e ficaria sob o gradiente; a esquina da
+             loja, iluminada, é o que deve aparecer.
+             Por cima, o mesmo gradiente de antes — preto sólido onde
+             entra o texto, dissolvendo até a foto.
              ──────────────────────────────────────────────────────── -->
         <div class="pointer-events-none absolute inset-0" aria-hidden="true">
           <!-- Foto: da metade para a direita no desktop, topo no mobile -->
@@ -242,17 +244,17 @@
               <source
                 media="(max-width: 767px)"
                 type="image/webp"
-                srcset="assets/img/fotos/img11-900.webp"
+                srcset="assets/img/fotos/fachada-matriz-900.webp"
               />
-              <source type="image/webp" srcset="assets/img/fotos/img11.webp" />
+              <source type="image/webp" srcset="assets/img/fotos/fachada-matriz.webp" />
               <img
-                src="assets/img/fotos/img11.jpg"
+                src="assets/img/fotos/fachada-matriz.jpg"
                 alt=""
-                width="1600"
-                height="1067"
+                width="1498"
+                height="1000"
                 fetchpriority="high"
                 decoding="async"
-                class="size-full object-cover object-[28%_center] lg:object-[22%_center]"
+                class="size-full object-cover object-[55%_center] lg:object-[62%_center]"
               />
             </picture>
           </div>
