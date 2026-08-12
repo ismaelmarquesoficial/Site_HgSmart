@@ -372,32 +372,49 @@
       width: `${r.width}px`, height: `${r.height}px`,
     });
 
+    const dentro = document.createElement('div');
+    dentro.className = 'transicao-conteudo';
     if (etq.dataset.produto) {
       const img = document.createElement('img');
       img.src = etq.dataset.produto;
       img.alt = '';
-      clone.appendChild(img);
+      dentro.appendChild(img);
     }
     const titulo = document.createElement('p');
     titulo.className = 'transicao-titulo';
     titulo.textContent = etq.querySelector('.etiqueta-nome').textContent;
-    clone.appendChild(titulo);
+    dentro.appendChild(titulo);
+    clone.appendChild(dentro);
 
     document.body.appendChild(clone);
+
+    /* A escala é calculada e aplicada por TRANSFORM — animar width/height/
+       top/left força layout e reflow a cada quadro, e a referência de
+       motion da skill é categórica quanto a isso. Com transform, o
+       trabalho fica no compositor e o movimento sobrevive em aparelho
+       fraco, que é justamente onde ele precisa sobreviver. */
+    const escalaX = window.innerWidth / r.width;
+    const escalaY = window.innerHeight / r.height;
+    const deslocaX = (window.innerWidth / 2) - (r.left + r.width / 2);
+    const deslocaY = (window.innerHeight / 2) - (r.top + r.height / 2);
 
     const t = gsap.timeline({
       onComplete: () => { window.location.href = destino; },
     });
     t.to(clone, {
-      left: 0, top: 0, width: '100vw', height: '100svh', borderRadius: 0,
-      duration: .62, ease: 'power3.inOut',
+      x: deslocaX, y: deslocaY, scaleX: escalaX, scaleY: escalaY,
+      borderRadius: 0, duration: .62, ease: 'power3.inOut', force3D: true,
     });
     /* O cenário recua enquanto o card cresce: é o que dá a leitura de que o
        produto foi retirado da loja, e não de que uma caixa cobriu a tela. */
     t.to(palco, { scale: .94, autoAlpha: .35, duration: .62, ease: 'power3.inOut' }, 0);
-    t.to(titulo, { opacity: 1, y: 0, duration: .3, ease: 'power2.out' }, .34);
-    t.fromTo(clone.querySelector('img'),
-      { scale: .7, opacity: .6 },
-      { scale: 1, opacity: 1, duration: .55, ease: 'power2.out' }, .1);
+    /* O clone inteiro está sendo escalado, então o que está dentro dele
+       precisa da escala inversa — sem isso o aparelho e o título esticam
+       junto e saem deformados. */
+    t.to(clone.querySelector('.transicao-conteudo'), {
+      scaleX: 1 / escalaX, scaleY: 1 / escalaY,
+      duration: .62, ease: 'power3.inOut',
+    }, 0);
+    t.to(titulo, { opacity: 1, duration: .3, ease: 'power2.out' }, .34);
   }
 })();
