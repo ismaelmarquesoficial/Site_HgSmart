@@ -35,6 +35,8 @@
 | `areas/design-motion.md` | Direção criativa: abertura, 3D, cor por seção | 🟢 Documentado (aguarda aprovação) |
 | `checklist.md` | Produção e verificação | 🟢 Ativo |
 | `pendencias.md` | **O que falta para publicar, por responsável** | 🔴 Ativo (11/08) |
+| `roteiro-experiencia.md` | Roteiro cena a cena da abertura | 🟡 Aguarda validação |
+| `../DESIGN.md` | **Design system** — cor, tipo, espaço, movimento, componentes | 🟢 Ativo (12/08) |
 
 ## Fontes recebidas
 
