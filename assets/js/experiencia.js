@@ -36,11 +36,26 @@
   /* ─── Scroll suave ───────────────────────────────────────────────────
      O ticker do GSAP conduz o Lenis. Cada um com o seu
      requestAnimationFrame briga pelo mesmo quadro, e o scrub treme. */
+  let lenis = null;
   if (typeof Lenis !== 'undefined') {
-    const lenis = new Lenis({ duration: 1.05, smoothWheel: true });
+    /* duration 0.9 e não 1.05: acima disso a página responde devagar ao
+       gesto e dá a sensação de que o scroll "não obedece". */
+    lenis = new Lenis({ duration: .9, smoothWheel: true });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
+
+    /* Com o Lenis ativo, âncora nativa e window.scrollTo são ignorados —
+       a rolagem fica "presa". Todo link interno passa a usar o scrollTo
+       dele, que é quem controla a posição de verdade. */
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (ev) => {
+        const alvo = document.querySelector(link.getAttribute('href'));
+        if (!alvo) return;
+        ev.preventDefault();
+        lenis.scrollTo(alvo, { offset: -8, duration: 1.1 });
+      });
+    });
   }
 
   /* ═══════════════════════════════════════════════════════════════════
@@ -72,9 +87,28 @@
 
     /* "cover" na mão: o canvas tem resolução própria, então esticar o
        bitmap pelo CSS borraria. */
+    /* Quadro mais próximo JÁ CARREGADO. Sem isto, `desenhar` simplesmente
+       não pintava quando o quadro pedido ainda estava baixando — e o
+       canvas ficava PRETO. Numa sequência de 11 MB isso acontece o tempo
+       todo: quem rola antes do carregamento terminar vê tela vazia e
+       conclui, com razão, que o site travou. */
+    const disponivel = (alvo) => {
+      const pronto = (i) => {
+        const img = cache.get(chave(pasta, i));
+        return img?.complete && img.naturalWidth ? img : null;
+      };
+      if (pronto(alvo)) return alvo;
+      for (let d = 1; d < total; d++) {
+        if (alvo - d >= 1 && pronto(alvo - d)) return alvo - d;
+        if (alvo + d <= total && pronto(alvo + d)) return alvo + d;
+      }
+      return null;
+    };
+
     const desenhar = (i) => {
-      const img = cache.get(chave(pasta, i));
-      if (!img?.complete || !img.naturalWidth) return;
+      const usar = disponivel(i);
+      if (usar === null) return;          /* nada carregou ainda: mantém o que está pintado */
+      const img = cache.get(chave(pasta, usar));
       const e = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
       const w = img.naturalWidth * e;
       const h = img.naturalHeight * e;
@@ -90,7 +124,12 @@
       desenhar(atual);
     };
 
-    carregar(pasta, 1).onload = medir;
+    /* Cada quadro que termina de baixar repinta a tela se ela ainda
+       estiver mostrando um vizinho — assim a imagem vai ficando correta
+       durante o carregamento, em vez de esperar tudo. */
+    const primeiro = carregar(pasta, 1);
+    primeiro.onload = medir;
+    if (primeiro.complete) medir();
     medir();
     addEventListener('resize', medir, { passive: true });
 
@@ -99,7 +138,10 @@
        sendo visto agora. */
     new IntersectionObserver((entradas, obs) => {
       if (!entradas[0].isIntersecting) return;
-      for (let i = 1; i <= total; i++) carregar(pasta, i);
+      for (let i = 1; i <= total; i++) {
+        const img = carregar(pasta, i);
+        img.addEventListener('load', () => { if (i === atual) desenhar(atual); }, { once: true });
+      }
       obs.disconnect();
     }, { rootMargin: '150% 0px' }).observe(secao);
 
