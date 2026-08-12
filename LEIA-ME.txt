@@ -1,0 +1,27 @@
+HG SMART — SITE COMPLETO
+========================
+
+Este pacote contém a versão publicada do site em HTML, CSS e JavaScript puro.
+Não usa React, npm ou processo de compilação.
+
+COMO VISUALIZAR
+1. Extraia o ZIP mantendo todas as pastas.
+2. Abra o arquivo index.html no navegador.
+3. Mapas, Instagram, WhatsApp e outras integrações externas precisam de internet.
+
+PARA TESTAR COM UM SERVIDOR LOCAL (RECOMENDADO)
+Abra o terminal nesta pasta e execute:
+
+    python3 -m http.server 8080
+
+Depois acesse http://localhost:8080 no navegador.
+
+COMO PUBLICAR
+Envie todo o conteúdo desta pasta para a raiz pública da hospedagem, sem alterar
+os nomes ou a estrutura das pastas.
+
+VERSÃO
+- Sites: versão 5
+- Exportação: 11/08/2026
+- Tipografia preservada: Bebas Neue (títulos) e Inter (textos)
+- Motion preservado: entrada, scroll, banners, menu, botões e cards
