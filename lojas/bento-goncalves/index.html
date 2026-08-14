@@ -139,16 +139,16 @@
     .loja-v2 .loja-subtitulo { margin:0; font-family:var(--font-display,"Bebas Neue","Arial Narrow",sans-serif); font-size:clamp(2.4rem,5vw,5.2rem); font-weight:400; line-height:.94; letter-spacing:.01em; text-wrap:balance; }
     .loja-v2 .loja-cabecalho p:last-child { color:#5e6670; font-family:var(--font-corpo,"Inter",system-ui,sans-serif); font-size:16px; font-weight:400; line-height:1.7; }
     .loja-v2 .loja-grid-midia { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(310px,.75fr); gap:24px; align-items:stretch; }
-    /* Banners da unidade. Mesma caixa da faixa da home: 1920/740 com a arte
-       preenchendo 100%. As artes foram recompostas nesse formato — antes
-       vinham do blog em 4:3, 16:9 e afins, e era isso que obrigava a
-       centralizar com barra ao lado. O preenchimento desfocado agora esta
+    /* Banners da unidade. Caixa em 16:9, a proporcao nativa destas artes. A faixa da home e 2.59:1 porque as artes dela sao feitas
+       nesse formato; estas vem do blog quase quadradas, e em 2.59:1
+       sobrava ate 24% de borda. Em 16:9 tres delas preenchem 100% e a
+       pior sobe de 51% para 75%. O preenchimento desfocado agora esta
        embutido na propria imagem.
        A troca e so CSS: todos os slides rodam o mesmo keyframe, cada um
        comecando 5.0s depois do anterior, ciclo de 15s (5.0s x 3 artes). As
        porcentagens dependem dessa contagem, por isso sao escritas por pagina. */
     .loja-v2 .loja-banners { padding:0; }
-    .loja-v2 .loja-banners-palco { position:relative; width:100%; aspect-ratio:1920/740; overflow:hidden; background:#0a0d12; border-block:1px solid rgba(255,255,255,.1); }
+    .loja-v2 .loja-banners-palco { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#0a0d12; border-block:1px solid rgba(255,255,255,.1); }
     .loja-v2 .loja-banner-slide { position:absolute; inset:0; opacity:0; animation:loja-banner-ciclo 15s linear infinite backwards; }
     .loja-v2 .loja-banner-slide:nth-child(1) { animation-delay:0.00s; }
     .loja-v2 .loja-banner-slide:nth-child(2) { animation-delay:5.00s; }
@@ -317,7 +317,7 @@
           <a class="loja-banner-link" href="../../catalogo.html" aria-label="Ver as marcas disponíveis">
             <picture>
               <source type="image/webp" srcset="../../assets/img/banners-lojas/guia-o-que-analisar-bento.webp" />
-              <img class="loja-banner-arte" src="../../assets/img/banners-lojas/guia-o-que-analisar-bento.jpg" alt="Guia de compra: o que analisar antes de comprar um celular — câmera, bateria, desempenho e armazenamento. HG Smart Bento Gonçalves." width="1920" height="740"
+              <img class="loja-banner-arte" src="../../assets/img/banners-lojas/guia-o-que-analisar-bento.jpg" alt="Guia de compra: o que analisar antes de comprar um celular — câmera, bateria, desempenho e armazenamento. HG Smart Bento Gonçalves." width="1920" height="1080"
                    loading="eager" decoding="async" />
             </picture>
           </a>
@@ -326,7 +326,7 @@
           <a class="loja-banner-link" href="../../catalogo.html" aria-label="Ver as marcas disponíveis">
             <picture>
               <source type="image/webp" srcset="../../assets/img/banners-lojas/encontre-seu-celular.webp" />
-              <img class="loja-banner-arte" src="../../assets/img/banners-lojas/encontre-seu-celular.jpg" alt="Encontre o seu novo celular aqui. Os melhores smartphones das principais marcas, com atendimento especializado e assistência técnica." width="1920" height="740"
+              <img class="loja-banner-arte" src="../../assets/img/banners-lojas/encontre-seu-celular.jpg" alt="Encontre o seu novo celular aqui. Os melhores smartphones das principais marcas, com atendimento especializado e assistência técnica." width="1920" height="1080"
                    loading="lazy" decoding="async" />
             </picture>
           </a>
@@ -335,7 +335,7 @@
           <a class="loja-banner-link" href="../../como-comprar.html" aria-label="Ver as formas de comprar">
             <picture>
               <source type="image/webp" srcset="../../assets/img/banners-lojas/negativado.webp" />
-              <img class="loja-banner-arte" src="../../assets/img/banners-lojas/negativado.jpg" alt="Está negativado? Sem problema." width="1920" height="740"
+              <img class="loja-banner-arte" src="../../assets/img/banners-lojas/negativado.jpg" alt="Está negativado? Sem problema." width="1920" height="1080"
                    loading="lazy" decoding="async" />
             </picture>
           </a>
