@@ -139,18 +139,19 @@
     .loja-v2 .loja-subtitulo { margin:0; font-family:var(--font-display,"Bebas Neue","Arial Narrow",sans-serif); font-size:clamp(2.4rem,5vw,5.2rem); font-weight:400; line-height:.94; letter-spacing:.01em; text-wrap:balance; }
     .loja-v2 .loja-cabecalho p:last-child { color:#5e6670; font-family:var(--font-corpo,"Inter",system-ui,sans-serif); font-size:16px; font-weight:400; line-height:1.7; }
     .loja-v2 .loja-grid-midia { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(310px,.75fr); gap:24px; align-items:stretch; }
-    /* Faixa de banners da unidade. Usa as classes .slider-* do site.css e o
-       comportamento de assets/js/banner.js — nada novo em JS.
-       A proporcao e o unico ajuste: as artes da home sao 1920x740, estas vem
-       do blog entre 4:3 e 2.2:1. Em caixa 16:9 com object-fit:contain a arte
-       entra inteira; cortar em 2.59:1 comeria o texto delas. */
-    .loja-v2 .loja-banners { padding:72px 0; }
-    .loja-v2 .loja-banners-caixa { position:relative; max-width:1100px; }
-    .loja-v2 .loja-banners .slider-trilho { aspect-ratio:16/9; background:#05070a; border:1px solid rgba(255,255,255,.1); border-radius:4px; }
-    .loja-v2 .loja-banners .slider-img { object-fit:contain; }
-    /* O ken-burns da home amplia a arte; com contain isso mostraria a barra
-       lateral respirando. Aqui a arte fica parada. */
-    .loja-v2 .loja-banners .slider-slide[data-ativo=true] .slider-img { animation:none; }
+    /* Esteira de banners da unidade. Corre sozinha, sem botao: e o mesmo
+       [data-marquee][data-continuo] da faixa de marcas da home, tratado em
+       assets/js/motion.js. O data-continuo tira a faixa do controle do
+       scroll — sem ele ela para e inverte quando a pagina sobe.
+       Altura fixa e largura automatica: as artes vao de 4:3 a 2.2:1, e assim
+       nenhuma e cortada nem ganha barra ao lado. */
+    .loja-v2 .loja-banners { padding:0; overflow:hidden; background:#05070a; border-block:1px solid rgba(255,255,255,.1); }
+    .loja-v2 .loja-banners .marquee { gap:0; }
+    .loja-v2 .loja-banner { flex:none; display:block; height:clamp(190px,23vw,360px); }
+    .loja-v2 .loja-banner picture { display:block; height:100%; }
+    /* Nao herda o .marquee-item do site.css, que deixa os logos de marca
+       cinza e a 50% de opacidade. Banner precisa aparecer inteiro. */
+    .loja-v2 .loja-banner img { display:block; height:100%; width:auto; filter:none; opacity:1; }
     .loja-v2 .loja-galeria { display:grid; grid-template-columns:1.35fr .65fr; grid-template-rows:repeat(2,280px); gap:14px; }
     .loja-v2 .loja-galeria figure { position:relative; overflow:hidden; margin:0; background:#111; border-radius:3px; }
     .loja-v2 .loja-galeria figure:first-child { grid-row:1/3; }
@@ -290,45 +291,39 @@
     </section>
 
 
+
     <section class="loja-secao loja-secao-escura loja-banners"
-             aria-label="Destaques da HG Smart Cachoeira do Sul"
-             data-slider-banners data-intervalo="6500">
-      <div class="loja-wrap loja-banners-caixa">
-        <div class="slider-trilho" data-trilho>
-        <div class="slider-slide" data-slide="0" role="group" aria-roledescription="banner" aria-label="1 de 2">
-          <a href="../../catalogo.html" class="slider-link" aria-label="Ver as marcas disponíveis">
+             aria-label="Destaques da HG Smart Cachoeira do Sul">
+      <div data-marquee data-continuo data-duracao="32">
+        <div class="marquee">
+          <a class="loja-banner" href="../../catalogo.html" aria-label="Ver as marcas disponíveis">
             <picture>
               <source type="image/webp" srcset="../../assets/img/banners-lojas/encontre-seu-celular.webp" />
               <img src="../../assets/img/banners-lojas/encontre-seu-celular.jpg" alt="Encontre o seu novo celular aqui. Os melhores smartphones das principais marcas, com atendimento especializado e assistência técnica." width="1600" height="720"
-                   loading="lazy" decoding="async" class="slider-img" />
+                   loading="lazy" decoding="async" />
             </picture>
           </a>
-        </div>
-        <div class="slider-slide" data-slide="1" aria-hidden="true" role="group" aria-roledescription="banner" aria-label="2 de 2">
-          <a href="../../como-comprar.html" class="slider-link" aria-label="Ver as formas de comprar">
+          <a class="loja-banner" href="../../como-comprar.html" aria-label="Ver as formas de comprar">
             <picture>
               <source type="image/webp" srcset="../../assets/img/banners-lojas/negativado.webp" />
               <img src="../../assets/img/banners-lojas/negativado.jpg" alt="Está negativado? Sem problema." width="1080" height="564"
-                   loading="lazy" decoding="async" class="slider-img" />
+                   loading="lazy" decoding="async" />
             </picture>
           </a>
-        </div>
-        </div>
-
-        <button type="button" class="slider-seta slider-seta-esq" data-anterior aria-label="Banner anterior">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-        <button type="button" class="slider-seta slider-seta-dir" data-proximo aria-label="Próximo banner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-
-        <div class="slider-pontos" role="group" aria-label="Escolher banner">
-          <button type="button" class="ponto" data-ir="0" aria-label="Ir para o banner 1 de 2" aria-current="true"></button>
-          <button type="button" class="ponto" data-ir="1" aria-label="Ir para o banner 2 de 2"></button>
+          <a class="loja-banner" href="../../catalogo.html" aria-hidden="true" tabindex="-1" aria-label="Ver as marcas disponíveis">
+            <picture>
+              <source type="image/webp" srcset="../../assets/img/banners-lojas/encontre-seu-celular.webp" />
+              <img src="../../assets/img/banners-lojas/encontre-seu-celular.jpg" alt="" width="1600" height="720"
+                   loading="lazy" decoding="async" />
+            </picture>
+          </a>
+          <a class="loja-banner" href="../../como-comprar.html" aria-hidden="true" tabindex="-1" aria-label="Ver as formas de comprar">
+            <picture>
+              <source type="image/webp" srcset="../../assets/img/banners-lojas/negativado.webp" />
+              <img src="../../assets/img/banners-lojas/negativado.jpg" alt="" width="1080" height="564"
+                   loading="lazy" decoding="async" />
+            </picture>
+          </a>
         </div>
       </div>
     </section>
