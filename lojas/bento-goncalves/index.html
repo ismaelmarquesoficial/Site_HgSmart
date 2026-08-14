@@ -40,7 +40,8 @@
     "streetAddress": "Rua Saldanha Marinho, 164, Sala 01",
     "addressLocality": "Bento Gonçalves",
     "addressRegion": "RS",
-    "addressCountry": "BR"
+    "addressCountry": "BR",
+    "postalCode": "95700-122"
   },
   "openingHoursSpecification": [
     {
@@ -69,7 +70,7 @@
     "name": "Bento Gonçalves"
   },
   "sameAs": [
-    "https://www.instagram.com/hgsmart_/"
+    "https://www.instagram.com/hgsmartbento/"
   ],
   "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Rua%20Saldanha%20Marinho%2C%20164%2C%20Bento%20Gon%C3%A7alves%2C%20RS"
 }
@@ -141,10 +142,11 @@
     .loja-v2 .loja-galeria { display:grid; grid-template-columns:1.35fr .65fr; grid-template-rows:repeat(2,280px); gap:14px; }
     .loja-v2 .loja-galeria figure { position:relative; overflow:hidden; margin:0; background:#111; border-radius:3px; }
     .loja-v2 .loja-galeria figure:first-child { grid-row:1/3; }
+    .loja-v2 .loja-galeria[data-qtd="2"] figure:last-child { grid-row:1/3; }
     .loja-v2 .loja-galeria img { width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.22,.61,.36,1),filter .4s ease; }
     .loja-v2 .loja-galeria figure:hover img { transform:scale(1.035); filter:saturate(1.08); }
-    .loja-v2 .loja-midia-oficial { min-height:570px; overflow:hidden; background:#0d1117; border:1px solid rgba(255,255,255,.12); border-radius:4px; }
-    .loja-v2 .loja-midia-oficial iframe { display:block; width:100%; height:670px; border:0; background:#fff; }
+    .loja-v2 .loja-midia-oficial { min-height:670px; overflow:hidden; background:#0d1117; border:1px solid rgba(255,255,255,.12); border-radius:4px; }
+    .loja-v2 .loja-midia-oficial iframe { display:block; width:100%; height:670px; border:0; background:#0d1117; color-scheme:dark; }
     .loja-v2 .loja-midia-legenda { display:flex; justify-content:space-between; gap:20px; padding:24px; color:#fff; }
     .loja-v2 .loja-midia-legenda p { margin:0; color:#aeb5be; font-family:var(--font-corpo,"Inter",system-ui,sans-serif); font-size:14px; font-weight:400; line-height:1.5; }
     .loja-v2 .loja-midia-legenda a { color:var(--loja-azul-claro); font-family:var(--font-corpo,"Inter",system-ui,sans-serif); font-size:13px; font-weight:700; line-height:1.4; white-space:nowrap; }
@@ -155,7 +157,8 @@
     .loja-v2 .loja-selos span { padding:14px 16px; color:#dce1e7; background:#0b0f15; font-family:var(--font-corpo,"Inter",system-ui,sans-serif); font-size:11px; font-weight:700; line-height:1.3; letter-spacing:.08em; text-transform:uppercase; }
     .loja-v2 .loja-rota-grid { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr); min-height:550px; background:#0c1118; border:1px solid rgba(255,255,255,.12); }
     .loja-v2 .loja-mapa { position:relative; min-height:520px; overflow:hidden; }
-    .loja-v2 .loja-mapa iframe { position:absolute; inset:0; width:100%; height:100%; border:0; filter:saturate(.72) contrast(1.06); }
+    .loja-v2 .loja-mapa iframe { position:absolute; inset:0; width:100%; height:100%; border:0;
+      filter:invert(92%) hue-rotate(180deg) saturate(.62) contrast(.92) brightness(1.04); }
     .loja-v2 .loja-rota-info { display:flex; flex-direction:column; justify-content:center; padding:52px; }
     .loja-v2 .loja-rota-info h2 { margin:0; font-family:var(--font-display,"Bebas Neue","Arial Narrow",sans-serif); font-size:clamp(2.3rem,4.5vw,4.8rem); font-weight:400; line-height:.92; letter-spacing:.01em; }
     .loja-v2 .loja-rota-info address { margin:28px 0 0; color:#c2c9d2; font-family:var(--font-corpo,"Inter",system-ui,sans-serif); font-size:16px; font-weight:400; line-height:1.6; }
@@ -257,7 +260,7 @@
       <!-- ══════ ABERTURA ══════ -->
       
     <section class="loja-hero" data-loja-hero aria-labelledby="loja-titulo">
-      <div class="loja-hero-cidade" aria-hidden="true"><span class="loja-monograma">BG</span><svg class="loja-rota" viewBox="0 0 620 180"><path d="M8 145C112 25 201 176 300 79S493 31 611 8"/><circle cx="611" cy="8" r="7"/></svg></div>
+      <img class="loja-hero-foto" src="../../assets/lojas/bento-goncalves/fachada.webp" alt="Fachada da HG Smart Bento Gonçalves, na Rua Saldanha Marinho" width="900" height="1600" fetchpriority="high" />
       <div class="loja-wrap loja-hero-conteudo">
         <p class="loja-kicker" data-loja-hero-item style="--i:0">Unidade HG Smart</p>
         <h1 id="loja-titulo" class="loja-titulo" data-loja-hero-item style="--i:1">Tecnologia perto de você.<strong>Bento Gonçalves.</strong></h1>
@@ -265,7 +268,7 @@
         <div class="loja-acoes" data-loja-hero-item style="--i:3">
           <a class="loja-botao loja-botao-primario" href="https://wa.me/5554920017049" target="_blank" rel="noopener noreferrer" aria-label="Falar com a HG Smart Bento Gonçalves pelo WhatsApp">Falar no WhatsApp</a>
           <a class="loja-botao" href="https://www.google.com/maps/dir/?api=1&destination=Rua%20Saldanha%20Marinho%2C%20164%2C%20Bento%20Gon%C3%A7alves%2C%20RS" target="_blank" rel="noopener noreferrer">Traçar rota</a>
-          <a class="loja-botao" href="https://www.instagram.com/hgsmart_/" target="_blank" rel="noopener noreferrer">Ver Instagram</a>
+          <a class="loja-botao" href="https://www.instagram.com/hgsmartbento/" target="_blank" rel="noopener noreferrer">Ver Instagram</a>
         </div>
         <div class="loja-fatos" data-loja-hero-item style="--i:4">
           <div class="loja-fato"><span>Endereço</span><p>Rua Saldanha Marinho, 164 · Sala 01 · Centro</p></div>
@@ -357,7 +360,7 @@
     <div class="loja-midia-oficial" data-loja-reveal>
       <iframe src="https://www.instagram.com/p/DZxXXNwOtbx/embed/" title="Publicação oficial da HG Smart Bento Gonçalves no Instagram" width="540" height="670" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowtransparency="true" allowfullscreen></iframe>
       <div class="loja-midia-legenda"><p>Conteúdo publicado pelo perfil oficial da unidade/rede.</p><a href="https://www.instagram.com/p/DZxXXNwOtbx/" target="_blank" rel="noopener noreferrer">Abrir no Instagram ↗</a></div>
-    </div><aside class="loja-painel" data-loja-reveal><div><p class="loja-eyebrow">Conteúdo local</p><h3>Acompanhe a unidade de Bento Gonçalves.</h3><p>Novidades, campanhas e registros desta loja são publicados no canal oficial. Assim, você vê o ponto de venda certo, sem imagens genéricas de outra unidade.</p></div><div class="loja-selos"><span>@hgsmart_</span><span>Publicação oficial incorporada</span><span>Atendimento local</span></div><a class="loja-botao" href="https://www.instagram.com/hgsmart_/" target="_blank" rel="noopener noreferrer">Seguir a unidade</a></aside></div>
+    </div><aside class="loja-painel" data-loja-reveal><div><p class="loja-eyebrow">Conteúdo local</p><h3>Acompanhe a unidade de Bento Gonçalves.</h3><p>Novidades, campanhas e registros desta loja são publicados no canal oficial. Assim, você vê o ponto de venda certo, sem imagens genéricas de outra unidade.</p></div><div class="loja-selos"><span>@hgsmartbento</span><span>Publicação oficial incorporada</span><span>Atendimento local</span></div><a class="loja-botao" href="https://www.instagram.com/hgsmartbento/" target="_blank" rel="noopener noreferrer">Seguir a unidade</a></aside></div>
       </div>
     </section>
     <section class="loja-secao loja-secao-escura" aria-labelledby="loja-rota-titulo">
