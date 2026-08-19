@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
     <title>Rede HG Smart — Celulares com condições reais no RS</title>
     <meta
@@ -44,6 +44,14 @@
       crossorigin
     />
     <link rel="stylesheet" href="assets/css/site.css" />
+    <link rel="stylesheet" href="assets/css/hero-cinematic.css" />
+    <link
+      rel="preload"
+      href="assets/hero/santa-cruz-fachada-real.avif"
+      as="image"
+      type="image/avif"
+      fetchpriority="high"
+    />
 
     <!-- ⚠️ Este JSON-LD é escrito à MÃO — a home é uma das 5 páginas que
          ainda não passam pelos geradores.
@@ -223,100 +231,140 @@
     </div>
 
     <main id="conteudo">
-      <!-- ══════════════ HERO ══════════════ -->
-      <section
-        class="granulado relative flex min-h-[92svh] items-end overflow-hidden pb-16 pt-36 lg:pb-24"
-        data-hero
-      >
-        <!-- ─── Fundo do hero ───────────────────────────────────────
-             A foto é a fachada da MATRIZ (Rua Marechal Floriano, 829 —
-             a mesma de assets/lojas/santa-cruz/fachada.webp). O recorte
-             puxa para a DIREITA de propósito: a árvore ocupa o terço
-             esquerdo do quadro e ficaria sob o gradiente; a esquina da
-             loja, iluminada, é o que deve aparecer.
-             Por cima, o mesmo gradiente de antes — preto sólido onde
-             entra o texto, dissolvendo até a foto.
-             ──────────────────────────────────────────────────────── -->
-        <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-          <!-- Foto: da metade para a direita no desktop, topo no mobile -->
-          <div class="absolute inset-y-0 right-0 w-full lg:w-[62%]">
-            <picture>
-              <source
-                media="(max-width: 767px)"
-                type="image/webp"
-                srcset="assets/img/fotos/fachada-matriz-900.webp"
-              />
-              <source type="image/webp" srcset="assets/img/fotos/fachada-matriz.webp" />
+      <!-- ══════════════ ABERTURA CINEMATOGRÁFICA ══════════════ -->
+      <section class="hg-opening" data-hero data-cinema-hero aria-labelledby="titulo-abertura">
+        <div class="hg-opening__stage" data-cinema-stage>
+          <div class="hg-opening__world" aria-hidden="true">
+            <picture class="hg-opening__interior" data-opening-interior>
+              <source srcset="assets/hero/santa-cruz-interior-real.avif" type="image/avif" />
               <img
-                src="assets/img/fotos/fachada-matriz.jpg"
+                src="assets/hero/santa-cruz-interior-real.webp"
                 alt=""
-                width="1498"
-                height="1000"
-                fetchpriority="high"
+                width="3200"
+                height="2136"
                 decoding="async"
-                class="size-full object-cover object-[55%_center] lg:object-[62%_center]"
               />
             </picture>
+
+            <span class="hg-opening__portal-frame" data-opening-portal-frame></span>
+
+            <div class="hg-opening__doors" data-opening-doors>
+              <div class="hg-opening__door hg-opening__door--left" data-opening-door-left></div>
+              <div class="hg-opening__door hg-opening__door--right" data-opening-door-right></div>
+              <span class="hg-opening__seam" data-opening-seam></span>
+            </div>
+
+            <picture class="hg-opening__facade" data-opening-facade>
+              <source srcset="assets/hero/santa-cruz-fachada-real.avif" type="image/avif" />
+              <img
+                src="assets/hero/santa-cruz-fachada-real.webp"
+                alt=""
+                width="2048"
+                height="1368"
+                fetchpriority="high"
+                decoding="async"
+              />
+              <span class="hg-opening__scanner"></span>
+            </picture>
+
+            <div class="hg-opening__eduardo" data-opening-eduardo>
+              <video
+                class="hg-opening__eduardo-motion"
+                muted
+                playsinline
+                preload="auto"
+                poster="assets/hero/eduardo-hero-frame-alpha-5k.webp"
+                aria-hidden="true"
+                data-opening-video
+              >
+                <source src="assets/video/eduardo-opening-motion-alpha-1080.webm" type="video/webm" />
+              </video>
+              <img
+                class="hg-opening__eduardo-still"
+                src="assets/hero/eduardo-hero-frame-alpha-5k.webp"
+                alt=""
+                width="5120"
+                height="2880"
+                decoding="async"
+              />
+            </div>
+
+            <div class="hg-opening__glass">
+              <span class="hg-opening__reflection" data-opening-reflection></span>
+              <span class="hg-opening__impact hg-opening__impact--one" data-opening-impact-one></span>
+              <span class="hg-opening__impact hg-opening__impact--two" data-opening-impact-two></span>
+            </div>
+            <div class="hg-opening__grade"></div>
           </div>
 
-          <!-- Gradiente por cima: opaco à esquerda, transparente à direita -->
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-preto from-25% via-preto/88 via-55% to-preto/25"
-          ></div>
-          <!-- Segunda camada, vertical: assenta o texto na base -->
-          <div class="absolute inset-0 bg-gradient-to-t from-preto via-transparent to-preto/55"></div>
-
-          <!-- Halos de luz por cima da foto, amarrando com as outras seções -->
-          <div class="absolute -left-[18%] top-[-22%] size-[62rem] halo-azul opacity-40"></div>
-          <div class="absolute -right-[14%] bottom-[-32%] size-[52rem] halo-fundo opacity-25"></div>
-
-        </div>
-
-        <div class="relative z-10 mx-auto w-full max-w-[1400px] px-6 lg:px-10">
-          <p class="rotulo mb-8 opacity-0" data-hero-secundario style="transform: translateY(16px)">
-            Rede HG Smart · Rio Grande do Sul
-          </p>
-
-          <!-- "não devia ser" em contorno: a palavra vira desenho e o
-               peso visual fica nas duas linhas que importam. -->
-          <h1 class="texto-gigante titulo-na-grade text-branco">
-            <span class="linha-mask"><span>Tecnologia</span></span>
-            <span class="linha-mask"><span class="texto-contorno">não devia ser</span></span>
-            <span class="linha-mask"><span class="text-azul">privilégio.</span></span>
-          </h1>
-
-          <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-            <p
-              class="max-w-xl text-lg leading-relaxed text-prata opacity-0"
-              data-hero-secundario
-              style="transform: translateY(16px)"
-            >
-              Nasceu de uma ideia simples e ambiciosa: atender bem quem outras lojas
-              recusam. Hoje são <strong class="font-semibold text-branco">10 unidades</strong>
-              no Rio Grande do Sul, aparelhos com procedência e garantia, e condições
-              construídas para a realidade de quem compra.
-            </p>
-
-            <div
-              class="flex flex-wrap items-center gap-4 opacity-0"
-              data-hero-secundario
-              style="transform: translateY(16px)"
-            >
-              <a href="catalogo.html" class="btn btn-azul">Ver as marcas</a>
-              <a href="quem-somos.html" class="btn btn-linha">Conhecer a rede</a>
+          <div class="hg-opening__topbar">
+            <p class="hg-opening__chapter"><span>01</span> / 07 · EXPERIÊNCIA</p>
+            <div class="hg-opening__controls">
+              <button type="button" data-opening-audio aria-pressed="false">ÁUDIO DESLIGADO</button>
+              <a href="#nossa-historia" data-opening-skip>EXPLORAR SEM O TOUR <span>↘</span></a>
             </div>
           </div>
+
+          <audio data-opening-voice preload="metadata" src="assets/audio/eduardo-abertura.mp3"></audio>
+
+          <div class="hg-opening__copy" data-opening-copy>
+            <p class="hg-opening__eyebrow">HG SMART · SANTA CRUZ DO SUL · UMA REDE DE VERDADE</p>
+            <h1 id="titulo-abertura" data-opening-title>
+              Tecnologia não devia<br />ser privilégio.
+            </h1>
+            <p class="hg-opening__support">
+              Celulares, condições que cabem na vida real e atendimento olho no olho.
+            </p>
+          </div>
+
+          <div class="hg-opening__scroll" data-opening-scroll aria-hidden="true">
+            <span>DESÇA PARA ENTRAR</span>
+            <i></i>
+          </div>
+
+          <div class="hg-opening__rail" aria-hidden="true">
+            <span data-opening-progress></span>
+          </div>
+
+          <p class="hg-opening__destination" data-opening-destination>
+            <span>MATRIZ · SANTA CRUZ DO SUL</span>
+            UMA LOJA QUE EXISTE DE VERDADE.
+          </p>
+
+          <svg class="hg-opening__filters" aria-hidden="true" focusable="false">
+            <filter id="hg-title-ripple" x="-20%" y="-40%" width="140%" height="180%">
+              <feTurbulence
+                type="turbulence"
+                baseFrequency="0.012 0.085"
+                numOctaves="1"
+                seed="7"
+                result="noise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="0"
+                xChannelSelector="R"
+                yChannelSelector="B"
+                data-opening-displacement
+              />
+            </filter>
+          </svg>
         </div>
 
-        <!-- Dica de rolagem -->
-        <div
-          class="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 opacity-0 lg:flex"
-          data-hero-secundario
-          style="transform: translateY(16px)"
-          aria-hidden="true"
-        >
-          <span class="rotulo text-[0.625rem]">role</span>
-          <span class="h-10 w-px bg-gradient-to-b from-branco/45 to-transparent"></span>
+        <div class="hg-opening__mobile-reveal" aria-hidden="true">
+          <picture>
+            <source srcset="assets/hero/santa-cruz-interior-real.avif" type="image/avif" />
+            <img
+              src="assets/hero/santa-cruz-interior-real.webp"
+              alt=""
+              width="3200"
+              height="2136"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <p><span>01 → 02</span> A interface abre. A loja real continua.</p>
         </div>
       </section>
 
@@ -325,6 +373,7 @@
            melhor sobre branco, e o contraste marca o fim do hero.
            ═══════════════════════════════════════════════════════ -->
       <section
+        id="nossa-historia"
         class="secao-clara granulado relative overflow-hidden"
         aria-labelledby="titulo-nossa-historia"
       >
@@ -2053,5 +2102,6 @@
     <script src="assets/js/site.js" defer></script>
     <script src="assets/js/banner.js" defer></script>
     <script src="assets/js/motion.js" defer></script>
+    <script src="assets/js/hero-cinematic.js" defer></script>
   </body>
 </html>

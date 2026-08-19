@@ -1,12 +1,12 @@
 Roteiro Mestre de Produção Interativa — Tour HG Smart
 
-Direção de experiência inspirada no padrão Awwwards · Produção audiovisual orientada ao Higgsfield · Imagens e dados 100% reais da HG Smart
+Direção de experiência inspirada no padrão Awwwards · Produção audiovisual orientada ao Higgsfield · Imagens reais da HG Smart · Dados sujeitos à validação
 
 1. Finalidade do documento
 
 Este documento orienta a criação de uma experiência cinematográfica, interativa e centrada no usuário para o site da HG Smart. A proposta é transformar a navegação tradicional em um tour guiado pelo CEO, Eduardo Hermes, combinando:
 
-atuação e presença do Eduardo;
+atuação e presença do avatar oficial do Eduardo;
 
 coreografia sincronizada com a rolagem;
 
@@ -26,15 +26,15 @@ interações que criem proximidade entre o visitante, o Eduardo e a HG Smart;
 
 um sistema de movimento contínuo, elegante e reconhecível em todo o site;
 
-imagens e vídeos reais do Eduardo, das lojas, dos produtos e da operação;
+pranchas oficiais do avatar, referências reais do Eduardo e imagens reais das lojas, dos produtos e da operação;
 
 informações verificadas diretamente em fontes oficiais da HG Smart.
 
 O usuário não deve sentir que está apenas avançando por blocos independentes de uma página. Cada seção precisa funcionar como uma cena do mesmo percurso, com começo, desenvolvimento, reação visual e transição para a cena seguinte. A experiência deve ser dinâmica, mas nunca confusa; cinematográfica, mas nunca cansativa; criativa, mas sempre útil para compreender a empresa e avançar na jornada.
 
-2. Regra obrigatória de fidelidade
+2. Regra obrigatória de fidelidade e melhoria
 
-Este roteiro deve ser seguido fielmente. A função de quem o executar é desenvolver, organizar e materializar as ideias descritas — não corrigi-las, substituí-las ou reinterpretá-las.
+Este roteiro preserva o núcleo da experiência original, mas esta revisão corrige conflitos com o acervo real, melhora a copy e decupa ações complexas para torná-las produzíveis. A camada 3.41–3.52 tem precedência quando houver divergência com uma formulação anterior.
 
 Devem ser preservados:
 
@@ -44,17 +44,17 @@ as sete cenas e a ordem em que aparecem;
 
 as seções do site relacionadas a cada cena;
 
-as ações, gestos e expressões do Eduardo;
+as funções narrativas das ações, dos gestos e das expressões do Eduardo, mesmo quando divididas em clipes menores;
 
 a interação de cada cena com a rolagem;
 
-os fundos, enquadramentos e direções de iluminação;
+o uso de fundos reais, os enquadramentos aprovados e as direções de iluminação;
 
 os elementos de UI e os efeitos sonoros;
 
-os números, condições, formas de pagamento e demais informações citadas;
+os números, condições, formas de pagamento e demais informações citadas somente depois de validação comercial;
 
-as falas, mantendo o conteúdo e a intenção originais;
+as falas revisadas, mantendo a intenção original com linguagem mais curta e humana;
 
 todas as transições de entrada e saída previstas;
 
@@ -64,15 +64,15 @@ a utilização exclusiva de dados comerciais, institucionais e operacionais conf
 
 Não é permitido:
 
-remover uma ideia por considerá-la excessiva, difícil ou desnecessária;
+remover uma ideia central sem avaliar sua função narrativa;
 
 trocar uma ação por outra sem autorização;
 
-suavizar ou substituir os efeitos descritos;
+acumular, intensificar ou substituir efeitos sem preservar legibilidade, desempenho e intenção;
 
 reorganizar a ordem das cenas;
 
-alterar textos, números, promessas ou condições comerciais;
+alterar números, promessas ou condições comerciais sem validação; a edição de copy continua permitida quando não muda o sentido aprovado;
 
 transformar este documento em código;
 
@@ -286,21 +286,27 @@ Todas as decisões devem reforçar esse conceito. O Eduardo não deve parecer um
 
 O Eduardo deve ser apresentado como fundador, CEO e anfitrião real da experiência.
 
-Neste documento, a palavra avatar significa exclusivamente uma representação digital fotorrealista do próprio Eduardo, criada a partir de fotografias e vídeos reais, atuais, oficiais e autorizados. Não significa personagem inventado, mascote ou aproximação genérica de sua aparência.
+Neste documento, avatar significa exclusivamente o avatar digital institucional e já aprovado do Eduardo, construído a partir de sua identidade real e preservado nas pranchas oficiais existentes. Seu acabamento 3D estilizado faz parte da identidade canônica; ele não deve ser trocado por uma pessoa genérica, por outro rosto, por uma versão fotorrealista inventada ou por um mascote sem semelhança.
 
 Regras obrigatórias:
 
-preservar aparência humana, proporções reais e movimentos naturais;
+usar `Fotos/Avatar Eduardo/02-expressoes.png`, `03-rotacao.png`, `04-corpo-inteiro-a.png` e `05-corpo-inteiro-b.png` como referências visuais canônicas;
 
-construir rosto, corpo, cabelo, barba, pele, figurino e gestos a partir das referências reais aprovadas;
+usar `Fotos/Avatar Eduardo/cena-1-abertura-teste-01.mp4` apenas como referência de movimento e prova de linguagem, nunca como master final de entrega;
 
-manter semelhança reconhecível com o Eduardo em todos os frames e cenas;
+usar as fotos e os vídeos reais de `Fotos HG/Fotos Eduardo/` para validar identidade, postura, expressão e comportamento — não para substituir o avatar oficial por uma pessoa sintética;
 
-não transformá-lo em personagem 3D, mascote, boneco ou avatar de videogame;
+preservar rosto, cabelo, barba, proporções, figurino aprovado e silhueta do avatar em todos os frames e cenas;
 
-não aplicar aparência plástica, caricata ou excessivamente artificial;
+manter camiseta preta HG Smart, calça bege, tênis branco e relógio preto como base, salvo nova aprovação formal;
 
-usar efeitos digitais apenas na relação entre ele e a interface;
+tratar peso corporal, mãos, respiração, olhar e mudança de apoio com naturalidade humana;
+
+integrar o avatar às fotografias com direção de luz, light wrap, sombra de contato, escala e perspectiva coerentes, evitando a aparência de adesivo sobre a tela;
+
+evitar pele plástica, brilho de brinquedo, caricatura adicional, proporções de videogame ou qualquer desvio do estilo institucional aprovado;
+
+usar efeitos digitais na relação entre Eduardo e a interface, sem deformar seu rosto nem contaminar sua silhueta;
 
 manter voz, expressão e gestos próximos de uma conversa real;
 
@@ -764,27 +770,35 @@ Não aplicar crash zoom, câmera voadora, handheld ou movimentos automáticos ap
 
 3.28 Estrutura obrigatória dos prompts no Higgsfield
 
-Todo prompt de vídeo deve começar com:
+Antes de escrever o prompt final, registrar a versão do Cinema Studio, o modelo, a proporção, a duração e os controles realmente disponíveis. Campos inexistentes na interface não devem ser inventados.
 
-número de tomadas;
+Cada prompt segue MCSLA — movimento, câmera, sujeito, local e atmosfera — com uma ação principal e, no máximo, duas ações secundárias simples. Identidade e movimento são instruções separadas: as pranchas travam quem é Eduardo; o prompt descreve apenas o que ele faz nesta tomada.
 
-duração total;
+Ficha técnica externa ao prompt:
 
-proporção;
+versão e modelo confirmados;
+
+número da cena e do clipe;
+
+duração e proporção disponíveis;
 
 referência visual utilizada;
 
 ação principal;
 
-frame inicial;
+frame inicial e frame final;
 
-frame final.
+área livre para UI;
 
-Modelo de prompt:
+ponto exato de sincronização;
 
-[NÚMERO DE TOMADAS] · [DURAÇÃO] · [PROPORÇÃO]. Usar a imagem oficial aprovada de Eduardo Hermes como referência de identidade. [ENQUADRAMENTO E LENTE]. [POSIÇÃO INICIAL]. Eduardo [AÇÃO EM ORDEM CRONOLÓGICA]. Expressão [EXPRESSÃO]. Direção do olhar [ALVO DO OLHAR]. Câmera [MOVIMENTO OU STATIC]. Iluminação [LUZ]. Manter [ÁREA LIVRE PARA UI]. Frame final: [POSE EXATA]. Movimento humano natural, mãos e dedos legíveis, identidade consistente, sem cortes no corpo e sem movimento adicional não solicitado.
+safety take previsto.
 
-As durações e proporções devem ser definidas na ficha técnica antes da geração final. Não inventar valores diferentes entre cenas sem justificativa de layout.
+Modelo conciso de prompt:
+
+[MOVIMENTO PRINCIPAL]. Câmera [STATIC OU MOVIMENTO CONFIRMADO]. Avatar oficial do Eduardo em [ENQUADRAMENTO], iniciando em [POSE]. Ele [AÇÃO OBSERVÁVEL], com olhar em [ALVO] e mãos totalmente visíveis. [LUZ E ATMOSFERA]. Encerrar em [POSE EXATA], preservando espaço em [ÁREA DE UI].
+
+Restrições de continuidade ficam na ficha e na referência, não em uma lista extensa de negações dentro do prompt. As durações e proporções só são fechadas depois da verificação da interface usada na produção.
 
 3.29 Restrições negativas para todas as gerações
 
@@ -824,7 +838,7 @@ texto gerado dentro do vídeo;
 
 logotipos ou elementos gráficos incorporados ao material do Eduardo;
 
-aparência de mascote, boneco, plástico ou personagem 3D.
+desvio do estilo oficial do avatar, aparência genérica, plástica, de brinquedo ou de personagem de videogame.
 
 3.30 Bíblia de continuidade do Eduardo
 
@@ -974,7 +988,7 @@ Referências do Awwwards podem orientar composição, ritmo, hierarquia e experi
 
 O Higgsfield pode:
 
-transformar fotos reais do Eduardo em tomadas animadas fotorrealistas;
+animar as referências oficiais do avatar do Eduardo preservando identidade, figurino e estilo canônico;
 
 transferir movimentos humanos para a representação digital do Eduardo;
 
@@ -1146,11 +1160,17 @@ Pendente, aprovado, rejeitado ou substituído.
 
 Nenhum ativo entra na produção final sem origem conhecida, autorização e status aprovado.
 
-3.38 Protocolo do avatar fotorrealista do Eduardo
+3.38 Protocolo do avatar oficial do Eduardo
 
-Montar um pacote mestre de identidade utilizando exclusivamente registros reais e autorizados do Eduardo.
+Montar um pacote mestre de identidade combinando as pranchas oficiais do avatar com registros reais e autorizados do Eduardo para validação de semelhança, atuação e voz.
 
 O pacote deve conter:
+
+as pranchas oficiais `02-expressoes.png`, `03-rotacao.png`, `04-corpo-inteiro-a.png` e `05-corpo-inteiro-b.png`;
+
+um novo arquivo limpo de poses, pois `01-poses.png` é uma captura do Explorer e não serve como referência final;
+
+o vídeo `cena-1-abertura-teste-01.mp4` como protótipo de timing e gesto;
 
 retrato frontal neutro em alta resolução;
 
@@ -1182,7 +1202,7 @@ uma única identidade-base deve alimentar todas as cenas;
 
 não misturar fotos de épocas com alterações físicas incompatíveis sem aprovação;
 
-não gerar o rosto do zero por descrição textual;
+não gerar o rosto do zero por descrição textual nem converter o avatar em uma pessoa fotorrealista inventada;
 
 não usar outra pessoa como base visual;
 
@@ -1204,7 +1224,7 @@ Quando o acervo existente não atender ao enquadramento necessário, realizar no
 
 Prioridades:
 
-matriz à noite para o Hero;
+somente se houver nova produção aprovada, matriz à noite para uma variação futura do Hero; a versão atual deve partir das fotos diurnas reais existentes;
 
 interior real compatível com a perspectiva do Eduardo;
 
@@ -1236,7 +1256,7 @@ Proibição específica
 
 1. Gancho
 
-Fotos e vídeos reais do Eduardo; fotografia noturna real da matriz.
+Avatar oficial do Eduardo; `01-fachada-esquina-arco-2048px.jpg`; registros reais do Eduardo para validação de identidade.
 
 Frase e identidade institucional aprovadas.
 
@@ -1244,7 +1264,7 @@ Não gerar matriz fictícia ou fundo de loja genérico.
 
 2. Realidade
 
-CRI_9694.jpg ou outro arquivo oficial aprovado do interior real; Eduardo real.
+`CRI_9694 (1).jpg` ou outro arquivo oficial aprovado do interior real; avatar oficial do Eduardo.
 
 História e afirmações institucionais.
 
@@ -1252,7 +1272,7 @@ Não substituir interior por banco de imagem ou loja criada por IA.
 
 3. Escala
 
-Eduardo real; logos oficiais; registros reais da rede.
+Avatar oficial do Eduardo; logos oficiais; registros reais da rede.
 
 10, 18x, 5+ e 9, incluindo significado e vigência.
 
@@ -1260,7 +1280,7 @@ Não animar número sem fonte ou rótulo confirmado.
 
 4. Boleto
 
-Eduardo real; materiais comerciais oficiais; UI criada para o site.
+Avatar oficial do Eduardo; materiais comerciais oficiais; UI criada para o site.
 
 18x no boleto, negativados, SPC/Serasa, modalidade presencial e demais condições.
 
@@ -1268,7 +1288,7 @@ Não inventar promessa, aprovação ou condição.
 
 5. Transparência
 
-Fotos reais de aparelhos, acessórios, embalagens e garantia; Eduardo real.
+Fotos reais de aparelhos, acessórios e embalagens; avatar oficial do Eduardo.
 
 Marcas vendidas, estado dos produtos e garantia aplicável.
 
@@ -1284,13 +1304,500 @@ Não escrever, resumir ou combinar avaliações como se fossem reais.
 
 7. Expansão
 
-Fotos reais das unidades; mapa baseado em endereços confirmados; Eduardo real.
+Fotos reais das unidades; mapa baseado em endereços confirmados; avatar oficial do Eduardo.
 
 Quantidade de lojas, cidades, endereços, horários, WhatsApps e coordenadas.
 
 Não criar unidade, localização, foto ou contato fictício.
 
 Os números preservados do roteiro só devem aparecer publicamente depois de confirmados. Se a realidade mudar, atualizar o dado em todas as ocorrências mantendo a função narrativa da cena.
+
+3.41 Camada de direção viva 2.0
+
+Esta camada resolve os conflitos entre o conceito anterior e o acervo que realmente existe. Ela tem precedência sobre trechos antigos que peçam Eduardo fotorrealista, loja inventada, fachada noturna inexistente ou uma única tomada com muitas ações.
+
+As sete cenas e sua ordem permanecem. O que muda é a execução: a loja real vira prova visual, o avatar oficial vira o anfitrião reconhecível e cada efeito passa a ter função narrativa, estado de entrada, contato, resposta e saída.
+
+3.42 Inventário canônico para a abertura
+
+Ativo | Status | Uso aprovado
+--- | --- | ---
+`Fotos HG/Loja HG Santa Cruz/fotos/01-fachada-esquina-arco-2048px.jpg` | Real e disponível | Primeiro indício da matriz; abertura e assinatura de lugar
+`Fotos HG/Loja HG Santa Cruz/fotos/02-fachada-lateral-calcada-2048px.jpg` | Real e disponível | Encerramento, unidade e CTA local
+`Fotos HG/Loja HG Santa Cruz/fotos/CRI_9694 (1).jpg` | Real e disponível | Grande revelação do interior na passagem da Cena 1 para a Cena 2
+`Fotos HG/Loja HG Santa Cruz/fotos/CRI_9695.jpg` | Real e disponível | Profundidade de corredor e apoio à Cena 3
+`Fotos HG/Loja HG Santa Cruz/fotos/CRI_9699.jpg` | Real e disponível | Parede de produtos e transparência na Cena 5
+`Fotos HG/Loja HG Santa Cruz/fotos/CRI_9703.jpg` | Real e disponível | Ambiente de respiro e fundo da prova social
+`Fotos/Avatar Eduardo/02-expressoes.png` | Oficial e disponível | Continuidade facial e biblioteca de expressão
+`Fotos/Avatar Eduardo/03-rotacao.png` | Oficial e disponível | Volume, ângulo e consistência do rosto
+`Fotos/Avatar Eduardo/04-corpo-inteiro-a.png` e `05-corpo-inteiro-b.png` | Oficiais e disponíveis | Silhueta, figurino e proporções
+`Fotos/Avatar Eduardo/cena-1-abertura-teste-01.mp4` | Protótipo 864 × 496, 24 fps | Referência da batida e do timing; insuficiente como master final
+`Fotos/Avatar Eduardo/01-poses.png` | Reprovado tecnicamente | É uma captura do Explorer; substituir por prancha limpa antes da geração final
+`Fotos HG/Fotos Eduardo/N78_5591.jpg` | Real e disponível | Referência principal de rosto, cabelo, barba e presença do Eduardo
+`Fotos HG/Fotos Eduardo/CZ6_2410.jpg` | Real e disponível | Referência complementar de postura e comportamento em ambiente de trabalho
+`Fotos HG/Fotos Eduardo/` | Real e disponível | Acervo complementar para validação de identidade, postura e expressão
+
+Nenhuma foto genérica ou cena de loja criada por IA pode ocupar o lugar desses ativos. Recorte, correção de cor, máscaras de luz, profundidade 2.5D e extensão neutra são permitidos quando não alterarem arquitetura, produtos, pessoas, horário aparente ou informação comercial.
+
+3.43 Doutrina Awwwards da experiência
+
+O impacto deve nascer da coreografia, não do acúmulo de efeitos. Existem apenas três momentos de assinatura:
+
+1. o vidro responde fisicamente às duas batidas do Eduardo no Hero;
+
+2. o cartão do boleto é capturado e encontra a interface no clímax;
+
+3. a rede se acende no mapa e conduz ao contato local.
+
+Em cada viewport, apenas um elemento assume o movimento primário. Texto, fotografia, avatar e partículas respondem a esse movimento com intensidade menor. Depois de cada impacto existe um hold legível; depois de cada clímax existe respiro.
+
+A tecnologia deve parecer avançada, porém precisa deixar a loja real visível. CSS, SVG, máscaras e composição 2.5D têm preferência sobre WebGL. WebGL só se justifica se criar uma relação espacial impossível de obter com essas técnicas. Neon, glitch, holograma e partículas são acentos, nunca o estilo inteiro.
+
+3.44 Gramática de movimento
+
+Toda ação principal segue a sequência:
+
+antecipação de 8% a 12%;
+
+ação de 18% a 25%;
+
+contato de 3% a 6%;
+
+resposta da interface de 15% a 25%;
+
+acomodação e hold de 15% a 25%;
+
+handoff para a próxima cena no tempo restante.
+
+Escala de duração:
+
+microinteração: 100–200 ms;
+
+resposta de componente: 200–400 ms;
+
+entrada de seção: 400–700 ms;
+
+transição de página/cena: 600–1.000 ms;
+
+momento cinematográfico: 1.000–2.000 ms, somente quando o usuário continua no controle.
+
+Usar aceleração curta para ações de impacto, desaceleração longa para assentamento e mola apenas em objetos de interface, nunca no corpo do Eduardo. Animar prioritariamente `transform` e `opacity`. Scroll rápido, reverso, teclado, toque e `prefers-reduced-motion` precisam alcançar estados finais coerentes.
+
+3.45 Arquitetura recomendada de animação
+
+Usar uma timeline mestre GSAP + ScrollTrigger para a progressão entre cenas. Lenis pode suavizar a rolagem se estiver sincronizado com a timeline e não alterar a distância percebida do scroll. Motion pode cuidar apenas de estados locais de componentes, layout e presença; não deve disputar a mesma timeline com GSAP. Não usar Anime.js como terceiro orquestrador concorrente.
+
+Cada trecho pinned precisa ter entrada, duração máxima, saída antecipável e frame final definido. O usuário pode pular o tour, silenciar, inverter a rolagem e retomar o controle. Na versão de movimento reduzido, substituir rasgos, partículas, zooms e deslocamentos extensos por cortes suaves, fades e Hero Frames estáticos.
+
+3.46 Abertura de impacto — “A loja existe. A interface ganha vida.”
+
+Quadro inicial:
+
+preto azulado profundo, sem parecer uma tela vazia;
+
+fragmentos discretos da fotografia real `01-fachada-esquina-arco-2048px.jpg` aparecem dentro de uma máscara vertical semelhante a um scanner, preservando o caráter diurno da imagem;
+
+o letreiro real da fachada fornece textura e prova de lugar, enquanto H1 e eyebrow entram por clip reveal tipográfico;
+
+o avatar oficial do Eduardo surge pelo lado direito com luz de recorte ciano compatível com a interface e sombra de contato sutil;
+
+Eyebrow:
+
+HG SMART · SANTA CRUZ DO SUL · UMA REDE DE VERDADE
+
+H1:
+
+TECNOLOGIA NÃO DEVIA SER PRIVILÉGIO.
+
+Texto de apoio:
+
+Celulares, condições que cabem na vida real e atendimento olho no olho.
+
+Fala recomendada:
+
+“Tá aí? Eu sou o Eduardo. Desce a tela — eu vou te mostrar por que a HG Smart faz diferente.”
+
+Indicação de scroll:
+
+DESÇA PARA ENTRAR
+
+Ação:
+
+na primeira batida, uma onda curta nasce exatamente no ponto de contato e desloca apenas o H1 e o reflexo do vidro;
+
+na segunda, o ciano do sistema acende, a fachada ganha contraste e a indicação de scroll é liberada;
+
+ao rolar, o Eduardo separa dois planos escuros como portas de interface; a abertura revela `CRI_9694 (1).jpg` em profundidade total;
+
+o eixo da porta/fachada deve procurar continuidade com o corredor central do interior, criando um match de direção sem falsificar o espaço;
+
+o avatar muda de luz durante a passagem: recorte ciano no Hero, luz branca e difusa ao entrar na loja.
+
+Controles visíveis desde o início:
+
+EXPLORAR SEM O TOUR
+
+ÁUDIO DESLIGADO / ATIVAR ÁUDIO
+
+No mobile, manter H1, rosto, mão de contato e botão de pular dentro da safe area. A fachada funciona como faixa vertical de contexto; o interior é revelado depois da primeira rolagem, sem reduzir a loja a um fundo ilegível.
+
+3.47 Matriz de Hero Frames
+
+Cena | Quadro matriz | Foco visual
+--- | --- | ---
+1. Gancho | `01-fachada-esquina-arco-2048px.jpg` + avatar oficial em plano médio | Olhar, duas batidas e resposta do H1
+2. Realidade | `CRI_9694 (1).jpg` + avatar em plano americano no lado esquerdo | Loja real reconhecível e gesto de apresentação
+3. Escala | `CRI_9695.jpg` ou `CRI_9699.jpg` escurecida sob dados | Números confirmados, um por vez
+4. Boleto | Interior real suavemente presente + cartões de UI produzidos em pós | Captura do cartão 18x e ressalva legível
+5. Transparência | `CRI_9699.jpg` + detalhes reais de produtos aprovados | Inspeção, estado e garantia
+6. Prova social | `CRI_9703.jpg` em baixo contraste + avaliações verificadas | Depoimentos; Eduardo apenas reage
+7. Expansão | `02-fachada-lateral-calcada-2048px.jpg` + mapa verificado | Unidade escolhida e CTA de WhatsApp
+
+O Hero Frame é aprovado antes do vídeo. Cada cena recebe quadro inicial, quadro final, margem para desktop/mobile e um safety take com ação menor.
+
+3.48 Decupagem Higgsfield por ação
+
+Antes de fechar prompts, confirmar a versão do Cinema Studio, o modelo disponível, a proporção e a duração realmente oferecida pela interface. Não transformar nomes de câmera, lentes ou controles deste documento em parâmetros de produto sem verificar a versão atual.
+
+Pipeline: Hero Frame aprovado → lock de identidade → frame inicial/final → clipe de uma ação → safety take → matte/alpha ou recorte → composição com UI, fotografia e som em pós.
+
+Divisão mínima:
+
+Cena 1A: Eduardo entra e encontra a marca; 1B: executa as duas batidas; 1C: aponta para o scroll; 1D: separa os planos da interface.
+
+Cena 2A: abre as mãos e apresenta a loja; 2B: encerra em postura de atendimento.
+
+Cena 3A: deslocamento curto entre dados; 3B: estalo; 3C: aponta para o carrossel.
+
+Cena 4A: acompanha cartões com os olhos; 4B: captura o cartão; 4C: sustenta o impacto e fala; 4D: sai lateralmente.
+
+Cena 5A: inspeciona o aparelho; 5B: vira e aponta para a área de UI.
+
+Cena 6A: loop de escuta; 6B: loop curto de aprovação, sem competir com o texto.
+
+Cena 7A: ergue as mãos; 7B: aponta para a unidade/WhatsApp; 7C: pose final limpa para aplicar glitch e partículas em pós.
+
+Uma ação principal por clipe reduz deriva de rosto, mãos e figurino. Ripple, cartões, textos, números, holograma, glitch, mapa e partículas pertencem à pós-produção web; não devem ser gerados junto ao rosto do Eduardo.
+
+3.49 Acting master do Eduardo
+
+O objetivo permanente do Eduardo é fazer o visitante acreditar que acesso e atendimento são reais; o obstáculo é a desconfiança de quem já ouviu “não” ou viu promessa demais. Ele começa com centro de gravidade alto e estável, peito aberto sem inflar, respiração baixa e ritmo econômico. Antes de cada gesto, o pensamento aparece no olhar: microdeslocamento para o objeto, retorno à lente, piscada natural e ação. As mãos têm função concreta — chamar, apresentar, capturar, verificar e indicar — e nunca ficam gesticulando sem motivo. A máscara inicial de confiança suaviza quando ele fala da origem, observa avaliações ou convida para um café. O caminhar é curto e deliberado; cada parada transfere peso de maneira visível. O “toc toc” pede concentração e precisão, não agressividade. No boleto, energia e foco aumentam, mas a voz continua clara. Nas avaliações, ele abre espaço e reage pouco. No final, a gratidão aparece no rosto antes dos braços. Olhos mantêm catchlight e vida; boca, sobrancelhas e cabeça mudam com atraso mínimo e natural. O resultado deve parecer Eduardo conduzindo uma demonstração, não um apresentador interpretando entusiasmo genérico.
+
+3.50 Copy de produção recomendada
+
+Cena 1:
+
+“Tá aí? Eu sou o Eduardo. Desce a tela — eu vou te mostrar por que a HG Smart faz diferente.”
+
+Cena 2:
+
+“A HG começou com uma ideia simples: tecnologia tem que caber na vida real. Foi assim que a gente abriu espaço para quem antes só ouvia não.”
+
+Cena 3:
+
+Sem locução. Os números respiram e explicam sua própria escala.
+
+Cena 4:
+
+“Sem cartão? Tudo bem. Aqui, você pode parcelar seu celular em até 18 vezes no boleto, inclusive negativado. A simulação é presencial.”
+
+Texto legal sempre visível: “Sujeito à análise e às condições vigentes.”
+
+Cena 5:
+
+“Lacrado ou seminovo, você sabe o que está levando: estado declarado, garantia informada e atendimento de verdade.”
+
+Cena 6:
+
+“Eu posso te contar muita coisa sobre a HG. Mas quem já comprou explica melhor.”
+
+Cena 7:
+
+“Hoje são dez unidades no Rio Grande do Sul. Escolha sua cidade, fale com a equipe ou venha tomar um café. A simulação não custa nada. Tô te esperando.”
+
+Todas as falas e afirmações comerciais precisam de aprovação institucional. Números, formas de pagamento, elegibilidade, garantia, endereços, horários, nota e avaliações não podem ser publicados sem fonte e data de validação.
+
+3.51 Gatilhos, som e silêncio
+
+A camada sonora é obrigatória para a produção, mas a reprodução começa desligada até uma interação válida do usuário. O site deve funcionar integralmente sem áudio.
+
+Reservar graves e subgrave apenas para a segunda batida e para o encontro do cartão do boleto com a interface. A loja recebe ambiência real discreta; números usam ticks secos; avaliações usam notificações raras; o mapa ganha um pulso de conexão. Evitar som em cada animação. Legendas acompanham todas as falas e nunca cobrem rosto, mãos, números ou CTA.
+
+3.52 Portões de produção
+
+Antes da geração ou implementação final:
+
+substituir `01-poses.png` por uma prancha limpa e aprovada;
+
+entregar master do avatar em resolução adequada, preferencialmente com alpha ou matte confiável — o teste 864 × 496 é apenas protótipo;
+
+não simular noite na fachada existente; somente usar uma versão noturna após captação real e autorização;
+
+confirmar a versão e os controles do Higgsfield antes de escrever prompts finais;
+
+validar os números 10, 18x, 5+ e 9, as condições de boleto e negativado, todas as garantias, marcas, endereços, contatos e avaliações;
+
+aprovar os direitos de uso do avatar, voz, fotos da loja, fotos do Eduardo e eventuais clientes presentes nas imagens;
+
+gerar um safety take de baixa intensidade para cada ação crítica e testar a composição em desktop e mobile antes de investir em novas variações.
+
+3.53 Contrato Scroll World + frontend avançado
+
+Objetivo:
+
+transformar as sete cenas em um único percurso físico-digital, no qual a fachada real abre caminho para a loja, a loja vira dado, o dado vira condição, a condição vira produto, o produto vira prova e a prova termina em contato.
+
+Modo principal selecionado:
+
+HTML, dados e tipografia com fotografias reais e clipes recortados do avatar como planos de mídia do DOM. Esse modo mantém texto selecionável, imagens verdadeiras, acessibilidade e fallback sem JavaScript. O scroll conduz uma câmera 2.5D simulada por `transform`, máscaras e perspectiva; não depende de uma loja tridimensional inventada.
+
+Decisão de câmera:
+
+arquitetura A — percurso contínuo sempre avançando. É a opção coerente com uma direção grounded e fotográfica. A arquitetura B, que mergulha e depois recua para voar até outra cena, foi rejeitada porque pareceria rewind entre ambientes reais.
+
+Decisão de Three.js:
+
+não usar por padrão. CSS, SVG, vídeo com alpha e GSAP resolvem a abertura, os dados e as transições com menor custo e melhor fallback. Three.js só entra se um protótipo provar que uma profundidade espacial essencial não pode ser obtida em 2.5D; nesse caso, o canvas terá uma única responsabilidade, poster estático e descarte completo sob movimento reduzido ou falha de WebGL.
+
+Ação que o percurso precisa conquistar:
+
+FALAR COM A HG SMART
+
+Esse é o único CTA primário. “Explorar sem o tour”, áudio e navegação de cenas são controles utilitários, não CTAs concorrentes.
+
+3.54 Bíblia visual MengTo aplicada à HG Smart
+
+Tese visual:
+
+a tecnologia deixa de ser promessa abstrata quando a interface abre uma loja que existe de verdade.
+
+Mood:
+
+preciso, humano, elétrico.
+
+Metáfora do mundo:
+
+um portal de atendimento que atravessa fachada, corredor, dados, produtos, clientes e mapa sem abandonar a realidade física da HG Smart.
+
+Paleta canônica:
+
+`#07080a` — campo principal;
+
+`#0d1117` — plano sólido secundário;
+
+`#ffffff` — informação principal;
+
+`#00a2c7` — ação e trilha de continuidade;
+
+`#16b7dc` — resposta ativa;
+
+`rgba(255,255,255,.12)` — linhas e estrutura.
+
+Tipografia:
+
+Bebas Neue para títulos display e Inter variável para todo o restante. Não adicionar terceira família. Títulos entram por máscara de linha; não usar revelação letra a letra, blur de entrada ou rotação de texto.
+
+Linguagem material:
+
+fotografia documental da loja + planos sólidos de interface + um único acento ciano. Não usar glassmorphism sobre fotografias, gradientes genéricos, blobs decorativos, bento grid ornamental, logo wall fictícia ou brilho sem função.
+
+Elemento condutor:
+
+uma linha ciano fina nasce no segundo “toc”, atravessa todos os capítulos como scanner, borda, sublinhado, trilha e rota do mapa, e termina contornando o CTA. Ela é o fio espacial que impede a sensação de sete blocos independentes.
+
+3.55 Beat ledger do percurso
+
+ID | Função | Eyebrow | Headline | Evidência | Verbo de movimento | Scroll desktop | Linger
+--- | --- | --- | --- | --- | --- | --- | ---
+gancho | Hook | 01 / PRESENÇA | A tecnologia abre a porta. | Fachada real + avatar oficial | aproximar e tocar | 1,6 vh | 0,35
+origem | Old way | 02 / ORIGEM | Nasceu para caber na vida. | `CRI_9694 (1).jpg` + história aprovada | atravessar | 1,3 vh | 0,25
+escala | New rule | 03 / REDE | Acesso virou escala. | Números validados + registros da rede | contar e travar | 0,9 vh | 0,15
+boleto | Mechanism | 04 / CONDIÇÃO | Sem cartão não é o fim. | Condição comercial validada | capturar e assentar | 1,5 vh | 0,40
+clareza | Mechanism | 05 / TRANSPARÊNCIA | Você sabe o que leva. | `CRI_9699.jpg` + produtos reais | inspecionar | 1,0 vh | 0,20
+clientes | Proof | 06 / CLIENTES | Quem comprou conta melhor. | `CRI_9703.jpg` + avaliações verificadas | acompanhar | 1,2 vh | 0,25
+perto | Payoff + Action | 07 / PERTO | Escolha sua HG. | Fachada lateral + mapa e contatos confirmados | conectar e convidar | 1,6 vh | 0,45
+
+Os valores de scroll e linger são pontos de partida para desktop, não duração fixa. `linger` nunca ultrapassa 0,60 e não altera os frames de entrada ou saída. No mobile não há pin: os beats seguem o fluxo normal do documento com transições curtas.
+
+3.56 Caminho contínuo e lei das emendas
+
+Cena 1 → Cena 2:
+
+a máscara vertical da fachada converge para o eixo da porta; as mãos do Eduardo separam os planos; o mesmo corredor vazio no centro do quadro se torna a entrada de `CRI_9694 (1).jpg`.
+
+Cena 2 → Cena 3:
+
+a linha ciano percorre uma aresta real do balcão, isola-se sobre o fundo escuro e vira a linha-base dos contadores. A fotografia não é destruída: ela recua e permanece como memória espacial.
+
+Cena 3 → Cena 4:
+
+o contador 18x é o último a assentar. Sua moldura expande sem salto e se torna o cartão sólido do boleto.
+
+Cena 4 → Cena 5:
+
+a borda do cartão gira em 2.5D, afina até parecer a lateral de um aparelho e entrega o gesto de inspeção sobre `CRI_9699.jpg`.
+
+Cena 5 → Cena 6:
+
+a linha da prateleira se prolonga até virar o trilho horizontal das avaliações; o Eduardo muda da ação para a escuta.
+
+Cena 6 → Cena 7:
+
+o trilho das avaliações perde os cards, preserva a linha e se curva na rota do Rio Grande do Sul até o ponto da unidade escolhida.
+
+Lei da emenda:
+
+toda passagem precisa compartilhar um frame visualmente idêntico nos dois lados. Quando houver vídeo pré-renderizado, o próximo trecho começa no último frame realmente renderizado do anterior — nunca em uma nova reconstrução da mesma foto. Quando a emenda for DOM, o mesmo elemento permanece montado e apenas muda de função. Um crossfade curto pode esconder ruído de compressão; não pode esconder composição diferente.
+
+Contrato de velocidade:
+
+cada beat pode ter orbit, track ou push-in dentro da própria cena, mas o último segundo visual desacelera para um avanço frontal estável. A cena seguinte começa com o mesmo vetor. Nunca inverter a direção da câmera na emenda. O percurso precisa funcionar em sentido reverso sem flash, salto de estado ou mudança de geometria.
+
+3.57 Sistema de scroll e motion avançado
+
+Orquestrador único:
+
+GSAP + ScrollTrigger, já carregados localmente no projeto, controlam a timeline principal. Lenis permanece como único motor de scroll suave em desktop e deve continuar sincronizado ao ticker do GSAP. Não adicionar Locomotive Scroll, Anime.js ou outra timeline concorrente.
+
+Stage:
+
+uma área visual sticky recebe um progresso normalizado de 0 a 1 e capítulos configuráveis. O texto semântico continua no documento; o stage responde ao capítulo ativo. O Hero e o final recebem mais distância e linger; cenas de trânsito permanecem breves.
+
+Breakpoints:
+
+pin somente a partir de 1024 px. Abaixo disso, cada capítulo aparece no fluxo natural, sem parallax de cursor, sem hover obrigatório e sem coordenadas absolutas disputando a tela. A versão mobile não é um recorte do desktop.
+
+Texto:
+
+usar máscara por linha com stagger de 15 a 40 ms, deslocamento curto de até 24 px e nome acessível não fragmentado. Links, números legais e ressalvas nunca são divididos. Sem JavaScript, todo texto já aparece em seu estado final.
+
+Interação:
+
+scroll nativo e reversível; teclado, toque, barra de rolagem e fast flick alcançam o mesmo estado. O indicador de scroll aparece somente no Hero e some depois do primeiro gesto. Pointer effects são aditivos e desligados em coarse pointer, blur da janela e movimento reduzido.
+
+3.58 Performance do Scroll World
+
+Orçamento alinhado ao `DESIGN.md`:
+
+poster/LCP de abertura até 150 KB;
+
+uma passagem de mídia até 4 MB, carregada por proximidade;
+
+somente mídia atual e próxima em prefetch;
+
+nenhum vídeo ou loop continua ativo fora da viewport;
+
+dimensões e `aspect-ratio` reservados antes do carregamento;
+
+LCP ≤ 2,5 s, INP ≤ 200 ms e CLS ≤ 0,1 somente podem ser declarados depois de medição.
+
+Se um trecho de vídeo for ligado diretamente ao scroll, manter poster até o primeiro frame pintado, coalescer seeks em `requestAnimationFrame` e garantir seek por byte-range ou Blob URL. Usar codec, perfil e tratamento de cor uniformes; emenda não pode trocar de grain ou contraste.
+
+Movimento reduzido substitui o stage por fotografias ordenadas e conteúdo no fluxo. Sem vídeo, WebGL, partículas, scroll suave ou pin.
+
+3.59 Opção futura de cadeia de vídeo completa
+
+Uma cadeia Scroll World pré-renderizada não foi gerada nesta etapa. Ela só será considerada após aprovação de câmera, mobile e orçamento, porque Monid e Higgsfield consomem saldo.
+
+Para sete cenas em arquitetura A, o escopo inicial é de sete legs encadeados sequencialmente, mais aproximadamente 15% de margem para re-render. Com base no snapshot local da skill, a referência aproximada de desktop é cerca de US$ 10 em 720p ou US$ 24 em 1080p, já com margem. Uma cadeia 9:16 nativa aproximadamente dobra esse valor. Esses preços podem mudar: antes de qualquer geração, revalidar schema, saldo e custo com um único clipe de calibração e solicitar aprovação explícita.
+
+Nenhum vídeo generativo pode reconstruir ou modificar a arquitetura da loja. Se a continuidade exigir geometria inexistente no acervo, usar a passagem abstrata da interface ou realizar captação real.
+
+3.60 Critérios de aceite Scroll World
+
+o visitante compreende hook, tensão, nova regra, mecanismo, prova, payoff e ação em uma passagem;
+
+o CTA primário final é único e funcional;
+
+scroll lento, rápido e reverso restauram exatamente os estados anteriores;
+
+nenhuma emenda apresenta pop, flash, corte de direção ou frame reconstruído;
+
+a experiência é validada em 390, 768, 1024 e 1440 px;
+
+mobile suporta fast flick, rotação, safe areas e mudança da barra do navegador sem salto;
+
+teclado, foco visível, contraste e ordem semântica permanecem íntegros;
+
+movimento reduzido e falha de JavaScript mostram uma página completa;
+
+console, rede e caminhos de assets não apresentam erro;
+
+nenhuma afirmação comercial ou prova social permanece sem fonte e aprovação.
+
+3.61 Regra cinematográfica irredutível
+
+O Scroll World é a estrutura de navegação; cinema é a linguagem das cenas. A experiência não pode parecer uma apresentação de slides, uma sequência de cards ou um template com parallax. Cada capítulo precisa ter intenção de câmera, blocking do Eduardo, profundidade em três planos, mudança de luz, desenho de som e um ponto de montagem que entregue a próxima cena.
+
+Estrutura mínima de cada cena:
+
+establishing — orienta espaço, escala e direção do olhar;
+
+antecipação — Eduardo ou a câmera prepara a ação;
+
+ação — um movimento principal legível;
+
+contato — gesto encontra interface, objeto ou ponto de cena;
+
+reação — luz, som, texto e ambiente respondem;
+
+hold — o quadro respira e permite compreender a informação;
+
+match cut — uma forma, linha, direção ou som atravessa a emenda.
+
+Regras de encenação:
+
+o pensamento aparece no olhar do Eduardo antes do gesto;
+
+o primeiro plano cria profundidade com máscara, reflexo, mobiliário real ou interface, sem inventar arquitetura;
+
+o plano médio mantém rosto, mãos e ação principal legíveis;
+
+o fundo localiza a cena e nunca vira ruído atrás da copy;
+
+uma única ação domina cada tomada;
+
+a câmera assenta antes de qualquer frase comercial importante;
+
+o corte ou a emenda acontece em movimento compatível, nunca durante um rosto instável;
+
+o avatar recebe light wrap, sombra e contraste coerentes com o ambiente real em todas as cenas.
+
+3.62 Decupagem cinematográfica da câmera
+
+Cena | Linguagem de plano | Movimento principal | Luz | Emenda cinematográfica
+--- | --- | --- | --- | ---
+1. Gancho | plano médio frontal, presença direta | push-in quase imperceptível interrompido pelas batidas | azul/ciano recortado contra campo escuro | linha do scanner encontra o eixo da porta
+2. Realidade | plano americano inserido no espaço | avanço de steadicam 2.5D pelo corredor real | branco difuso dos LEDs da loja | aresta do balcão vira linha dos dados
+3. Escala | plano aberto lateral com espaço negativo | travelling lateral curto; câmera assenta no estalo | fundo escuro, números como fonte luminosa | moldura do 18x ocupa o quadro
+4. Boleto | close de mãos e rosto | meio-arco controlado dentro da cena, seguido de avanço frontal da mão | azul e prata com rosto sempre legível | borda sólida do cartão vira lateral do aparelho
+5. Transparência | três-quartos técnico | push-in macro no gesto de inspeção, sem zoom digital no rosto | luz branca de produto, limpa e honesta | linha da prateleira vira trilho
+6. Prova social | plano de reação com Eduardo fora do centro | dolly lateral conduzido pelos depoimentos | luz calma e uniforme, contraste reduzido | trilho perde cards e desenha a rota do mapa
+7. Expansão | plano baixo moderado, não heroísmo exagerado | crane-up simulado acompanha mãos e revela a rede | preto profundo, pontos ciano e rosto aquecido | câmera assenta no CTA e o ambiente fica calmo
+
+Esses movimentos definem sensação e montagem, não parâmetros automáticos de modelo. Lente, amplitude e velocidade finais dependem do Hero Frame, do material disponível e da versão confirmada da ferramenta. Se um movimento exigir reconstruir área que não existe na fotografia, reduzir a amplitude ou usar um plano de interface como passagem.
+
+3.63 Montagem, ritmo e desenho sonoro cinematográfico
+
+Usar match cuts de forma, direção e luz para preservar continuidade. A linha ciano, a borda do cartão, a lateral do aparelho, o trilho das avaliações e a rota do mapa são o mesmo motivo visual em diferentes estados.
+
+Aplicar sound bridges com reprodução opt-in: o som da próxima cena pode começar discretamente antes da imagem terminar, e a ambiência anterior pode desaparecer depois da nova imagem entrar. A fachada recebe ruído urbano mínimo; a loja, presença acústica leve; os dados, ticks secos; o boleto, impacto grave; produtos, detalhe limpo; avaliações, silêncio com uma única notificação; mapa, pulso espacial.
+
+Curva dramática:
+
+o Hero abre com tensão e contato;
+
+a origem reduz energia e cria proximidade;
+
+a escala volta a acelerar;
+
+o boleto é o clímax central;
+
+transparência e avaliações funcionam como respiro e prova;
+
+o mapa cresce para um encerramento caloroso, não para outro clímax ruidoso.
+
+Não usar letterbox decorativo, tremor falso, flare genérico, speed ramp aleatório, grain pesado, profundidade de campo simulada sobre texto ou música épica contínua. A sensação cinematográfica vem da intenção do quadro, da luz, do tempo e da montagem.
 
 4. Visão geral da jornada
 
@@ -1388,25 +1895,25 @@ Hero — Tecnologia não devia ser privilégio.
 
 5.3 Estado visual inicial
 
-Gradiente escuro ocupando toda a área da cena.
+Preto azulado profundo ocupando toda a área da cena.
 
-Foto da matriz à noite quase apagada ao fundo.
+Fragmentos da foto real diurna `Fotos HG/Loja HG Santa Cruz/fotos/01-fachada-esquina-arco-2048px.jpg` aparecem dentro de uma máscara vertical de scanner. Não converter a foto em noite nem inventar iluminação da fachada.
 
-Letreiros gigantes como elemento dominante.
+Eyebrow HG SMART · SANTA CRUZ DO SUL · UMA REDE DE VERDADE e H1 gigante como elementos dominantes.
 
 Eduardo ainda fora do enquadramento.
 
 Tela inicialmente travada (Pinned).
 
-5.4 Prompt aprimorado para o Higgsfield — direção de arte
+5.4 Prompt-base para o Higgsfield — direção de arte
 
-Eduardo Hermes em plano médio, enquadrado da cintura para cima, usando roupa profissional e acessível. Câmera estática, lente de 35 mm, perspectiva natural e contato visual direto com a lente. Fundo verde uniforme para chroma key. Iluminação cinematográfica dramática, com luz principal controlada no rosto e luz de recorte ciano/azul vindo da esquerda, coerente com a identidade visual da HG Smart. Preservar definição completa das mãos, dos dedos e dos braços durante todos os gestos. Movimento natural, presença confiante, expressão magnética e espaço suficiente no enquadramento para a entrada pela direita, deslocamento ao centro, duas batidas em direção à câmera, gesto indicando a rolagem e abertura lateral dos braços como se rasgasse uma cortina.
+Usar o avatar institucional do Eduardo como identidade travada, preservando rosto, cabelo, barba, proporções, camiseta preta HG Smart, calça bege, tênis branco e relógio preto. Plano médio, perspectiva natural, mãos completamente visíveis e contato visual direto. Fundo técnico neutro adequado a recorte. Luz principal controlada e recorte ciano vindo da esquerda, coerente com a UI. Peso corporal humano, respiração discreta, piscadas naturais e gesto preciso. Gerar separadamente entrada, duas batidas, indicação de scroll e abertura dos planos, conforme 3.48. Uma ação principal por clipe; sem texto, ripple, fachada, vidro ou partículas dentro da geração.
 
 5.5 Coreografia de atuação e interface
 
 A cena começa somente com fundo e textos.
 
-Eduardo surge lentamente das sombras pelo lado direito.
+Eduardo surge pelo lado direito enquanto a máscara de scanner revela brevemente a fachada real.
 
 Ele caminha até o centro e para de frente para a câmera.
 
@@ -1422,7 +1929,7 @@ Após a segunda batida, ele aponta o indicador para baixo e gira o pulso, execut
 
 Quando o usuário inicia a rolagem, Eduardo agarra o “ar” no centro da tela.
 
-Ele puxa as duas mãos para os lados com um movimento brutal, como se rasgasse uma cortina escura.
+Ele puxa as duas mãos para os lados com um movimento firme e controlado, como se separasse duas camadas da interface.
 
 5.6 Expressão e intenção
 
@@ -1436,7 +1943,7 @@ O olhar deve permanecer direcionado ao usuário nos momentos de contato.
 
 5.7 UI e efeitos sonoros
 
-Áudio obrigatório:
+Camada sonora de produção — reprodução somente após opt-in:
 
 TOC TOC, com textura de batida abafada em vidro temperado grosso.
 
@@ -1448,13 +1955,13 @@ O H1 TECNOLOGIA NÃO DEVIA SER PRIVILÉGIO sofre uma distorção de onda (ripple
 
 A deformação precisa nascer no instante da batida e transmitir a sensação de que a tela inteira vibrou.
 
-5.8 Voz — texto obrigatório
+5.8 Voz — texto de produção recomendado
 
-“Tá aí? Quer que eu te mostre por que a HG é diferente de tudo que você já viu? Toca na tela, desce a tela e vem comigo.”
+“Tá aí? Eu sou o Eduardo. Desce a tela — eu vou te mostrar por que a HG Smart faz diferente.”
 
 5.9 Transição de saída
 
-O movimento de rasgar a cortina deve abrir o fundo escuro e revelar a fotografia real usada na Cena 2. A próxima cena não deve surgir como um corte independente: ela precisa parecer fisicamente descoberta pelas mãos do Eduardo.
+O movimento de separar os planos deve revelar `Fotos HG/Loja HG Santa Cruz/fotos/CRI_9694 (1).jpg`. A próxima cena não surge como corte independente: ela parece fisicamente descoberta pelas mãos do Eduardo.
 
 5.10 Critério de conclusão
 
@@ -1466,7 +1973,7 @@ Exibir a indicação de scroll somente depois que Eduardo apontar para baixo.
 
 Manter Explorar livremente e o controle de áudio acessíveis desde o primeiro contato.
 
-A fala “toca na tela” não deve obrigar um clique: rolar, tocar ou usar teclado precisa iniciar a progressão.
+A fala não deve obrigar um clique: rolar, tocar ou usar teclado precisa iniciar a progressão.
 
 Se o usuário avançar rapidamente, concluir a ação no frame final da cortina aberta, sem deixá-la pela metade.
 
@@ -1480,7 +1987,7 @@ O ripple deve durar apenas o necessário para confirmar a batida e devolver a le
 
 Hero Frame: Eduardo em plano médio, chegando pelo lado direito, iluminação azul/ciano aprovada e mãos completamente visíveis.
 
-Referência de movimento: ator executando entrada, pausa, duas batidas, apontamento e rasgo, no mesmo enquadramento.
+Referência de movimento: `cena-1-abertura-teste-01.mp4` orienta timing da batida; novas referências limpas devem registrar entrada, batidas, apontamento e abertura em ações separadas.
 
 Motion Control: obrigatório para batidas, rotação do pulso e abertura dos braços.
 
@@ -1490,7 +1997,7 @@ Frame inicial: cena sem Eduardo ou Eduardo iniciando fora da margem direita.
 
 Frame final: braços abertos nas laterais, corredor visual central liberado para revelar a loja.
 
-Se a sequência completa comprometer mãos ou identidade, gerar duas tomadas contínuas — contato com o vidro e rasgo da cortina — unidas no ponto do gesto, sem alterar a narrativa.
+Gerar quatro tomadas curtas — entrada, batidas, apontamento e abertura — mais um safety take de baixa intensidade. Unir nos holds de postura, preservando a continuidade do olhar e das mãos.
 
 CENA 2 — A REALIDADE: ENTRANDO NA LOJA
 
@@ -1506,7 +2013,7 @@ Nossa História — Nasceu de um sonho...
 
 A cortina da cena anterior termina de se abrir.
 
-Surge a fotografia CRI_9694.jpg.
+Surge a fotografia real `Fotos HG/Loja HG Santa Cruz/fotos/CRI_9694 (1).jpg`.
 
 O interior iluminado, os balcões e a parede verde devem permanecer reconhecíveis.
 
@@ -1514,7 +2021,7 @@ Eduardo aparece integrado visualmente ao espaço, no canto esquerdo.
 
 5.14 Prompt aprimorado para o Higgsfield — direção de arte
 
-Eduardo Hermes em plano americano, enquadrado dos joelhos para cima, com postura profissional, acolhedora e natural. Câmera estática e perspectiva compatível com uma composição sobre a fotografia real do interior da loja. Iluminação branca, limpa e difusa, simulando os LEDs do ambiente, substituindo completamente o azul dramático da cena anterior. Preservar mãos e braços com nitidez para o gesto de apresentação do espaço. Ele deve aparecer com área livre ao lado direito do próprio corpo, abrir as mãos para mostrar a loja, sustentar a postura e, ao final, cruzar as mãos à frente do corpo em posição de atendimento respeitoso.
+Avatar oficial do Eduardo em plano americano, dos joelhos para cima, com postura acolhedora e natural. Câmera estática, escala e perspectiva compatíveis com `CRI_9694 (1).jpg`. A luz branca e difusa do interior substitui o recorte dramático do Hero; adicionar light wrap e sombra de contato na composição. Gerar o gesto de apresentar a loja e o fechamento em postura de atendimento como duas ações separadas, preservando mãos, figurino e identidade.
 
 5.15 Coreografia de atuação e interface
 
@@ -1544,7 +2051,7 @@ O orgulho deve aparecer de maneira serena, sem quebrar o tom de atendimento.
 
 5.17 UI e efeitos sonoros
 
-Áudio obrigatório:
+Camada sonora de produção — reprodução somente após opt-in:
 
 som de desbloqueio de tela de smartphone no momento da revelação;
 
@@ -1552,13 +2059,13 @@ ambiente leve de loja, com passos sutis e pequeno eco.
 
 O som ambiente deve apoiar a sensação de presença física sem competir com a fala.
 
-5.18 Voz — texto obrigatório
+5.18 Voz — texto de produção recomendado
 
-“Tudo começou com um sonho simples. Tornar a tecnologia acessível pra todo mundo. Não era só sobre vender celular... era dar oportunidade, de verdade, pra quem outras lojas recusavam.”
+“A HG começou com uma ideia simples: tecnologia tem que caber na vida real. Foi assim que a gente abriu espaço para quem antes só ouvia não.”
 
 5.19 Transição de saída
 
-A fotografia da loja recebe um desfoque fortíssimo, com efeito de Blur pesado. Ao mesmo tempo, o fundo escurece até reduzir a presença do ambiente físico e concentrar a atenção nos dados da Cena 3.
+A profundidade do interior é reduzida com blur progressivo e máscara de luz, sem apagar completamente a loja. O fundo escurece o suficiente para transferir o foco aos dados da Cena 3, mantendo a memória visual do espaço real.
 
 5.20 Critério de conclusão
 
@@ -1582,7 +2089,7 @@ Com áudio desligado, legenda e texto da seção devem preservar integralmente a
 
 5.20.2 Plano de produção no Higgsfield
 
-Hero Frame: Eduardo no canto esquerdo, em plano americano, perspectiva compatível com o balcão de CRI_9694.jpg.
+Hero Frame: avatar oficial do Eduardo no canto esquerdo, em plano americano, perspectiva compatível com o balcão de `CRI_9694 (1).jpg`.
 
 Referência de movimento: gesto de mãos abertas, pausa de apresentação e fechamento com mãos cruzadas.
 
@@ -1618,9 +2125,9 @@ Carrossel de marcas posicionado abaixo dos números.
 
 Eduardo entra pela esquerda.
 
-5.24 Prompt aprimorado para o Higgsfield — direção de arte
+5.24 Prompt-base para o Higgsfield — direção de arte
 
-Eduardo Hermes caminhando suavemente da esquerda para a direita, com postura segura, ritmo controlado e presença de liderança. Câmera estática, enquadramento amplo o suficiente para registrar o deslocamento lateral, o estalo de dedos e o gesto final apontando para baixo. Fundo verde uniforme para composição. Iluminação cinematográfica escura, com luz de recorte ciano nas costas e nos ombros, retomando a atmosfera tecnológica da primeira cena. Mãos completamente visíveis e bem definidas, especialmente durante o estalo. Expressão ágil, focada em resultados e autoridade, sem fala.
+Avatar oficial do Eduardo, identidade e figurino travados, câmera estática e mãos totalmente visíveis. Gerar três clipes: caminhada lateral curta com desaceleração; estalo limpo com hold antes e depois; apontamento para a área inferior. Fundo técnico neutro, luz escura com recorte ciano nos ombros e expressão focada, sem fala. Os números, rótulos, giro e carrossel são compostos na interface, nunca dentro do vídeo.
 
 5.25 Coreografia de atuação e interface
 
@@ -1632,7 +2139,7 @@ Ele reduz o passo e levanta a mão.
 
 Executa um estalo de dedos claramente visível.
 
-No exato instante do estalo, os números começam a girar intensamente, de maneira “louca” e acelerada, como definido no roteiro original.
+No exato instante do estalo, os números percorrem uma sequência curta e veloz. Cada contador desacelera e trava com pequeno intervalo do anterior, conduzindo o olhar da esquerda para a direita.
 
 Os contadores param obrigatoriamente em 10, 18x, 5+ e 9.
 
@@ -1652,7 +2159,7 @@ Autoridade sem rigidez.
 
 5.27 UI e efeitos sonoros
 
-Áudio obrigatório:
+Camada sonora de produção — reprodução somente após opt-in:
 
 estalo de dedos nítido;
 
@@ -1700,7 +2207,7 @@ Se o usuário acelerar o scroll, mostrar imediatamente os valores finais antes d
 
 Hero Frame: Eduardo em posição lateral, com espaço horizontal para caminhar diante dos números.
 
-Referência de movimento: caminhada controlada, desaceleração, estalo e apontamento para baixo.
+Referência de movimento: três registros separados — caminhada e desaceleração; estalo; apontamento para baixo.
 
 Motion Control: obrigatório para o estalo e recomendado para preservar peso e ritmo da caminhada.
 
@@ -1728,7 +2235,7 @@ Fundo totalmente escuro.
 
 Tipografia visível.
 
-Quatro cartões de pagamento em UI translúcida, com efeito de vidro.
+Quatro cartões de pagamento em planos sólidos `--fundo-2`, com borda `--linha` e acento ciano. Não usar transparência sobre a fotografia.
 
 Os cartões correspondem a Pix, 10x, 24x Luz e 18x Boleto.
 
@@ -1736,9 +2243,9 @@ Tela travada (Pinned).
 
 Eduardo posicionado no centro.
 
-5.34 Prompt aprimorado para o Higgsfield — direção de arte
+5.34 Prompt-base para o Higgsfield — direção de arte
 
-Eduardo Hermes em plano fechado no tronco e nas mãos, centralizado, com foco extremo na movimentação dos dedos. Câmera estática, perspectiva frontal e contato visual preciso. Fundo verde uniforme para composição. Iluminação cinematográfica em azul e prata, com contraste suficiente para destacar mãos, rosto e contorno do corpo. Eduardo acompanha com os olhos cartões invisíveis que giram ao seu redor, levanta a mão com rapidez e precisão como um mágico, captura um cartão invisível no ar e fecha a mão. Em seguida, avança a mão fechada em direção à câmera e a encosta com impacto, como se colasse um cartão no vidro da tela. Expressão de cumplicidade e triunfo. Preservar nitidez dos dedos e evitar cortes nas mãos durante toda a ação.
+Avatar oficial do Eduardo em plano fechado de tronco e mãos, câmera estática frontal, luz azul e prata, dedos nítidos e contato visual preciso. Gerar quatro clipes: acompanhar um alvo invisível com os olhos; capturar e fechar a mão; avançar a mão até um ponto marcado no vidro; sustentar a fala em pose estável. Expressão de cumplicidade que cresce para convicção, sem teatralidade de mágico. Cartões, texto, neon e impacto são aplicados na interface.
 
 5.35 Coreografia de atuação e interface
 
@@ -1774,7 +2281,7 @@ O olhar deve sustentar proximidade e segurança durante a fala.
 
 5.37 UI e efeitos sonoros
 
-Áudio obrigatório:
+Camada sonora de produção — reprodução somente após opt-in:
 
 som de holograma ou interface futurista enquanto os cartões giram;
 
@@ -1784,7 +2291,7 @@ impacto pesado BANG! quando o cartão é colado na tela.
 
 Resposta visual obrigatória:
 
-cartões translúcidos flutuando ao redor do Eduardo;
+cartões sólidos em profundidade 2.5D ao redor do Eduardo, sempre separados da fotografia;
 
 cartão de 18x NO BOLETO destacado somente após a captura;
 
@@ -1794,9 +2301,11 @@ ocupação de aproximadamente 40% da tela;
 
 pulsação em neon durante o destaque.
 
-5.38 Voz — texto obrigatório
+5.38 Voz — texto de produção recomendado
 
-“Essa condição aqui... foi a mais difícil de montar. Mas hoje, mesmo se você não tiver cartão de crédito, ou estiver negativado no SPC e Serasa... a gente parcela o seu celular novo em até 18 vezes no boleto. Presencial. Só eu e você.”
+“Sem cartão? Tudo bem. Aqui, você pode parcelar seu celular em até 18 vezes no boleto, inclusive negativado. A simulação é presencial.”
+
+Ressalva textual fixa durante o destaque: “Sujeito à análise e às condições vigentes.”
 
 5.39 Transição de saída
 
@@ -1826,7 +2335,7 @@ Se o usuário estiver com movimento reduzido, substituir o impacto por entrada d
 
 Hero Frame: plano fechado no tronco e mãos, Eduardo centralizado, luz azul e prata.
 
-Referência de movimento: acompanhar cartões com os olhos, capturar o elemento, fechar a mão, avançar e encostar no vidro.
+Referência de movimento: quatro registros separados — olhar; captura; avanço até o ponto de contato; pose estável para fala.
 
 Motion Control: obrigatório para dedos, punho e ponto de impacto.
 
@@ -1870,9 +2379,9 @@ Não há pausas impostas ao usuário.
 
 Eduardo acompanha o scroll pela lateral direita enquanto inspeciona o aparelho imaginário.
 
-5.44 Prompt aprimorado para o Higgsfield — direção de arte
+5.44 Prompt-base para o Higgsfield — direção de arte
 
-Eduardo Hermes em posição de perfil três-quartos, enquadrado com mãos e tronco visíveis, segurando um objeto retangular imaginário próximo ao rosto como se fosse um smartphone. Câmera estática e iluminação clara, uniforme e técnica, coerente com o fundo luminoso da seção. Fundo adequado para composição. Ele acompanha o objeto contra a luz, limpa sua superfície, inspeciona detalhes, gira o aparelho imaginário e, ao final, volta a tela invisível para a câmera enquanto aponta o indicador para ela. Expressão honesta, técnica e detalhista. Movimentos cuidadosos, precisos e naturais, com definição completa das mãos e do objeto imaginário durante toda a atuação.
+Avatar oficial do Eduardo em perfil três-quartos, tronco e mãos visíveis, câmera estática e luz clara coerente com `CRI_9699.jpg`. Usar um prop físico neutro do tamanho de um smartphone na referência de movimento. Gerar dois clipes: inspeção curta contra a luz; giro controlado seguido de apontamento para a área de UI. Expressão técnica e honesta, movimentos precisos. O aparelho final, marcas, estado e garantia entram em pós com materiais reais aprovados.
 
 5.45 Coreografia de atuação e interface
 
@@ -1912,9 +2421,9 @@ quando Eduardo vira o aparelho e aponta, os ícones acendem;
 
 a ativação deve ser sincronizada com o dedo indicador.
 
-5.48 Voz — texto obrigatório em voice-over mais baixo
+5.48 Voz — texto de produção recomendado em voice-over mais baixo
 
-“Garantia oficial e estado declarado. Seja lacrado ou seminovo, aqui não tem caixa preta. Você sabe exatamente o que tá comprando.”
+“Lacrado ou seminovo, você sabe o que está levando: estado declarado, garantia informada e atendimento de verdade.”
 
 5.49 Transição de saída
 
@@ -1944,7 +2453,7 @@ No mobile, priorizar gesto de toque e seleção, sem depender do acompanhamento 
 
 Hero Frame: perfil três-quartos, plano compatível com inspeção do aparelho e espaço livre para marcas.
 
-Referência de movimento: limpar, girar, aproximar da luz, virar para a câmera e apontar.
+Referência de movimento: dois registros separados — limpar e inspecionar; girar e apontar.
 
 Motion Control: obrigatório para manipulação do objeto imaginário e articulação dos dedos.
 
@@ -1978,9 +2487,9 @@ Eduardo apoiado ou posicionado junto à linha superior da esteira.
 
 Movimento vertical da página preparado para se transformar em deslocamento horizontal das avaliações.
 
-5.54 Prompt aprimorado para o Higgsfield — direção de arte
+5.54 Prompt-base para o Higgsfield — direção de arte
 
-Eduardo Hermes em posição estática de descanso, com braços cruzados ou mãos nos bolsos da calça, iluminação clara e uniforme. Câmera fixa, enquadramento compatível com sua permanência no canto inferior esquerdo. Fundo adequado para composição. Ele observa elementos que se deslocam horizontalmente atrás dele, acompanha a leitura com os olhos, balança a cabeça sutilmente em concordância e, em momentos espaçados, levanta uma sobrancelha e sorri com orgulho. A atuação deve ser contida e natural, sem gestos intensos, preservando uma postura segura e satisfeita.
+Avatar oficial do Eduardo em descanso no canto inferior esquerdo, câmera fixa e luz clara compatível com `CRI_9703.jpg`. Criar dois loops independentes e discretos: leitura com micro-saccades, piscada natural e respiração; reação curta com leve concordância e sorriso contido. Começo e fim devem compartilhar postura e distribuição de peso. As avaliações reais são protagonistas e pertencem à interface.
 
 5.55 Coreografia de atuação e interface
 
@@ -2010,17 +2519,15 @@ A atuação deve comunicar: os clientes podem falar pela empresa.
 
 5.57 UI e efeitos sonoros
 
-Áudio obrigatório:
+Camada sonora de produção — reprodução somente após opt-in:
 
-notificações curtas e sutis de WhatsApp (Pop!);
+uma única notificação curta e sutil de WhatsApp (Pop!) pode marcar a entrada da prova social;
 
-inserir uma notificação a cada três cards lidos;
+não repetir o som durante a leitura nem sugerir uma venda específica sem comprovação.
 
-o som simboliza vendas concluídas.
+5.58 Voz — texto de produção recomendado
 
-5.58 Voz — texto obrigatório
-
-“Eu poderia passar horas aqui tentando te convencer. Mas eu prefiro deixar os nossos clientes falarem por mim.”
+“Eu posso te contar muita coisa sobre a HG. Mas quem já comprou explica melhor.”
 
 5.59 Transição de saída
 
@@ -2050,7 +2557,7 @@ Em movimento reduzido, apresentar cards navegáveis sem conversão forçada do s
 
 Hero Frame: Eduardo no canto inferior esquerdo, postura de descanso e iluminação uniforme.
 
-Referência de movimento: loop sutil de leitura, concordância, sobrancelha e sorriso.
+Referência de movimento: um loop de leitura e um loop de aprovação, gravados separadamente.
 
 Motion Control: recomendado para manter naturalidade das microexpressões.
 
@@ -2086,9 +2593,9 @@ Botão verde fixo Falar no WhatsApp visível no rodapé da tela.
 
 Tela travada para o encerramento.
 
-5.64 Prompt aprimorado para o Higgsfield — direção de arte
+5.64 Prompt-base para o Higgsfield — direção de arte
 
-Eduardo Hermes entrando no centro do enquadramento, filmado em ângulo levemente baixo, em plano contra-plongée, para transmitir liderança e grandiosidade. Câmera estática e composição simétrica. Iluminação cinematográfica épica, com recorte luminoso compatível com o fundo preto e os pontos de luz do mapa. Fundo adequado para composição. Eduardo levanta simultaneamente as palmas das duas mãos em um gesto amplo de maestro, sustenta a posição enquanto observa os pontos acenderem e, em seguida, aponta o dedo indicador com precisão para a região inferior da tela. Expressão entusiasmada, grata e receptiva. Finalizar com sorriso de despedida e postura estável para a aplicação do efeito de glitch e partículas.
+Avatar oficial do Eduardo centralizado em ângulo levemente baixo, câmera estática, composição simétrica e recorte ciano controlado. Gerar três clipes: elevar as mãos em gesto bilateral e sustentar; apontar com precisão para a área inferior; encerrar com sorriso grato e corpo imóvel. A intenção cresce de liderança para convite, sem grandiosidade teatral. Mapa, pontos, cards, glitch e partículas são compostos depois sobre o corpo limpo.
 
 5.65 Coreografia de atuação e interface
 
@@ -2122,7 +2629,7 @@ Sensação de portas abertas e convite pessoal.
 
 5.67 UI e efeitos sonoros
 
-Áudio obrigatório:
+Camada sonora de produção — reprodução somente após opt-in:
 
 som de radar ativando conexões;
 
@@ -2138,9 +2645,9 @@ queda dos cards até a grade final;
 
 permanência do botão do WhatsApp na área indicada pelo Eduardo.
 
-5.68 Voz — texto obrigatório
+5.68 Voz — texto de produção recomendado
 
-“Já somos 10 unidades pelo Rio Grande do Sul, e tem sempre uma HG pertinho de você. Escolhe a sua cidade aqui embaixo, chama a gente ou passa pra tomar um café. A simulação não custa nada, e o respeito é o mesmo. Tô te esperando.”
+“Hoje são dez unidades no Rio Grande do Sul. Escolha sua cidade, fale com a equipe ou venha tomar um café. A simulação não custa nada. Tô te esperando.”
 
 5.69 Transição final
 
@@ -2180,7 +2687,7 @@ Depois do glitch, interromper partículas e movimentos de fundo para criar uma �
 
 Hero Frame: Eduardo centralizado em contra-plongée, iluminação épica e mãos livres para o gesto de maestro.
 
-Referência de movimento: entrada, elevação simultânea das mãos, pausa, apontamento para baixo e sorriso final.
+Referência de movimento: três registros separados — gesto bilateral; apontamento; despedida limpa.
 
 Motion Control: obrigatório para o gesto bilateral e apontamento preciso.
 
@@ -2306,13 +2813,13 @@ preservar a aparência final da seção com composição coerente.
 
 Preparar, sem alterar os conceitos do roteiro e usando somente materiais reais, oficiais e aprovados:
 
-fotografia oficial CRI_9694.jpg;
+fotografias oficiais `01-fachada-esquina-arco-2048px.jpg`, `02-fachada-lateral-calcada-2048px.jpg`, `CRI_9694 (1).jpg`, `CRI_9695.jpg`, `CRI_9699.jpg` e `CRI_9703.jpg`;
 
-fotografia noturna real da matriz;
+pranchas oficiais e master final do avatar do Eduardo;
 
-fotos e vídeos reais do Eduardo que servirão de base para as sete cenas;
+fotos e vídeos reais do Eduardo usados para validação de identidade, atuação e voz;
 
-animações fotorrealistas geradas a partir desse acervo real;
+animações do avatar oficial geradas a partir do pacote canônico aprovado;
 
 fotografias e vídeos reais das unidades para todos os ambientes finais;
 
@@ -2378,6 +2885,14 @@ versão de movimento reduzido;
 
 ficha de sincronização entre gestos, UI, voz e SFX.
 
+mapa de frames de emenda entre as sete cenas;
+
+beat ledger com scroll weight e linger calibrados;
+
+posters estáticos para Hero, capítulos e movimento reduzido;
+
+relatório de QA em 390, 768, 1024 e 1440 px.
+
 8. Checklist final
 
 8.1 Fidelidade ao conceito original
@@ -2388,13 +2903,13 @@ As sete cenas foram mantidas na ordem original.
 
 Nenhuma ação do Eduardo foi removida ou substituída.
 
-Todas as falas foram preservadas.
+As falas revisadas foram aprovadas e continuam fiéis à intenção de cada cena.
 
 Os números 10, 18x, 5+ e 9 continuam presentes.
 
 As condições 10x, 24x Luz e 18x Boleto foram mantidas.
 
-A fotografia CRI_9694.jpg permanece na Cena 2.
+A fotografia real `CRI_9694 (1).jpg` permanece na Cena 2.
 
 As cenas travadas e as cenas de scroll livre continuam conforme definido.
 
@@ -2410,7 +2925,7 @@ Nenhum código foi incluído.
 
 Nenhum conteúdo de SEO foi incluído nesta etapa.
 
-O site foi usado apenas para compreensão do contexto, sem alterar as ideias deste arquivo.
+O site e o `DESIGN.md` foram usados para aterrar tokens, stack e limites técnicos, sem implementar código nesta etapa.
 
 8.2 Direção Awwwards e qualidade visual
 
@@ -2422,9 +2937,9 @@ A interface mantém hierarquia, respiro e legibilidade.
 
 Fotografias reais, vídeos e UI parecem pertencer à mesma produção.
 
-Não há aparência de brinquedo, jogo, mascote ou personagem 3D.
+O avatar preserva o estilo 3D institucional aprovado, sem aparência genérica, plástica, de brinquedo ou videogame.
 
-Neon, vidro, glitch, ripple e partículas aparecem somente onde previstos.
+Neon, vidro, glitch, ripple e partículas aparecem somente onde previstos; vidro nunca recebe texto sobre fotografia.
 
 O ritmo alterna impacto e respiro.
 
@@ -2468,7 +2983,7 @@ Rosto, idade, cabelo, roupa e proporções permanecem estáveis.
 
 Mãos e dedos estão corretos em todos os frames de sincronização.
 
-Cada prompt informa tomadas, duração, proporção, ação e frames inicial/final.
+Depois da confirmação da versão, cada ficha registra modelo, duração, proporção, ação e frames inicial/final.
 
 Os vídeos de referência possuem enquadramento e amplitude compatíveis.
 
@@ -2510,9 +3025,9 @@ Preferências de áudio e movimento persistem durante a visita.
 
 Nenhuma imagem de banco foi utilizada.
 
-Nenhuma pessoa genérica ou criada por IA representa Eduardo, equipe ou cliente.
+Nenhuma pessoa genérica, sintética ou não aprovada substitui Eduardo, equipe ou cliente; o avatar institucional é a representação digital autorizada do Eduardo.
 
-O avatar foi construído somente com fotos e vídeos reais e autorizados do Eduardo.
+O avatar usado é o modelo institucional oficial do Eduardo, validado pelas pranchas canônicas e por registros reais e autorizados.
 
 O próprio Eduardo aprovou identidade, voz, falas e resultado final.
 
@@ -2535,6 +3050,34 @@ Cada ativo possui origem, autorização, uso previsto e responsável pela aprova
 Materiais ausentes estão marcados como pendentes, sem substituição fictícia.
 
 Extensões generativas foram limitadas a áreas neutras e não alteram a realidade do local.
+
+8.7 Scroll World e linguagem cinematográfica
+
+O percurso usa um único eixo de avanço e nunca inverte velocidade na emenda.
+
+Cada cena possui establishing, antecipação, ação, contato, reação, hold e match cut.
+
+Eduardo executa uma ação dominante por tomada e o olhar antecipa o gesto.
+
+Primeiro plano, plano médio e fundo possuem funções distintas e legíveis.
+
+Luz, escala, perspectiva, sombra de contato e light wrap integram o avatar à loja.
+
+As emendas de vídeo partem dos frames realmente renderizados; as emendas DOM preservam o mesmo elemento entre estados.
+
+O scroll funciona para frente, para trás e sob fast flick sem pop, flash ou salto.
+
+GSAP + ScrollTrigger são o único orquestrador e Lenis é o único motor de scroll suave.
+
+Não há pin abaixo de 1024 px, e a versão mobile segue fluxo documental normal.
+
+Three.js permanece ausente enquanto CSS, SVG, vídeo e 2.5D resolverem a narrativa.
+
+Sound bridges respeitam o opt-in e a experiência continua completa em silêncio.
+
+O clímax do boleto é seguido por respiro; o final assenta no CTA em vez de competir com ele.
+
+O CTA primário final é único: FALAR COM A HG SMART.
 
 9. Resultado esperado
 
@@ -2704,6 +3247,18 @@ As tomadas possuem qualidade e continuidade suficientes?
 
 Identidade, mãos, olhar, luz, enquadramento e frames de sincronização estão aprovados.
 
+Scroll World
+
+O percurso parece uma câmera contínua em vez de seções empilhadas?
+
+Frames de emenda, vetor de velocidade, reverse scroll e fast flick permanecem coerentes.
+
+Cinema
+
+Cada cena possui intenção de quadro, ação dominante, reação, hold e match cut?
+
+Luz, blocking, profundidade e som constroem tensão sem esconder conteúdo ou CTA.
+
 Mobile
 
 A narrativa funciona sem copiar o desktop literalmente?
@@ -2722,16 +3277,20 @@ Pessoas, lojas, produtos e dados correspondem à realidade?
 
 Todo elemento possui fonte, autorização e validação; não há banco de imagem nem conteúdo inventado.
 
-12. Referências oficiais utilizadas nesta direção
+12. Referências de método utilizadas nesta direção
 
 Awwwards — Evaluation System: equilíbrio entre Design, Usabilidade, Criatividade e Conteúdo.
 
-Higgsfield — Seedance 2.0 Prompting Guide: estrutura inicial de tomadas, duração e proporção nos prompts.
+Higgsfield Prompt Guide: MCSLA, ação principal única e separação entre identidade e movimento.
 
-Higgsfield — Camera Controls: seleção consciente de movimentos de câmera.
+Higgsfield Cinema Studio: aprovação do Hero Frame, continuidade, safety take e seleção consciente de câmera.
 
-Higgsfield — Kling Motion Control Guide: uso combinado de imagem de personagem e vídeo de movimento, com atenção a enquadramento, membros e espaço negativo.
+Higgsfield Acting: intenção traduzida em comportamento observável, ritmo, postura, mãos, respiração e olhar.
 
-Higgsfield — Cinema Studio Guide: filosofia de Hero Frame, controle óptico e frames inicial/final.
+Animation Forge e motion Awwwards: antecipação, ação, contato, resposta, acomodação e handoff com usuário no controle.
+
+Scroll World: arquitetura A para direção grounded, emendas frame-idênticas, scroll weight, linger, reverse e hardening mobile.
+
+MengTo Frontend: tese visual, sistema honesto de assets, um único motor de scroll, decisão consciente de Three.js e qualidade Awwwards como barra de execução.
 
 As referências orientam qualidade e processo. Elas não substituem a identidade visual, o conteúdo ou o roteiro próprio da HG Smart.

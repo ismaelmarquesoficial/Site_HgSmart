@@ -128,6 +128,7 @@
 
     const linhas = hero.querySelectorAll(".linha-mask > span");
     const secundarios = hero.querySelectorAll("[data-hero-secundario]");
+    if (!linhas.length) return;
 
     const linha = gsap.timeline({ delay: 0.15 });
 
@@ -199,7 +200,9 @@
     // Linhas mascaradas fora do hero
     novos("[data-reveal-linhas]").forEach((bloco) => {
       bloco.dataset.revelado = "1";
-      gsap.to(bloco.querySelectorAll(".linha-mask > span"), {
+      const linhas = bloco.querySelectorAll(".linha-mask > span");
+      if (!linhas.length) return;
+      gsap.to(linhas, {
         y: "0%",
         duration: 0.95,
         stagger: 0.07,

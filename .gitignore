@@ -7,3 +7,7 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
+
+# Saídas locais de QA e referências sensíveis de mídia
+.playwright-mcp/
+workspace/output/
