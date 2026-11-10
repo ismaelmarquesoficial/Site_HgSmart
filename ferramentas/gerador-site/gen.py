@@ -2,8 +2,9 @@
 """Gerador do site da Rede HG Smart. As páginas publicadas continuam sendo HTML/CSS/JS puro, sem build no servidor:
 este script só evita manter à mão o cabeçalho, o rodapé e os dados das lojas em 31 arquivos.
 
-  python3 gen.py repo            escreve na raiz do repositório: as páginas, assets/css/hg.css, assets/js/hg.js
-                                 e as imagens novas que ainda não existirem. Não apaga nem regrava imagem existente.
+  python3 gen.py repo            escreve na raiz do repositório: as páginas, assets/css/hg.css, assets/js/hg.js,
+                                 as imagens novas que ainda não existirem e a pasta design-system/ (tokens e referência).
+                                 Não apaga nem regrava imagem existente.
                                  O <title>, a descrição, o canonical, o Open Graph e os JSON-LD de cada página
                                  são lidos da página que já está no repositório e mantidos como estão.
   python3 gen.py artefato DIR    monta em DIR um pacote de pré-visualização (fontes embutidas, imagens reduzidas,
@@ -145,6 +146,13 @@ escreve(P.p_404('/' if MODO_REPO else ''))
 for i, p in enumerate(PAGAMENTOS): escreve(P2.p_pagamento('', p, i))
 escreve(P2.p_lojas('../', svg))
 for l in LOJAS: escreve(P2.p_loja('../../', l))
+
+# ───────── sistema de design (só no repositório): tokens e página de referência saem do mesmo CSS e das mesmas peças ─────────
+if MODO_REPO:
+    import sistema
+    from dados import FIG, VOZES, FAQ
+    sistema.escreve_sistema(css, grava, base.im, FIG, LOJAS, PAGAMENTOS, VOZES, FAQ)
+    feitas.append('design-system/index.html')
 
 # ───────── conferência: toda referência local existe ─────────
 faltas = []

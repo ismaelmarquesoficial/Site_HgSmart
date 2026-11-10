@@ -1,0 +1,48 @@
+/* Rede HG Smart: tokens do site. Gerado de assets/css/hg.css por ferramentas/gerador-site; não edite à mão.
+   As regras de uso estão em README.md e no DESIGN.md da raiz. */
+:root {
+  color-scheme: dark;
+  --fundo: #07080a;
+  --fundo-2: #0d1117;
+  --fundo-3: #05070a;
+  --tinta: #ffffff;
+  --tinta-2: rgba(255,255,255,.76);
+  --tinta-3: rgba(255,255,255,.5);
+  --acao: #00a2c7;
+  --acao-clara: #16b7dc;
+  --acao-tinta: #00232c;
+  --acao-funda: #00506b;
+  --linha: rgba(255,255,255,.12);
+  --linha-forte: rgba(255,255,255,.24);
+  --papel: #ffffff;
+  --papel-tinta: #05070a;
+  --papel-tinta-2: rgba(5,7,10,.74);
+  --papel-tinta-3: rgba(5,7,10,.56);
+  --papel-linha: rgba(5,7,10,.14);
+  --papel-acao: #007a96;
+  --papel-acao-display: #008fb0;
+  --ok: #35d07f;
+  --zap: #1fae4f;
+  --zap-tinta: #04210f;
+  --estrela: #fbbc04;
+  --display: "Bebas Neue","Arial Narrow",Impact,sans-serif;
+  --corpo: "Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --d1: clamp(3rem,9vw,8rem);
+  --d2: clamp(2.25rem,6vw,5rem);
+  --d3: clamp(1.5rem,3.2vw,2.5rem);
+  --d4: clamp(1.25rem,2vw,1.625rem);
+  --t1: clamp(1.0625rem,1.5vw,1.3125rem);
+  --t2: 1rem;
+  --t3: .875rem;
+  --r1: .6875rem;
+  --dado: clamp(4rem,11vw,10rem);
+  --dado-2: clamp(3.25rem,6vw,5.5rem);
+  --fantasma: clamp(9rem,26vw,26rem);
+  --e-micro: cubic-bezier(.2,.7,.3,1);
+  --e-entrada: cubic-bezier(.16,1,.3,1);
+  --micro: 200ms;
+  --entrada: 600ms;
+  --secao: clamp(5rem,14vh,10rem);
+  --lado: clamp(1.5rem,6vw,6rem);
+  --topo-h: 4.25rem;
+}
