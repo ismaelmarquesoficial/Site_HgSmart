@@ -302,11 +302,16 @@
     /* ── Abertura (uma vez por sessão) e cortina entre páginas ── */
     const estreia = html.classList.contains('estreia');
     const heroFoto = $('.hero-foto img'), luz = $('.hero-luz');
-    if (luz) gsap.set(luz, { x: innerWidth * .2, y: innerHeight * .85 });
+    if (luz) {
+      gsap.set(luz, { x: innerWidth * .2, y: innerHeight * .85 });
+      /* a luz respira sozinha; o cursor só a desloca */
+      gsap.fromTo(luz, { scale: .94 }, { scale: 1.08, duration: 5.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    }
     gsap.set('.topo, .zap', { autoAlpha: 0 });
     const chegada = gsap.timeline({ paused: true })
       .add(revelar, 0)
       .to('.topo', { autoAlpha: 1, duration: .8 }, .2)
+      .fromTo('.topo-nav a, .topo-dir > *', { y: -14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, stagger: .05, clearProps: 'all' }, .35)
       .to('.zap', { autoAlpha: 1, duration: .6 }, .8);
     if (heroFoto) chegada.fromTo(heroFoto, { scale: 1.22 }, { scale: 1.06, duration: 2.2, ease: 'power3.out' }, 0);
     const abrir = gsap.timeline();
@@ -339,7 +344,7 @@
       gsap.fromTo('.intro-col', { yPercent: 101 }, { yPercent: 0, duration: .45, stagger: .03, ease: 'power3.inOut', onComplete: () => { location.href = destino; } });
       setTimeout(() => { location.href = destino; }, 900);
     });
-    window.addEventListener('pageshow', (e) => { if (e.persisted) { html.classList.remove('saindo'); gsap.set('.intro', { display: 'none' }); gsap.set('.topo, .zap', { autoAlpha: 1 }); } });
+    window.addEventListener('pageshow', (e) => { if (e.persisted) { html.classList.remove('saindo'); gsap.set('.intro', { display: 'none' }); gsap.set('.topo, .zap', { autoAlpha: 1 }); gsap.set('.topo-nav a, .topo-dir > *', { clearProps: 'all' }); } });
 
     /* ── Hero ao rolar: foto em paralaxe, luz segue o cursor ── */
     if ($('.hero')) {
@@ -376,12 +381,14 @@
       const f = Math.min(dt, 50) / 16.67;
       velS += (vel - velS) * .1; vel *= .9;
       const impulso = Math.min(Math.abs(velS) / 260, 9);
+      /* tombo: inclinação sutil pela velocidade do scroll; volta a zero quando a rolagem assenta */
+      const tombo = Math.max(-4.5, Math.min(4.5, velS / 190));
       for (const m of mqs) {
         if (m.box._vis === false) continue;
         m.k += ((m.box._p ? 0 : 1) - m.k) * .08;
         m.x -= m.dir * (m.fixo ? 1 : sentido) * (.7 + (m.fixo ? impulso * .35 : impulso)) * m.k * f;
         m.x = ((m.x % m.unidade) - m.unidade) % m.unidade;
-        m.t.style.transform = 'translate3d(' + m.x.toFixed(2) + 'px,0,0)';
+        m.t.style.transform = 'translate3d(' + m.x.toFixed(2) + 'px,0,0) skewX(' + (m.fixo ? tombo * .4 : tombo).toFixed(2) + 'deg)';
       }
     });
 
@@ -462,6 +469,26 @@
     /* ── Chamada final: o texto vazado enche de azul ── */
     $$('.cta').forEach((c) => { const e = $$('.enche', c); if (e.length) gsap.to(e, { backgroundSize: '100% 100%', ease: 'none', stagger: .45, scrollTrigger: { trigger: c, start: 'top 80%', end: 'center 45%', scrub: SCRUB } }); });
     $$('.rodape-marca').forEach((m) => gsap.fromTo(m, { xPercent: 4 }, { xPercent: -4, ease: 'none', scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: SCRUB } }));
+
+    /* ── Magnetismo: botões atraem o cursor e voltam com mola; cartões inclinam ── */
+    if (fino) {
+      $$('.btn, .menu-b, .vt-setas button, .zap').forEach((el) => {
+        el.classList.add('ima');
+        el.addEventListener('pointermove', (e) => {
+          const r = el.getBoundingClientRect();
+          gsap.to(el, { x: (e.clientX - r.left - r.width / 2) * .26, y: (e.clientY - r.top - r.height / 2) * .34, duration: .4, ease: 'power3.out', overwrite: 'auto' });
+        });
+        el.addEventListener('pointerleave', () => gsap.to(el, { x: 0, y: 0, duration: .75, ease: 'elastic.out(1,.45)', overwrite: 'auto' }));
+      });
+      $$('a.cartao, .cartao-link').forEach((c) => {
+        c.classList.add('ima');
+        c.addEventListener('pointermove', (e) => {
+          const r = c.getBoundingClientRect();
+          gsap.to(c, { rotationY: ((e.clientX - r.left) / r.width - .5) * 7, rotationX: -((e.clientY - r.top) / r.height - .5) * 7, y: -4, transformPerspective: 700, duration: .45, ease: 'power3.out', overwrite: 'auto' });
+        });
+        c.addEventListener('pointerleave', () => gsap.to(c, { rotationY: 0, rotationX: 0, y: 0, duration: .7, ease: 'power3.out', overwrite: 'auto' }));
+      });
+    }
 
     /* ── Cursor ── */
     if (fino) {
