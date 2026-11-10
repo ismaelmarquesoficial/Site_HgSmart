@@ -1,120 +1,67 @@
 <!doctype html>
-<html lang="pt-BR" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Página não encontrada — Rede HG Smart</title>
-    <meta name="robots" content="noindex, follow" />
-
-    <meta name="theme-color" content="#000000" />
-    <link rel="icon" href="/assets/img/icones/FAVICON.png" />
-    <link rel="stylesheet" href="/assets/css/site.css" />
-  </head>
-
-  <!--
-    ─── POR QUE ESTA PÁGINA É ESCRITA À MÃO ───
-    Todo caminho aqui é ABSOLUTO (/assets/…, /lojas/…), e é isso que a
-    separa das outras 29. O servidor devolve este MESMO arquivo para
-    qualquer URL que não existe — inclusive /lojas/cidade-que-nao-existe/,
-    dois níveis abaixo da raiz. Com caminho relativo, o CSS viraria
-    /lojas/cidade-que-nao-existe/assets/css/site.css e a página de erro
-    apareceria sem estilo nenhum, que é a pior hora para isso acontecer.
-
-    Por isso ela também não passa por gerar-paginas.js nem por
-    aplicar-rodape.js: os dois montam caminhos relativos a partir de um
-    prefixo, e prefixo é justamente o que não existe quando a URL é
-    desconhecida.
-
-    `noindex, follow`: não faz sentido indexar um erro, mas os links
-    daqui devem continuar sendo seguidos.
-
-    ─── PARA ATIVAR NA HOSPEDAGEM ───
-    No cPanel: Error Pages → escolha o domínio → 404 (Not Found) → e
-    aponte para este arquivo. É pela interface, não precisa editar
-    arquivo de configuração. Sem isso, o Apache mostra a tela de erro
-    padrão dele e este arquivo fica no servidor sem ser usado.
-  -->
-  <body class="antialiased">
-    <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-70 focus:rounded-full focus:bg-azul focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white">Ir para o conteúdo</a>
-
-    <header class="cabecalho fixed inset-x-0 top-0 z-50 border-b border-transparent">
-      <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-6 py-5 lg:px-10">
-        <a href="/" class="flex items-center gap-3" aria-label="Rede HG Smart — página inicial">
-          <img src="/assets/img/icones/LOGO.png" alt="Logo da Rede HG Smart" width="132" height="36" class="h-8 w-auto" />
-        </a>
-        <a href="/lojas/" class="btn btn-azul hidden lg:inline-flex">Ver as lojas</a>
-      </div>
-    </header>
-
-    <main id="conteudo">
-      <section class="granulado relative overflow-hidden pb-24 pt-40 lg:pt-52">
-        <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div class="absolute -left-[14%] top-[-26%] size-[54rem] halo-azul opacity-35"></div>
-        </div>
-
-        <div class="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10">
-          <p class="filete-rotulo rotulo mb-8">Erro 404</p>
-          <h1 class="texto-grande titulo-na-grade max-w-4xl text-branco">
-            <span class="linha-mask"><span>Esta página</span></span>
-            <span class="linha-mask"><span class="text-azul">não existe.</span></span>
-          </h1>
-          <p class="mt-10 max-w-2xl text-base leading-relaxed text-prata">
-            O endereço pode ter mudado ou o link estar errado. As lojas continuam
-            todas aqui — e quem atende também.
-          </p>
-
-          <div class="mt-12 flex flex-wrap gap-4">
-            <a class="btn btn-azul" href="/lojas/">Ver as 10 lojas</a>
-            <a class="btn" href="/como-comprar.html">Formas de pagamento</a>
-            <a class="btn" href="/">Ir para a home</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="secao-clara relative overflow-hidden" aria-labelledby="titulo-atalhos">
-        <div class="relative z-10 mx-auto max-w-[1400px] px-6 py-20 lg:px-10">
-          <h2 id="titulo-atalhos" class="filete-rotulo rotulo mb-10">O que costuma ser procurado</h2>
-          <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <li class="cartao p-7">
-              <h3 class="text-lg text-branco"><a class="link-sub" href="/boleto.html">Celular no boleto</a></h3>
-              <p class="mt-2 text-sm leading-relaxed text-prata">Sem cartão e sem conta em banco.</p>
-            </li>
-            <li class="cartao p-7">
-              <h3 class="text-lg text-branco"><a class="link-sub" href="/conta-de-luz.html">Conta de luz</a></h3>
-              <p class="mt-2 text-sm leading-relaxed text-prata">Até 24x, sem entrada.</p>
-            </li>
-            <li class="cartao p-7">
-              <h3 class="text-lg text-branco"><a class="link-sub" href="/lojas/">Lojas da rede</a></h3>
-              <p class="mt-2 text-sm leading-relaxed text-prata">Endereço, horário e WhatsApp das 10 unidades.</p>
-            </li>
-            <li class="cartao p-7">
-              <h3 class="text-lg text-branco"><a class="link-sub" href="/faq.html">Perguntas frequentes</a></h3>
-              <p class="mt-2 text-sm leading-relaxed text-prata">Documentos, negativado, simulação e garantia.</p>
-            </li>
-            <li class="cartao p-7">
-              <h3 class="text-lg text-branco"><a class="link-sub" href="/catalogo.html">Marcas</a></h3>
-              <p class="mt-2 text-sm leading-relaxed text-prata">O que as lojas da rede trabalham.</p>
-            </li>
-            <li class="cartao p-7">
-              <h3 class="text-lg text-branco"><a class="link-sub" href="/contato.html">Contato</a></h3>
-              <p class="mt-2 text-sm leading-relaxed text-prata">WhatsApp, e-mail e redes da rede.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-branco/10 bg-preto-alto">
-      <div class="mx-auto max-w-[1400px] px-6 py-12 lg:px-10">
-        <p class="text-center text-xs leading-relaxed text-cinza">
-          © <span data-ano>2026</span> HG Smart LTDA
-          <span aria-hidden="true" class="px-2">•</span>
-          <span class="tabular-nums">CNPJ 54.988.129/0001-89</span>
-        </p>
-      </div>
-    </footer>
-
-    <script src="/assets/js/site.js" defer></script>
-  </body>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="/assets/img/icones/FAVICON.png">
+<title>Página não encontrada — Rede HG Smart</title>
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#07080a">
+<script>(function(){var d=document.documentElement;try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion-ok');var v=null;try{v=sessionStorage.getItem('hg-visto')}catch(e){}if(!v)d.classList.add('estreia')}}catch(e){}setTimeout(function(){if(!window.__hg)d.classList.remove('motion-ok','estreia')},3500)})();</script>
+<link rel="preload" href="/assets/fontes/BebasNeue-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fontes/Inter-variavel.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/hg.css">
+</head>
+<body>
+<div class="pagina" data-raiz="/">
+<div class="intro" aria-hidden="true"><div class="intro-col"></div><div class="intro-col"></div><div class="intro-col"></div><div class="intro-col"></div><div class="intro-col"></div><div class="intro-centro"><div class="intro-miolo"><img src="/assets/img/icones/logo-400.png" alt="" width="400" height="204"><div class="intro-barra"><i></i></div></div></div><span class="intro-num">00</span></div>
+<div class="cursor" aria-hidden="true"></div>
+<div class="progresso" aria-hidden="true"></div>
+<a class="pular" href="#conteudo">Ir para o conteúdo</a>
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="topo-logo" href="/index.html" aria-label="Rede HG Smart, página inicial"><img src="/assets/img/icones/logo-400.png" alt="HG Smart" width="400" height="204"></a>
+    <nav class="topo-nav" aria-label="Principal"><a href="/como-comprar.html">Formas de pagamento</a><a href="/catalogo.html">Smartphones</a><a href="/acessorios.html">Acessórios</a><a href="/lojas/index.html">Lojas</a><a href="/garantia.html">Garantia</a><a href="/quem-somos.html">A HG Smart</a></nav>
+    <div class="topo-dir">
+      <a class="btn btn-p btn-mini" href="/lojas/index.html">Encontre a loja</a>
+      <button class="menu-b" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span>Menu</span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu" aria-hidden="true" aria-label="Mapa do site">
+  <div class="wrap menu-in">
+    <nav class="menu-col menu-pri" aria-label="Todas as páginas"><ul><li><a href="/index.html"><small>01</small>Início</a></li><li><a href="/catalogo.html"><small>02</small>Smartphones</a></li><li><a href="/como-comprar.html"><small>03</small>Formas de pagamento</a></li><li><a href="/acessorios.html"><small>04</small>Acessórios</a></li><li><a href="/lojas/index.html"><small>05</small>Nossas lojas</a></li><li><a href="/garantia.html"><small>06</small>Garantia estendida</a></li><li><a href="/quem-somos.html"><small>07</small>Sobre a HG Smart</a></li><li><a href="/ceo.html"><small>08</small>Conheça o CEO</a></li><li><a href="/servicos.html"><small>09</small>Serviços</a></li><li><a href="/faq.html"><small>10</small>FAQ</a></li><li><a href="/contato.html"><small>11</small>Contato</a></li></ul></nav>
+    <div class="menu-col"><span class="rotulo">Formas de pagamento</span><ul class="menu-lista"><li><a href="/boleto.html"><b>18x</b><span>Boleto</span></a></li><li><a href="/conta-de-luz.html"><b>24x</b><span>Conta de luz</span></a></li><li><a href="/credito-clt.html"><b>44x</b><span>Crédito CLT</span></a></li><li><a href="/cartao-de-credito.html"><b>10x</b><span>Cartão de crédito</span></a></li><li><a href="/a-vista.html"><b>Pix</b><span>Pix ou dinheiro</span></a></li><li><a href="/troca-do-usado.html"><b>Troca</b><span>Troca do usado</span></a></li></ul></div>
+    <div class="menu-col"><span class="rotulo">Lojas · <span data-abertas>10</span> abertas agora</span><ul class="menu-lista"><li><a href="/lojas/santa-cruz-do-sul/index.html"><span>Santa Cruz do Sul</span><span class="pulso" data-pulso="santa-cruz-do-sul"></span></a></li><li><a href="/lojas/lajeado/index.html"><span>Lajeado</span><span class="pulso" data-pulso="lajeado"></span></a></li><li><a href="/lojas/cachoeira-do-sul/index.html"><span>Cachoeira do Sul</span><span class="pulso" data-pulso="cachoeira-do-sul"></span></a></li><li><a href="/lojas/capao-da-canoa/index.html"><span>Capão da Canoa</span><span class="pulso" data-pulso="capao-da-canoa"></span></a></li><li><a href="/lojas/caxias-do-sul/index.html"><span>Caxias do Sul</span><span class="pulso" data-pulso="caxias-do-sul"></span></a></li><li><a href="/lojas/cachoeirinha/index.html"><span>Cachoeirinha</span><span class="pulso" data-pulso="cachoeirinha"></span></a></li><li><a href="/lojas/tramandai/index.html"><span>Tramandaí</span><span class="pulso" data-pulso="tramandai"></span></a></li><li><a href="/lojas/santa-maria/index.html"><span>Santa Maria</span><span class="pulso" data-pulso="santa-maria"></span></a></li><li><a href="/lojas/farroupilha/index.html"><span>Farroupilha</span><span class="pulso" data-pulso="farroupilha"></span></a></li><li><a href="/lojas/bento-goncalves/index.html"><span>Bento Gonçalves</span><span class="pulso" data-pulso="bento-goncalves"></span></a></li></ul></div>
+  </div>
+</div>
+<main id="conteudo">
+<section class="capa"><div class="wrap capa-g">
+  <div class="capa-txt"><div class="cap" data-r><span class="rotulo">Erro 404</span><i></i></div><h1 class="d1" data-linhas><span class="ln"><span>Esta página</span></span><span class="ln"><span class="azul grade">não existe.<i></i></span></span></h1><p class="t1" data-r>O endereço pode ter mudado ou o link estar errado. As lojas continuam todas aqui, e quem atende também.</p>
+  <div class="acoes" data-r><a class="btn btn-p" href="/lojas/index.html">Ver as 10 lojas</a><a class="btn btn-s" href="/como-comprar.html">Formas de pagamento</a><a class="btn btn-s" href="/index.html">Ir para o início</a></div></div>
+  <div class="capa-lado"><span class="erro-num" aria-hidden="true">404</span></div>
+</div></section>
+<section class="sec"><div class="wrap"><div class="cab"><div class="cap" data-r><span class="rotulo">O que costuma ser procurado</span><i></i></div><h2 class="d2" data-linhas><span class="ln"><span>Talvez seja</span></span><span class="ln"><span class="azul grade">uma destas.<i></i></span></span></h2></div><div class="g3"><a class="cartao item" href="/boleto.html" data-r><h3>Celular no boleto</h3><p class="t3">Sem cartão e sem conta em banco.</p></a><a class="cartao item" href="/conta-de-luz.html" data-r><h3>Conta de luz</h3><p class="t3">Até 24x, sem entrada.</p></a><a class="cartao item" href="/lojas/index.html" data-r><h3>Lojas da rede</h3><p class="t3">Endereço, horário e WhatsApp das 10 unidades.</p></a><a class="cartao item" href="/faq.html" data-r><h3>Perguntas frequentes</h3><p class="t3">Documentos, negativado, simulação e garantia.</p></a><a class="cartao item" href="/catalogo.html" data-r><h3>Marcas</h3><p class="t3">O que as lojas da rede trabalham.</p></a><a class="cartao item" href="/contato.html" data-r><h3>Contato</h3><p class="t3">WhatsApp, e-mail e redes da rede.</p></a></div></div></section>
+</main>
+<footer class="rodape">
+  <div class="wrap rodape-g">
+    <div><img src="/assets/img/icones/logo-400.png" alt="HG Smart" width="400" height="204" loading="lazy"><span>Rede de lojas de celulares no Rio Grande do Sul. Tecnologia acessível, garantia oficial e condições reais.</span>
+      <a href="https://www.instagram.com/hgsmart_/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/17mYHKQ4Dy/" target="_blank" rel="noopener">Facebook</a><a href="https://www.tiktok.com/@hg.smart" target="_blank" rel="noopener">TikTok</a><a href="https://www.youtube.com/@hgsmartlojadecelulares" target="_blank" rel="noopener">YouTube</a><a href="https://hgsmart.com.br/blog" target="_blank" rel="noopener">Blog</a></div>
+    <div><span class="rotulo">Institucional</span><a href="/index.html">Início</a><a href="/quem-somos.html">Sobre a HG Smart</a><a href="/ceo.html">Conheça o CEO</a><a href="/servicos.html">Serviços</a><a href="/catalogo.html">Smartphones</a><a href="/acessorios.html">Acessórios</a><a href="/garantia.html">Garantia estendida</a><a href="/faq.html">FAQ</a><a href="/contato.html">Contato</a></div>
+    <div><span class="rotulo">Formas de pagamento</span><a href="/como-comprar.html">Como comprar</a><a href="/boleto.html">Boleto</a><a href="/conta-de-luz.html">Conta de luz</a><a href="/credito-clt.html">Crédito CLT</a><a href="/cartao-de-credito.html">Cartão de crédito</a><a href="/a-vista.html">Pix ou dinheiro</a><a href="/troca-do-usado.html">Troca do usado</a></div>
+    <div><span class="rotulo">Nossas unidades</span><a href="/lojas/santa-cruz-do-sul/index.html">Santa Cruz do Sul</a><a href="/lojas/lajeado/index.html">Lajeado</a><a href="/lojas/cachoeira-do-sul/index.html">Cachoeira do Sul</a><a href="/lojas/capao-da-canoa/index.html">Capão da Canoa</a><a href="/lojas/caxias-do-sul/index.html">Caxias do Sul</a><a href="/lojas/cachoeirinha/index.html">Cachoeirinha</a><a href="/lojas/tramandai/index.html">Tramandaí</a><a href="/lojas/santa-maria/index.html">Santa Maria</a><a href="/lojas/farroupilha/index.html">Farroupilha</a><a href="/lojas/bento-goncalves/index.html">Bento Gonçalves</a><a href="/lojas/index.html">Todas as lojas</a></div>
+    <div><span class="rotulo">Contato</span><span class="tel">(51) 9 9857-5806</span><span class="tel">(51) 9 2003-5624</span><span class="tel">(51) 9 9017-8584</span><span class="tel">contato@hgsmart.com.br</span><a href="/contato.html">Todos os canais</a>
+      <span class="rotulo" style="margin-top:1rem">Matriz</span><span>HG Smart LTDA</span><span>CNPJ 54.988.129/0001-89</span><span>Rua Marechal Floriano, 829 · Centro<br>Santa Cruz do Sul/RS · CEP 96.810-052</span></div>
+  </div>
+  <div class="wrap"><div class="rodape-marca" aria-hidden="true">Rede HG Smart</div></div>
+  <div class="wrap rodape-b"><span>© 2026 HG Smart LTDA · CNPJ 54.988.129/0001-89</span><span><a href="/politica-de-privacidade.html">Política de Privacidade</a><a href="/termos-de-uso.html">Termos de Uso</a><a href="/politica-de-cookies.html">Política de Cookies</a></span></div>
+</footer>
+<a class="zap" href="https://wa.me/5551998575806?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20HG%20Smart%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20condi%C3%A7%C3%B5es%20de%20pagamento." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.2-4.6A9 9 0 1 1 21 12z"/></svg>Falar no WhatsApp</a>
+<div class="barra"><a class="btn btn-zap" href="https://wa.me/5551998575806?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20HG%20Smart%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20condi%C3%A7%C3%B5es%20de%20pagamento." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.2-4.6A9 9 0 1 1 21 12z"/></svg>WhatsApp</a><a class="btn btn-s" href="/lojas/index.html">Lojas</a></div>
+</div>
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
+<script src="/assets/js/hg.js" defer></script>
+</body>
 </html>
