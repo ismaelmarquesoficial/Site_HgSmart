@@ -17,8 +17,14 @@ Abra o terminal nesta pasta e execute:
 Depois acesse http://localhost:8080 no navegador.
 
 COMO PUBLICAR
-Envie todo o conteúdo desta pasta para a raiz pública da hospedagem, sem alterar
-os nomes ou a estrutura das pastas.
+NUNCA envie a pasta inteira: ela tem material interno, e a raiz da hospedagem
+tem o blog em /blog (WordPress separado, que fica intocado).
+1. python3 ferramentas/hospedagem/pacote_publicacao.py /tmp/hg-pacote
+   (só o que as páginas usam: .html, .htaccess, robots, sitemap, lojas/, assets/)
+2. python3 ferramentas/hospedagem/ftp_espelho.py enviar /tmp/hg-pacote /public_html \
+     --credenciais <arquivo .env no Cofre>
+3. Confira no ar: home, uma loja, 404, /blog/ e um post do blog.
+Detalhes e histórico em docs/.
 
 VERSÃO
 - Sites: versão 5

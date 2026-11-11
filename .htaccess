@@ -1,0 +1,50 @@
+# Rede HG Smart — site estático na raiz (public_html).
+# O blog em /blog é um WordPress separado, com o próprio .htaccess (RewriteEngine, Expires e Header próprios):
+# as regras de reescrita daqui não entram lá, e os cabeçalhos abaixo são desligados para /blog/ pelo SetEnvIf.
+
+Options -Indexes
+AddDefaultCharset UTF-8
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Sempre HTTPS e sem www (antes era o WordPress que fazia isso)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://hgsmart.com.br%{REQUEST_URI} [R=301,L]
+
+# Endereços do site antigo em WordPress -> páginas novas
+RewriteRule ^servicos/?$ /servicos.html [R=301,L]
+RewriteRule ^quem-somos/?$ /quem-somos.html [R=301,L]
+RewriteRule ^contato/?$ /contato.html [R=301,L]
+RewriteRule ^(category|tag|author|page|feed|comments)(/.*)?$ / [R=301,L]
+RewriteRule ^(wp-admin|wp-login\.php|wp-json|xmlrpc\.php|wp-content|wp-includes)(/.*)?$ - [R=404,L]
+</IfModule>
+
+# Cabeçalhos de segurança só para o site; /blog continua respondendo como antes
+<IfModule mod_headers.c>
+<If "%{REQUEST_URI} !~ m#^/blog(/|$)#">
+Header always set Strict-Transport-Security "max-age=31536000"
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</If>
+</IfModule>
+
+# Cache do navegador (o /blog tem a própria tabela de Expires, que vale lá)
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "access plus 1 hour"
+ExpiresByType text/html "access plus 0 seconds"
+ExpiresByType application/xml "access plus 1 hour"
+ExpiresByType text/plain "access plus 1 hour"
+ExpiresByType text/css "access plus 1 day"
+ExpiresByType application/javascript "access plus 1 day"
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
