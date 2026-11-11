@@ -34,5 +34,5 @@ O JSON-LD de cada loja não sai de `dados.py`; ele é herdado do `<head>` da pá
 
 ## O que este gerador não toca
 
-- `sitemap.xml` e `robots.txt` (gerados por `ferramentas/gerar-seo.js`). A página nova `acessorios.html` ainda precisa entrar no sitemap.
+- `sitemap.xml` e `robots.txt` (gerados por `ferramentas/gerar-seo.js`). `acessorios.html` já está no sitemap.
 - `assets/css/site.css`, `assets/css/hero-cinematic.css` e `assets/js/site.js`, `banner.js`, `motion.js`, `hero-cinematic.js`: eram da versão anterior e não são mais carregados por nenhuma página. Podem ser removidos depois de aprovar o novo site.

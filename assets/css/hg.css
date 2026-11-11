@@ -243,6 +243,8 @@ html:not(.estreia) .intro-centro,html:not(.estreia) .intro-num{display:none}
 /* ───────── letreiro ───────── */
 .letreiro{display:flex;flex-direction:column;gap:clamp(.25rem,1vw,.75rem);padding-block:clamp(1.5rem,4.5vw,3.75rem);border-block:1px solid var(--linha);overflow:hidden}
 .mq{overflow:hidden;white-space:nowrap}
+/* o letreiro recorta na horizontal; o respiro acima (como em .ln) deixa o acento de É e Ó aparecer */
+.letreiro .mq{padding:calc(var(--d1)*.16) 0 calc(var(--d1)*.1);margin:calc(var(--d1)*-.16) 0 calc(var(--d1)*-.1)}
 .mq-t{display:inline-flex;align-items:center;will-change:transform}
 .letreiro .mq-t{gap:clamp(1rem,3vw,3rem);padding-right:clamp(1rem,3vw,3rem)}
 .letreiro .mq-t span{font-family:var(--display);font-size:var(--d1);line-height:.9}

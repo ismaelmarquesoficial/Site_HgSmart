@@ -11,3 +11,11 @@ desktop.ini
 # Saídas locais de QA e referências sensíveis de mídia
 .playwright-mcp/
 workspace/output/
+
+# Ferramentas de agente, locais da máquina
+.agents/
+.mixdog/
+skills-lock.json
+
+# Python (gerador do site)
+__pycache__/
