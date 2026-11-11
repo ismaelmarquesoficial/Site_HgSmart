@@ -78,12 +78,15 @@ def aparelho(telas_html):
 
 # ───────── cabeçalho, menu, rodapé ─────────
 NAV = [('como-comprar.html', 'Formas de pagamento', 'pagar'), ('catalogo.html', 'Smartphones', 'smart'), ('acessorios.html', 'Acessórios', 'acess'),
-       ('lojas/index.html', 'Lojas', 'lojas'), ('garantia.html', 'Garantia', 'garantia'), ('quem-somos.html', 'A HG Smart', 'sobre')]
+       ('lojas/index.html', 'Lojas', 'lojas'), ('garantia.html', 'Garantia', 'garantia'), ('quem-somos.html', 'A HG Smart', 'sobre'), (REDE['blog'], 'Blog', 'blog')]
 MENU = [('@home', 'Início', 'home'), ('catalogo.html', 'Smartphones', 'smart'), ('como-comprar.html', 'Formas de pagamento', 'pagar'), ('acessorios.html', 'Acessórios', 'acess'),
         ('lojas/index.html', 'Nossas lojas', 'lojas'), ('garantia.html', 'Garantia estendida', 'garantia'), ('quem-somos.html', 'Sobre a HG Smart', 'sobre'),
-        ('ceo.html', 'Conheça o CEO', 'ceo'), ('servicos.html', 'Serviços', 'servicos'), ('faq.html', 'FAQ', 'faq'), ('contato.html', 'Contato', 'contato')]
+        ('ceo.html', 'Conheça o CEO', 'ceo'), ('servicos.html', 'Serviços', 'servicos'), ('faq.html', 'FAQ', 'faq'), ('contato.html', 'Contato', 'contato'), (REDE['blog'], 'Blog', 'blog')]
 
-def _h(r, href): return r + (CFG['home'] if href == '@home' else href)
+def _h(r, href):
+    """Caminho relativo à raiz da página; endereço absoluto (o blog, que mora em outro WordPress) passa como está."""
+    if href.startswith(('http://', 'https://')): return href
+    return r + (CFG['home'] if href == '@home' else href)
 def home(r): return r + CFG['home']
 
 def cabecalho(r, atual):
